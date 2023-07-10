@@ -8,10 +8,16 @@ using UnityEngine.Events;
 
 public class CompanionManager : MonoBehaviour
 {
+
+    public static CompanionManager instance;
+
+    //Events
     [HideInInspector] public UnityEvent<bool> OnHoverInteractable;
     [HideInInspector] public UnityEvent<Vector3> OnMouseMovement;
-    [HideInInspector] public UnityEvent OnMouseClick;
+    [HideInInspector] public UnityEvent<Vector3> OnMouseClick;
+    [HideInInspector] public UnityEvent<bool> OnEditorMode;
 
+    [Header("Parameters")]
     [SerializeField] private float mouseLerp = 10;
     [SerializeField] private float rotationSpeed = 20;
     [SerializeField] private LayerMask groundLayerMask;
@@ -19,20 +25,32 @@ public class CompanionManager : MonoBehaviour
     private Vector3 screenPosition;
     private Vector3 worldPosition;
 
+    [Header("Interactable")]
     public Interactable currentInteractable;
+
+    private bool isInEditorMode;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Update()
     {
+        InteractableDetection();
+
+        screenPosition = Mouse.current.position.value;
+        OnMouseMovement.Invoke(screenPosition);
+
+        if (isInEditorMode)
+            return;
+
         Movement();
 
-        InteractableDetection();
     }
 
     void Movement()
     {
-        screenPosition = Mouse.current.position.value;
-        OnMouseMovement.Invoke(screenPosition);
-
         Ray ray = Camera.main.ScreenPointToRay(screenPosition);
 
         if (Physics.Raycast(ray, out RaycastHit hitData, Mathf.Infinity, groundLayerMask))
@@ -52,6 +70,7 @@ public class CompanionManager : MonoBehaviour
             transform.position = Vector3.Lerp(transform.position, worldPosition, mouseLerp * Time.deltaTime);
 
         //Visual Rotation
+
         if ((worldPosition - transform.position).magnitude > 0.01f)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredDirection), rotationSpeed * Time.deltaTime);
     }
@@ -69,6 +88,9 @@ public class CompanionManager : MonoBehaviour
 
                 if (currentInteractable != rayInteractable)
                 {
+                    if(currentInteractable != null)
+                        currentInteractable.Highlight(false);
+
                     currentInteractable = rayInteractable;
                     currentInteractable.Highlight(true);
 
@@ -87,11 +109,25 @@ public class CompanionManager : MonoBehaviour
         }
     }
 
+    public float MovementMagnitude()
+    {
+        return (worldPosition - transform.position).magnitude;
+    }
+
     #region Input
 
     void OnFire(InputValue value)
     {
-        OnMouseClick.Invoke();
+        OnMouseClick.Invoke(worldPosition);
+    }
+
+    void OnEdit()
+    {
+        isInEditorMode = !isInEditorMode;
+
+        if (isInEditorMode)
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        OnEditorMode.Invoke(isInEditorMode);
     }
 
     #endregion

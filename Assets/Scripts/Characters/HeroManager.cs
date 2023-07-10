@@ -11,6 +11,8 @@ public class HeroManager : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+        CompanionManager.instance.OnMouseClick.AddListener(SetHeroDestination);
     }
 
     void Update()

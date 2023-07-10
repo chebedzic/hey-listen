@@ -14,23 +14,35 @@ public class CursorHandler : MonoBehaviour
 
     private void Start()
     {
-        Cursor.visible = false;
 
         companion = FindObjectOfType<CompanionManager>();
         cursorImage = GetComponent<Image>();
         companion.OnHoverInteractable.AddListener(HoverInteractable);
         companion.OnMouseMovement.AddListener(FollowCursor);
-        companion.OnMouseClick.AddListener(ClickAnimation);
+        companion.OnMouseClick.AddListener(HandleClick);
+
+
+        Cursor.visible = false;
+        cursorImage.color = settings.arrowColor;
     }
 
     void HoverInteractable(bool hover)
     {
         cursorImage.sprite = hover ? settings.handCursor : settings.arrowCursor;
+        cursorImage.DOColor(hover ? settings.handColor : settings.arrowColor, .2f);
     }
 
     void FollowCursor(Vector3 pos)
     {
         cursorImage.transform.position = pos;
+    }
+
+    void HandleClick(Vector3 worldPosition)
+    {
+        if (Cursor.visible)
+            Cursor.visible = false;
+
+        ClickAnimation();
     }
 
     void ClickAnimation()

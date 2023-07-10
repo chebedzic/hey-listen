@@ -7,6 +7,8 @@ public class DebugHero : MonoBehaviour
 {
 
     public UnityEvent<Vector3> MouseClickPositionEvent;
+    public UnityEvent OnPressA;
+    public UnityEvent OnPressS;
 
     void OnFire()
     {
@@ -18,5 +20,15 @@ public class DebugHero : MonoBehaviour
             pos = hit.point;
 
         MouseClickPositionEvent.Invoke(pos);
+    }
+
+    void OnA()
+    {
+        OnPressA.Invoke();
+    }
+
+    void OnS()
+    {
+        OnPressS.Invoke();
     }
 }

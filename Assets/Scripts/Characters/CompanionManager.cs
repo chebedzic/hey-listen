@@ -9,6 +9,8 @@ using UnityEngine.Events;
 public class CompanionManager : MonoBehaviour
 {
     [HideInInspector] public UnityEvent<bool> OnHoverInteractable;
+    [HideInInspector] public UnityEvent<Vector3> OnMouseMovement;
+    [HideInInspector] public UnityEvent OnMouseClick;
 
     [SerializeField] private float mouseLerp = 10;
     [SerializeField] private float rotationSpeed = 20;
@@ -29,6 +31,8 @@ public class CompanionManager : MonoBehaviour
     void Movement()
     {
         screenPosition = Mouse.current.position.value;
+        OnMouseMovement.Invoke(screenPosition);
+
         Ray ray = Camera.main.ScreenPointToRay(screenPosition);
 
         if (Physics.Raycast(ray, out RaycastHit hitData, Mathf.Infinity, groundLayerMask))
@@ -67,6 +71,8 @@ public class CompanionManager : MonoBehaviour
                 {
                     currentInteractable = rayInteractable;
                     currentInteractable.Highlight(true);
+
+                    //Event
                     OnHoverInteractable.Invoke(true);
                 }
             }
@@ -74,6 +80,8 @@ public class CompanionManager : MonoBehaviour
             {
                 currentInteractable.Highlight(false);
                 currentInteractable = null;
+
+                //Event
                 OnHoverInteractable.Invoke(false);
             }
         }
@@ -83,7 +91,7 @@ public class CompanionManager : MonoBehaviour
 
     void OnFire(InputValue value)
     {
-        
+        OnMouseClick.Invoke();
     }
 
     #endregion

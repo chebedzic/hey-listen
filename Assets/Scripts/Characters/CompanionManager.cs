@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using UnityEngine.Events;
+using DG.Tweening;
 
 public class CompanionManager : MonoBehaviour
 {
@@ -126,7 +127,11 @@ public class CompanionManager : MonoBehaviour
         isInEditorMode = !isInEditorMode;
 
         if (isInEditorMode)
-            transform.eulerAngles = new Vector3(0, 180, 0);
+        {
+            transform.DOComplete();
+            transform.DORotate(new Vector3(0, 180, 0), .2f, RotateMode.Fast);
+        }
+
         OnEditorMode.Invoke(isInEditorMode);
     }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.Rendering.Universal;
 
 public class ActionsManager : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class ActionsManager : MonoBehaviour
     public Action[] availableActions;
     [SerializeField] private GameObject actionPrefab;
     private RectTransform actionsHolderRect;
+    [SerializeField] private Renderer editModeQuad;
+
+    [Header("Renderer Feature")]
+    [SerializeReference] private UniversalRendererData rendererData;
+    [SerializeReference] private ScriptableRendererFeature renderFeature;
+    [SerializeField] private LayerMask editModeMask;
 
     // Start is called before the first frame update
     void Start()
@@ -33,12 +40,25 @@ public class ActionsManager : MonoBehaviour
 
     void ShowActions(bool show)
     {
+        if (show)
+        {
+            renderFeature.SetActive(show);
+            rendererData.opaqueLayerMask = editModeMask;
+        }
+        else
+        {
+            transform.DOMoveX(0, .2f).OnComplete(() => renderFeature.SetActive(false)); rendererData.opaqueLayerMask = ~0 ;
+        }
+
         actionsHolderRect.DOAnchorPosY(show ? -actionsHolderRect.sizeDelta.y : 0, .2f, false);
+
+        editModeQuad.material.DOFade(show ? .8f : 0, .2f);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnDestroy()
     {
+        renderFeature.SetActive(false);
+        rendererData.opaqueLayerMask = ~0;
 
     }
 }

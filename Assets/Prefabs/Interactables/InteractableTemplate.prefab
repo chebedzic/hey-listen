@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6206323738920820680}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InteractableVisual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 6719906517474782568}
   - component: {fileID: 2419608642769031479}
   - component: {fileID: 8379652355775840613}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InteractableTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -64,7 +64,7 @@ Transform:
   m_Children:
   - {fileID: 6206323738920820680}
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2419608642769031479
 MonoBehaviour:
@@ -78,6 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 950cdab8c9b3f47888d124413f9c3c7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  interactableRenderers: []
+  selected: 0
 --- !u!135 &8379652355775840613
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -110,7 +112,7 @@ GameObject:
   - component: {fileID: 6559762405233958699}
   - component: {fileID: 528533485284188276}
   - component: {fileID: 7648884849976906820}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

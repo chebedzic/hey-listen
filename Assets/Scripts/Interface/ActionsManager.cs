@@ -89,5 +89,6 @@ public class ActionsManager : MonoBehaviour
 
         InteractableUI actionUI = Instantiate(actionPrefab, transform).GetComponentInChildren<InteractableUI>();
         actionUI.Setup(action, action.actionMaterial);
+        actionUI.transform.parent.DOShakeScale(.2f, .5f, 20, 90, true);
     }
 }

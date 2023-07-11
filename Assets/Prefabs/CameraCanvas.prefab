@@ -56,8 +56,7 @@ MonoBehaviour:
   actionPrefab: {fileID: 0}
   editModeQuad: {fileID: 7690588549826267288}
   rendererData: {fileID: 11400000, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
-  renderFeature: {fileID: -5280210477594457229, guid: c40be3174f62c4acf8c1216858c64956,
-    type: 2}
+  renderFeatures: []
   editModeMask:
     serializedVersion: 2
     m_Bits: 63
@@ -424,7 +423,7 @@ PrefabInstance:
     - target: {fileID: 6506649114456094077, guid: 8926887007021344d89f36383102d4ad,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 800
       objectReference: {fileID: 0}
     - target: {fileID: 6506649114456094077, guid: 8926887007021344d89f36383102d4ad,
         type: 3}
@@ -469,7 +468,7 @@ PrefabInstance:
     - target: {fileID: 6506649114456094077, guid: 8926887007021344d89f36383102d4ad,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 14.418
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6506649114456094077, guid: 8926887007021344d89f36383102d4ad,
         type: 3}
@@ -496,7 +495,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ActionsManager
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8603377843081351191, guid: 8926887007021344d89f36383102d4ad, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

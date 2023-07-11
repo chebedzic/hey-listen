@@ -15,7 +15,7 @@ public class Interactable : MonoBehaviour
         interactableRenderers = GetComponentsInChildren<Renderer>();
     }
 
-    public void Highlight(bool state)
+    public virtual void Highlight(bool state)
     {
 
         if (state)
@@ -46,5 +46,24 @@ public class Interactable : MonoBehaviour
         transform.DOComplete();
     }
 
+    public virtual void OnMouseEnter()
+    {
+        
+    }
+
+    public virtual void OnMouseExit()
+    {
+
+    }
+
+    public virtual void OnMouseUp()
+    {
+
+    }
+
+    public virtual void OnMouseDown()
+    {
+
+    }
 
 }

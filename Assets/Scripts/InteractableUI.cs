@@ -46,6 +46,7 @@ public class InteractableUI : Interactable
 
     private void OnMouseDown()
     {
+        CompanionManager.instance.selectedInteractable = this;
         rotationBeforeDrag = transform.eulerAngles;
         isBeingDragged = true;
         selected = true;
@@ -61,14 +62,17 @@ public class InteractableUI : Interactable
 
     private void OnMouseUp()
     {
+
         if (CompanionManager.instance.currentSlot != null)
         {
             CompanionManager.instance.currentSlot.FillSlot(true, interfaceAction);
+            CompanionManager.instance.currentSlot = null;
             Destroy(transform.parent.gameObject);
         }
 
         //return to origin
 
+        CompanionManager.instance.selectedInteractable = null;
         isBeingDragged = false;
         selected = false;
         transform.DOLocalMove(Vector3.zero, .1f).SetEase(Ease.OutSine);

@@ -31,18 +31,32 @@ public class InteractableCollectable : Interactable
 
     public void Collect()
     {
-        if (GetComponentInParent<InteractableSlot>() != null)
-        {
-
-        }
-
         ActionsManager.instance.TryCollectAction(collectableAction);
         gameObject.SetActive(false);
-
     }
 
     public void Setup()
     {
         actionRenderer.materials = new Material[] { actionRenderer.materials[0], collectableAction.actionMaterial };
+    }
+
+    private void OnMouseEnter()
+    {
+        if (GetComponentInParent<InteractableSlot>() != null)
+        {
+            GetComponentInParent<InteractableSlot>().transform.DOScale(1.2f, .15f).SetEase(Ease.OutBack);
+            CompanionManager.instance.currentSlot = GetComponentInParent<InteractableSlot>();
+        }
+    }
+
+    private void OnMouseExit()
+    {
+        if (GetComponentInParent<InteractableSlot>() != null)
+        {
+            GetComponentInParent<InteractableSlot>().transform.DOScale(1, .15f).SetEase(Ease.OutBack);
+            CompanionManager.instance.currentSlot = GetComponentInParent<InteractableSlot>();
+        }
+
+        CompanionManager.instance.currentSlot = null;
     }
 }

@@ -26,10 +26,10 @@ public class InteractableCollectable : Interactable
         pos += (Camera.main.transform.forward * 6);
         pos += (Camera.main.transform.up * 3);
         transform.DOJump(pos, 1,1,.4f).OnComplete(()=>Collect());
-        transform.DOScale(0, .4f);
+        transform.DOScale(.3f, .4f);
     }
 
-    void Collect()
+    public void Collect()
     {
         if (GetComponentInParent<InteractableSlot>() != null)
         {

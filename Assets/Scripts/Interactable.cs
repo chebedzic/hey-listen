@@ -10,13 +10,14 @@ public class Interactable : MonoBehaviour
     [HideInInspector] public Renderer[] interactableRenderers;
     [HideInInspector] public bool selected;
 
-    private void Start()
+    private void Awake()
     {
         interactableRenderers = GetComponentsInChildren<Renderer>();
     }
 
     public void Highlight(bool state)
     {
+
         if (state)
         {
             transform.GetChild(0).DOComplete();

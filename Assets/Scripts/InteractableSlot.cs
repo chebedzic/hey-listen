@@ -9,6 +9,9 @@ public class InteractableSlot : Interactable
 
     public void FillSlot(bool fill, Action action)
     {
+        if (interactable.enabled)
+            interactable.Collect();
+
         interactable.collectableAction = action;
         interactable.Setup();
         interactable.enabled = true;

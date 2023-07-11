@@ -18,7 +18,7 @@ public class ActionsManager : MonoBehaviour
         companionManager = FindObjectOfType<CompanionManager>();
         actionsHolderRect = GetComponent<RectTransform>();
         companionManager.OnEditorMode.AddListener(ShowActions);
-        
+
         Setup();
     }
 
@@ -27,18 +27,18 @@ public class ActionsManager : MonoBehaviour
         foreach (Action action in availableActions)
         {
             GameObject actionClickable = Instantiate(actionPrefab, transform);
-            actionClickable.GetComponent<Image>().sprite = action.actionIcon;
+            //actionClickable.GetComponent<Image>().sprite = action.actionIcon;
         }
     }
 
     void ShowActions(bool show)
     {
-        actionsHolderRect.DOPivotY(show ? 0 : 1, .4f).SetEase(Ease.OutBack);
+        actionsHolderRect.DOAnchorPosY(show ? -actionsHolderRect.sizeDelta.y : 0, .2f, false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -78,6 +77,10 @@ public class CompanionManager : MonoBehaviour
 
     void InteractableDetection()
     {
+        if (currentInteractable != null)
+            if (currentInteractable.selected)
+                return;
+
         screenPosition = Mouse.current.position.value;
         Ray ray = Camera.main.ScreenPointToRay(screenPosition);
 

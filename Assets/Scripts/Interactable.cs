@@ -6,7 +6,8 @@ using DG.Tweening;
 [SelectionBase]
 public class Interactable : MonoBehaviour
 {
-    private Renderer[] interactableRenderers;
+    [HideInInspector] public Renderer[] interactableRenderers;
+    [HideInInspector] public bool selected;
 
     private void Start()
     {
@@ -15,6 +16,12 @@ public class Interactable : MonoBehaviour
 
     public void Highlight(bool state)
     {
+        if (state)
+        {
+            transform.GetChild(0).DOComplete();
+            transform.GetChild(0).DOShakeScale(.2f, .5f, 20, 20, true);
+        }
+
         foreach (Renderer renderer in interactableRenderers)
         {
             foreach (Material mat in renderer.materials)
@@ -25,4 +32,6 @@ public class Interactable : MonoBehaviour
 
         }
     }
+
+
 }

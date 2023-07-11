@@ -7,6 +7,8 @@ using UnityEngine.Events;
 [SelectionBase]
 public class Interactable : MonoBehaviour
 {
+    public UnityEvent OnClick;
+
     public bool enabled = true;
     [HideInInspector] public Renderer[] interactableRenderers;
     [HideInInspector] public bool selected;
@@ -19,7 +21,7 @@ public class Interactable : MonoBehaviour
     public virtual void Highlight(bool state)
     {
 
-        if (state)
+        if (state && transform.childCount > 0)
         {
             transform.GetChild(0).DOComplete();
             transform.GetChild(0).DOShakeScale(.2f, .5f, 20, 20, true);
@@ -36,15 +38,17 @@ public class Interactable : MonoBehaviour
         }
     }
 
-    public virtual void ClickHandler()
-    {
-        CompanionManager.instance.ToggleEditMode();
-    }
 
     private void OnDestroy()
     {
-        transform.GetChild(0).DOComplete();
+        if(transform.GetChild(0)!=null)
+            transform.GetChild(0).DOComplete();
         transform.DOComplete();
+    }
+
+    public virtual void OnMouseDown()
+    {
+        OnClick.Invoke();
     }
 
     public virtual void OnMouseEnter()
@@ -67,7 +71,5 @@ public class Interactable : MonoBehaviour
     public virtual void OnMouseDrag() { }
 
     public virtual void OnMouseUp() { }
-
-    public virtual void OnMouseDown() { }
 
 }

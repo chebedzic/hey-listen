@@ -39,10 +39,6 @@ public class InteractableUI : Interactable
             transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, -delta.y, 10 * Time.deltaTime), transform.eulerAngles.y, Mathf.LerpAngle(transform.eulerAngles.z, delta.x, 10 * Time.deltaTime));
     }
 
-    public override void ClickHandler()
-    {
-        //base.ClickHandler();
-    }
 
     public override void OnMouseDown()
     {
@@ -67,7 +63,7 @@ public class InteractableUI : Interactable
         base.OnMouseDrag();
 
         Vector3 screenPoint = Mouse.current.position.value;
-        screenPoint.z = 2; //distance of the plane from the camera
+        screenPoint.z = 6; //distance of the plane from the camera
         transform.position = Vector3.Lerp(transform.position, Camera.main.ScreenToWorldPoint(screenPoint), 15 * Time.deltaTime);
     }
 

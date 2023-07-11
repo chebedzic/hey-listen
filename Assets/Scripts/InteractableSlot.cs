@@ -8,7 +8,7 @@ public class InteractableSlot : Interactable
 
     public ActionType slotType;
     [SerializeField] private Transform slotActionReference;
-    [SerializeField] private InteractableCollectable interactable;
+    public InteractableCollectable interactable;
 
     public override void Highlight(bool state)
     {
@@ -43,6 +43,11 @@ public class InteractableSlot : Interactable
         base.OnMouseExit();
         CompanionManager.instance.currentSlot = null;
         transform.DOScale(1, .15f).SetEase(Ease.OutBack);
+    }
+
+    public Action SlotAction()
+    {
+        return interactable.collectableAction;
     }
 
 }

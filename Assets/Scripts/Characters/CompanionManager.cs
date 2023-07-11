@@ -97,9 +97,7 @@ public class CompanionManager : MonoBehaviour
     void OnFire(InputValue value)
     {
 
-        if (currentInteractable != null)
-            currentInteractable.ClickHandler();
-        else
+        if (currentInteractable == null)
             HeroManager.instance.SetHeroDestination(worldPosition);
 
         OnMouseClick.Invoke(worldPosition);

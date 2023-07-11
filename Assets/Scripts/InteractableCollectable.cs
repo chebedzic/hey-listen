@@ -14,7 +14,7 @@ public class InteractableCollectable : Interactable
         actionRenderer = GetComponentInChildren<Renderer>();
     }
 
-    public override void ClickHandler()
+    public override void OnMouseDown()
     {
         if (!enabled)
             return;

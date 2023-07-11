@@ -38,7 +38,7 @@ public class CompanionVisual : MonoBehaviour
 
     private void Update()
     {
-        companionAnimator.SetFloat("magnitude", companionManager.MovementMagnitude());
+        //companionAnimator.SetFloat("magnitude", companionManager.MovementMagnitude());
 
         Vector3 mousePos = Mouse.current.position.value;
         mousePos.z = aimDistanceToCamera;

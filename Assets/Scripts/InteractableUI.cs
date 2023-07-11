@@ -44,8 +44,10 @@ public class InteractableUI : Interactable
         //base.ClickHandler();
     }
 
-    private void OnMouseDown()
+    public override void OnMouseDown()
     {
+        base.OnMouseDown();
+
         CompanionManager.instance.selectedInteractable = this;
         rotationBeforeDrag = transform.eulerAngles;
         isBeingDragged = true;
@@ -53,21 +55,38 @@ public class InteractableUI : Interactable
         GetComponent<Collider>().enabled = false;
     }
 
-    private void OnMouseDrag()
+    public override void OnMouseExit()
     {
-        Vector3 screenPoint = Mouse.current.position.value;
-        screenPoint.z = 2; //distance of the plane from the camera
-        transform.position = Vector3.Lerp(transform.position,Camera.main.ScreenToWorldPoint(screenPoint), 15 * Time.deltaTime);
+        if (selected)
+            return;
+        base.OnMouseExit();
     }
 
-    private void OnMouseUp()
+    public override void OnMouseDrag()
     {
+        base.OnMouseDrag();
+
+        Vector3 screenPoint = Mouse.current.position.value;
+        screenPoint.z = 2; //distance of the plane from the camera
+        transform.position = Vector3.Lerp(transform.position, Camera.main.ScreenToWorldPoint(screenPoint), 15 * Time.deltaTime);
+    }
+
+    public override void OnMouseUp()
+    {
+        base.OnMouseUp();
 
         if (CompanionManager.instance.currentSlot != null)
         {
-            CompanionManager.instance.currentSlot.FillSlot(true, interfaceAction);
-            CompanionManager.instance.currentSlot = null;
-            Destroy(transform.parent.gameObject);
+            if (CompanionManager.instance.currentSlot.slotType == interfaceAction.actionType)
+            {
+                CompanionManager.instance.currentSlot.FillSlot(true, interfaceAction);
+                CompanionManager.instance.currentSlot = null;
+                Destroy(transform.parent.gameObject);
+            }
+            else
+            {
+                print("slot type not compatible");
+            }
         }
 
         //return to origin
@@ -79,4 +98,5 @@ public class InteractableUI : Interactable
         transform.eulerAngles = rotationBeforeDrag;
         GetComponent<Collider>().enabled = true;
     }
+
 }

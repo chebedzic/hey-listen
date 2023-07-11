@@ -5,6 +5,8 @@ using DG.Tweening;
 
 public class InteractableSlot : Interactable
 {
+
+    public ActionType slotType;
     [SerializeField] private Transform slotActionReference;
     [SerializeField] private InteractableCollectable interactable;
 
@@ -23,20 +25,24 @@ public class InteractableSlot : Interactable
         interactable.enabled = true;
         slotActionReference.localScale = Vector3.one;
         slotActionReference.localPosition = Vector3.zero;
+        slotActionReference.DOComplete();
+        slotActionReference.DOShakeScale(.2f, .5f, 20, 90, true);
         slotActionReference.gameObject.SetActive(fill);
     }
 
-    private void OnMouseEnter()
+    public override void OnMouseEnter()
     {
+        base.OnMouseEnter();
         CompanionManager.instance.currentSlot = this;
-        if(CompanionManager.instance.selectedInteractable != null)
+        if (CompanionManager.instance.selectedInteractable != null)
             transform.DOScale(1.2f, .15f).SetEase(Ease.OutBack);
     }
 
-    private void OnMouseExit()
+    public override void OnMouseExit()
     {
+        base.OnMouseExit();
         CompanionManager.instance.currentSlot = null;
-
         transform.DOScale(1, .15f).SetEase(Ease.OutBack);
     }
+
 }

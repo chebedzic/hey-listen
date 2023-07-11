@@ -7,17 +7,23 @@ using DG.Tweening;
 
 public class CursorHandler : MonoBehaviour
 {
+    public static CursorHandler instance;
+
     [SerializeField] CursorSettings settings;
     private CompanionManager companion;
     private Interactable currentInteractable;
     private Image cursorImage;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
 
         companion = FindObjectOfType<CompanionManager>();
         cursorImage = GetComponent<Image>();
-        companion.OnHoverInteractable.AddListener(HoverInteractable);
         companion.OnMouseMovement.AddListener(FollowCursor);
         companion.OnMouseClick.AddListener(HandleClick);
 
@@ -26,7 +32,7 @@ public class CursorHandler : MonoBehaviour
         cursorImage.color = settings.arrowColor;
     }
 
-    void HoverInteractable(bool hover)
+    public void HoverInteractable(bool hover)
     {
         cursorImage.sprite = hover ? settings.handCursor : settings.arrowCursor;
         cursorImage.DOColor(hover ? settings.handColor : settings.arrowColor, .2f);

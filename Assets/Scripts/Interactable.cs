@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 [SelectionBase]
 public class Interactable : MonoBehaviour
@@ -48,22 +49,25 @@ public class Interactable : MonoBehaviour
 
     public virtual void OnMouseEnter()
     {
-        
+        CompanionManager.instance.currentInteractable = this;
+        Highlight(true);
+
+        CursorHandler.instance.HoverInteractable(true);
     }
 
     public virtual void OnMouseExit()
     {
+        CompanionManager.instance.currentInteractable = null;
+        Highlight(false);
+
+        CursorHandler.instance.HoverInteractable(false);
 
     }
 
-    public virtual void OnMouseUp()
-    {
+    public virtual void OnMouseDrag() { }
 
-    }
+    public virtual void OnMouseUp() { }
 
-    public virtual void OnMouseDown()
-    {
-
-    }
+    public virtual void OnMouseDown() { }
 
 }

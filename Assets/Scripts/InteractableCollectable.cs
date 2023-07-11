@@ -25,7 +25,9 @@ public class InteractableCollectable : Interactable
         Vector3 pos = Camera.main.ScreenToWorldPoint(topOfScreenPos);
         pos += (Camera.main.transform.forward * 6);
         pos += (Camera.main.transform.up * 3);
-        transform.DOJump(pos, 1,1,.4f).OnComplete(()=>Collect());
+        transform.DOJump(pos, .5f,1,.4f).OnComplete(()=>Collect());
+        transform.GetChild(0).DOComplete();
+        transform.GetChild(0).DOShakeScale(.2f, .5f, 20, 90, true);
         transform.DOScale(.3f, .4f);
     }
 
@@ -40,8 +42,11 @@ public class InteractableCollectable : Interactable
         actionRenderer.materials = new Material[] { actionRenderer.materials[0], collectableAction.actionMaterial };
     }
 
-    private void OnMouseEnter()
+
+    public override void OnMouseEnter()
     {
+        base.OnMouseEnter();
+
         if (GetComponentInParent<InteractableSlot>() != null)
         {
             GetComponentInParent<InteractableSlot>().transform.DOScale(1.2f, .15f).SetEase(Ease.OutBack);
@@ -49,8 +54,10 @@ public class InteractableCollectable : Interactable
         }
     }
 
-    private void OnMouseExit()
+    public override void OnMouseExit()
     {
+        base.OnMouseExit();
+
         if (GetComponentInParent<InteractableSlot>() != null)
         {
             GetComponentInParent<InteractableSlot>().transform.DOScale(1, .15f).SetEase(Ease.OutBack);
@@ -58,5 +65,8 @@ public class InteractableCollectable : Interactable
         }
 
         CompanionManager.instance.currentSlot = null;
+
     }
+
+
 }

@@ -12,7 +12,6 @@ public class CompanionManager : MonoBehaviour
     public static CompanionManager instance;
 
     //Events
-    [HideInInspector] public UnityEvent<bool> OnHoverInteractable;
     [HideInInspector] public UnityEvent<Vector3> OnMouseMovement;
     [HideInInspector] public UnityEvent<Vector3> OnMouseClick;
     [HideInInspector] public UnityEvent<bool> OnEditorMode;
@@ -38,8 +37,6 @@ public class CompanionManager : MonoBehaviour
 
     private void Update()
     {
-        InteractableDetection();
-
         screenPosition = Mouse.current.position.value;
         OnMouseMovement.Invoke(screenPosition);
 
@@ -47,6 +44,7 @@ public class CompanionManager : MonoBehaviour
             return;
 
         Movement();
+        InteractableDetection();
 
     }
 
@@ -78,40 +76,14 @@ public class CompanionManager : MonoBehaviour
 
     void InteractableDetection()
     {
-        if (currentInteractable != null)
-            if (currentInteractable.selected)
-                return;
+        //screenPosition = Mouse.current.position.value;
+        //Ray ray = Camera.main.ScreenPointToRay(screenPosition);
 
-        screenPosition = Mouse.current.position.value;
-        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
-
-        if (Physics.Raycast(ray, out RaycastHit hitData, Mathf.Infinity))
-        {
-            if (hitData.transform.GetComponent<Interactable>() != null)
-            {
-                Interactable rayInteractable = hitData.transform.GetComponent<Interactable>();
-
-                if (currentInteractable != rayInteractable)
-                {
-                    if (currentInteractable != null)
-                        currentInteractable.Highlight(false);
-
-                    currentInteractable = rayInteractable;
-                    currentInteractable.Highlight(true);
-
-                    //Event
-                    OnHoverInteractable.Invoke(true);
-                }
-            }
-            else if (currentInteractable != null)
-            {
-                currentInteractable.Highlight(false);
-                currentInteractable = null;
-
-                //Event
-                OnHoverInteractable.Invoke(false);
-            }
-        }
+        //if (Physics.Raycast(ray, out RaycastHit hitData, Mathf.Infinity))
+        //{
+        //    if (hitData.transform.GetComponent<Interactable>() == null && currentInteractable != null)
+        //        currentInteractable = null;
+        //}
 
     }
 
@@ -145,7 +117,8 @@ public class CompanionManager : MonoBehaviour
         if (isInEditorMode)
         {
             transform.DOComplete();
-            transform.DORotate(new Vector3(0, 180, 0), .2f, RotateMode.Fast);
+            transform.DOMove(new Vector3(-3, 5, -4), .3f, false);
+            transform.DORotate(new Vector3(50, 15, 0), .3f, RotateMode.Fast);
         }
 
         OnEditorMode.Invoke(isInEditorMode);

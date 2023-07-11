@@ -36,13 +36,13 @@ public class Interactable : MonoBehaviour
 
     public virtual void ClickHandler()
     {
-        if (!enabled)
-            return;
+        CompanionManager.instance.ToggleEditMode();
     }
 
     private void OnDestroy()
     {
         transform.GetChild(0).DOComplete();
+        transform.DOComplete();
     }
 
 

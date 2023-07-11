@@ -27,6 +27,7 @@ public class CompanionManager : MonoBehaviour
 
     [Header("Interactable")]
     public Interactable currentInteractable;
+    public InteractableSlot currentSlot;
 
     private bool isInEditorMode;
 
@@ -37,6 +38,7 @@ public class CompanionManager : MonoBehaviour
 
     private void Update()
     {
+        SlotDetection();
         InteractableDetection();
 
         screenPosition = Mouse.current.position.value;
@@ -86,13 +88,13 @@ public class CompanionManager : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hitData, Mathf.Infinity))
         {
-            if(hitData.transform.GetComponent<Interactable>() != null)
+            if (hitData.transform.GetComponent<Interactable>() != null)
             {
                 Interactable rayInteractable = hitData.transform.GetComponent<Interactable>();
 
                 if (currentInteractable != rayInteractable)
                 {
-                    if(currentInteractable != null)
+                    if (currentInteractable != null)
                         currentInteractable.Highlight(false);
 
                     currentInteractable = rayInteractable;
@@ -111,6 +113,43 @@ public class CompanionManager : MonoBehaviour
                 OnHoverInteractable.Invoke(false);
             }
         }
+
+    }
+
+    void SlotDetection()
+    {
+
+        screenPosition = Mouse.current.position.value;
+        Ray ray = Camera.main.ScreenPointToRay(screenPosition);
+
+        if (Physics.Raycast(ray, out RaycastHit hitData, Mathf.Infinity))
+        {
+            if (hitData.transform.GetComponent<InteractableSlot>() != null)
+            {
+                InteractableSlot rayInteractable = hitData.transform.GetComponent<InteractableSlot>();
+
+                if (currentSlot != rayInteractable)
+                {
+                    if (currentSlot != null)
+                        currentSlot.Highlight(false);
+
+                    currentSlot = rayInteractable;
+                    currentSlot.Highlight(true);
+
+                    //Event
+                    OnHoverInteractable.Invoke(true);
+                }
+            }
+            else if (currentSlot != null)
+            {
+                currentSlot.Highlight(false);
+                currentSlot = null;
+
+                //Event
+                OnHoverInteractable.Invoke(false);
+            }
+        }
+
     }
 
     public float MovementMagnitude()
@@ -131,7 +170,12 @@ public class CompanionManager : MonoBehaviour
         OnMouseClick.Invoke(worldPosition);
     }
 
-    void OnEdit()
+    public void OnEdit()
+    {
+        ToggleEditMode();
+    }
+
+    public void ToggleEditMode()
     {
         isInEditorMode = !isInEditorMode;
 

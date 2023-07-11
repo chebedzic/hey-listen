@@ -21,8 +21,6 @@ public class InteractableUI : Interactable
 
     public void Setup(Action action, Material actionMat)
     {
-        print(action.name);
-        print(actionMat);
         interfaceAction = action;
         actionRenderer.materials = new Material[] { actionRenderer.materials[0], actionMat };
     }
@@ -43,7 +41,7 @@ public class InteractableUI : Interactable
 
     public override void ClickHandler()
     {
-        base.ClickHandler();
+        //base.ClickHandler();
     }
 
     private void OnMouseDown()
@@ -51,6 +49,7 @@ public class InteractableUI : Interactable
         rotationBeforeDrag = transform.eulerAngles;
         isBeingDragged = true;
         selected = true;
+        GetComponent<Collider>().enabled = false;
     }
 
     private void OnMouseDrag()
@@ -62,9 +61,18 @@ public class InteractableUI : Interactable
 
     private void OnMouseUp()
     {
+        if (CompanionManager.instance.currentSlot != null)
+        {
+            CompanionManager.instance.currentSlot.FillSlot(true, interfaceAction);
+            Destroy(transform.parent.gameObject);
+        }
+
+        //return to origin
+
         isBeingDragged = false;
         selected = false;
         transform.DOLocalMove(Vector3.zero, .1f).SetEase(Ease.OutSine);
         transform.eulerAngles = rotationBeforeDrag;
+        GetComponent<Collider>().enabled = true;
     }
 }

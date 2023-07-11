@@ -8,6 +8,7 @@ public class Action : ScriptableObject
     public enum ActionType { input, modifier };
     public string actionName;
     public Material actionMaterial;
+    public Color actionColor = Color.red;
     public Sprite actionIcon;
     public ActionType actionType;
 }

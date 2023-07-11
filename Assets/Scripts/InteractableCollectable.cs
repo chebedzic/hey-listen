@@ -5,11 +5,20 @@ using DG.Tweening;
 
 public class InteractableCollectable : Interactable
 {
-    [SerializeField] private Action collectableAction;
+    [SerializeField] public Action collectableAction;
+
+    [SerializeField] private Renderer actionRenderer;
+
+    private void Start()
+    {
+        actionRenderer = GetComponentInChildren<Renderer>();
+    }
 
     public override void ClickHandler()
     {
-        base.ClickHandler();
+        if (!enabled)
+            return;
+
         enabled = false;
 
         Vector2 topOfScreenPos = new Vector2(Screen.width / 2, Screen.height);
@@ -22,8 +31,18 @@ public class InteractableCollectable : Interactable
 
     void Collect()
     {
-        ActionsManager.instance.TryCollectAction(collectableAction);
-        Destroy(gameObject);
+        if (GetComponentInParent<InteractableSlot>() != null)
+        {
 
+        }
+
+        ActionsManager.instance.TryCollectAction(collectableAction);
+        gameObject.SetActive(false);
+
+    }
+
+    public void Setup()
+    {
+        actionRenderer.materials = new Material[] { actionRenderer.materials[0], collectableAction.actionMaterial };
     }
 }

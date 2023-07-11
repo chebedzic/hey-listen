@@ -58,8 +58,9 @@ MonoBehaviour:
     type: 3}
   editModeQuad: {fileID: 0}
   rendererData: {fileID: 11400000, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
-  renderFeature: {fileID: -5280210477594457229, guid: c40be3174f62c4acf8c1216858c64956,
-    type: 2}
+  renderFeatures:
+  - {fileID: -5280210477594457229, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
+  - {fileID: 8390079768211208689, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
   editModeMask:
     serializedVersion: 2
     m_Bits: 63

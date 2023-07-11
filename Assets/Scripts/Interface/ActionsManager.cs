@@ -17,7 +17,7 @@ public class ActionsManager : MonoBehaviour
 
     [Header("Renderer Feature")]
     [SerializeReference] private UniversalRendererData rendererData;
-    [SerializeReference] private ScriptableRendererFeature renderFeature;
+    [SerializeReference] private ScriptableRendererFeature[] renderFeatures;
     [SerializeField] private LayerMask editModeMask;
 
     private void Awake()
@@ -48,23 +48,36 @@ public class ActionsManager : MonoBehaviour
     {
         if (show)
         {
-            renderFeature.SetActive(show);
+            SetActiveStateOfRenderers(show);
             rendererData.opaqueLayerMask = editModeMask;
         }
         else
         {
-            transform.DOMoveX(0, .2f).OnComplete(() => renderFeature.SetActive(false)); rendererData.opaqueLayerMask = ~0 ;
+            transform.DOMoveX(0, .2f).OnComplete(() => SetActiveStateOfRenderers(false));
         }
 
         actionsHolderRect.DOAnchorPosY(show ? -actionsHolderRect.sizeDelta.y : 0, .2f, false);
 
-        editModeQuad.material.DOFade(show ? .8f : 0, .2f);
+        editModeQuad.material.DOFade(show ? .8f : 0, .1f);
+    }
+
+    void SetActiveStateOfRenderers(bool show)
+    {
+        foreach (ScriptableRendererFeature rendererFeature in renderFeatures)
+            rendererFeature.SetActive(show);
+
+        if (!show)
+        {
+            rendererData.opaqueLayerMask = ~0; 
+            rendererData.transparentLayerMask = ~0; 
+        }
     }
 
     private void OnDestroy()
     {
-        renderFeature.SetActive(false);
+        SetActiveStateOfRenderers(false);
         rendererData.opaqueLayerMask = ~0;
+        rendererData.transparentLayerMask = ~0;
 
     }
 
@@ -72,7 +85,7 @@ public class ActionsManager : MonoBehaviour
     {
         availableActions.Add(action);
 
-        print("Grabbed: " + action.actionName + " - Material is:" + action.actionMaterial);
+        print("Grabbed:<b><color=#"+ColorUtility.ToHtmlStringRGB(action.actionColor)+"> "+ action.actionName + "</b></color>");
 
         InteractableUI actionUI = Instantiate(actionPrefab, transform).GetComponentInChildren<InteractableUI>();
         actionUI.Setup(action, action.actionMaterial);

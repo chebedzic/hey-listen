@@ -51,7 +51,7 @@ public class CompanionVisual : MonoBehaviour
     void PlayClickParticle(Vector3 position)
     {
         //TODO replace with general state machine
-        if (!canWhistle)
+        if (!canWhistle || companionManager.currentInteractable != null)
             return;
 
         if (clickParticle == null)

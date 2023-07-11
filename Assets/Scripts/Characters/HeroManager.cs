@@ -6,14 +6,20 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class HeroManager : MonoBehaviour
 {
+    public static HeroManager instance;
+
     private NavMeshAgent navMeshAgent;
     bool canMove = true;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
 
-        CompanionManager.instance.OnMouseClick.AddListener(SetHeroDestination);
         CompanionManager.instance.OnEditorMode.AddListener(SetMovementAvailability);
     }
 

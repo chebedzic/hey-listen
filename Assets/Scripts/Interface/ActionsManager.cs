@@ -7,8 +7,10 @@ using UnityEngine.Rendering.Universal;
 
 public class ActionsManager : MonoBehaviour
 {
+    public static ActionsManager instance;
+
     private CompanionManager companionManager;
-    public Action[] availableActions;
+    public List<Action> availableActions;
     [SerializeField] private GameObject actionPrefab;
     private RectTransform actionsHolderRect;
     [SerializeField] private Renderer editModeQuad;
@@ -18,15 +20,19 @@ public class ActionsManager : MonoBehaviour
     [SerializeReference] private ScriptableRendererFeature renderFeature;
     [SerializeField] private LayerMask editModeMask;
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
 
-        companionManager = FindObjectOfType<CompanionManager>();
+        companionManager = CompanionManager.instance;
         actionsHolderRect = GetComponent<RectTransform>();
         companionManager.OnEditorMode.AddListener(ShowActions);
 
-        Setup();
+        //Setup();
     }
 
     void Setup()
@@ -60,5 +66,15 @@ public class ActionsManager : MonoBehaviour
         renderFeature.SetActive(false);
         rendererData.opaqueLayerMask = ~0;
 
+    }
+
+    public void TryCollectAction(Action action)
+    {
+        availableActions.Add(action);
+
+        print("Grabbed: " + action.actionName + " - Material is:" + action.actionMaterial);
+
+        InteractableUI actionUI = Instantiate(actionPrefab, transform).GetComponentInChildren<InteractableUI>();
+        actionUI.Setup(action, action.actionMaterial);
     }
 }

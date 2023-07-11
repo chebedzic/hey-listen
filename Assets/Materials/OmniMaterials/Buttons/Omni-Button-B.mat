@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Omni-glossy-button 2
+  m_Name: Omni-Button-B
   m_Shader: {fileID: -6465566751694194690, guid: deb9588c82cfca24f8a38734dd508e87,
     type: 3}
   m_Parent: {fileID: 0}
@@ -57,7 +57,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalTexture:
-        m_Texture: {fileID: 2800000, guid: 71437b8c9081c2444be31313c797509b, type: 3}
+        m_Texture: {fileID: 2800000, guid: d4ee8fd9ee22d294aaae07d3bc6927a4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -106,7 +106,7 @@ Material:
     - _DstBlendAlpha: 0
     - _EnvironmentReflections: 1
     - _FresnelAmount: 0
-    - _FresnelPower: 1
+    - _FresnelPower: 1.44
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -129,12 +129,12 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.764151, g: 0.764151, b: 0.764151, a: 1}
+    - _Color: {r: 0.6792453, g: 0, b: 0, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 0, g: 1.502516, b: 8.47419, a: 1}
+    - _FresnelColor: {r: 18.263498, g: 0, b: 0.7940606, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Specular: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColor: {r: 0.23495904, g: 0.50109154, b: 0.9433962, a: 1}
+    - _TintColor: {r: 1, g: 0.3715887, b: 0.35283017, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &2256025203249895192
 MonoBehaviour:

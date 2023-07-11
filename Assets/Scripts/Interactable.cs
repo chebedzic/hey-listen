@@ -6,6 +6,7 @@ using DG.Tweening;
 [SelectionBase]
 public class Interactable : MonoBehaviour
 {
+    public bool enabled = true;
     [HideInInspector] public Renderer[] interactableRenderers;
     [HideInInspector] public bool selected;
 
@@ -31,6 +32,17 @@ public class Interactable : MonoBehaviour
             }
 
         }
+    }
+
+    public virtual void ClickHandler()
+    {
+        if (!enabled)
+            return;
+    }
+
+    private void OnDestroy()
+    {
+        transform.GetChild(0).DOComplete();
     }
 
 

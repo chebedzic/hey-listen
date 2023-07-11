@@ -53,11 +53,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ddd9d0e0fbbb474cb8858fb7a0e2a32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  availableActions:
-  - {fileID: 11400000, guid: d4a2e0c0f26224ff1876b6fc20711766, type: 2}
-  - {fileID: 11400000, guid: 1c6a4dc09862f499db1b624d799245c7, type: 2}
-  actionPrefab: {fileID: 3296598890226191632, guid: 4754ed014eb974fb2805a6703317b76e,
+  availableActions: []
+  actionPrefab: {fileID: 2098055881895068637, guid: 3edffedbe1ffd4f3bae4808ddf1497e1,
     type: 3}
+  editModeQuad: {fileID: 0}
+  rendererData: {fileID: 11400000, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
+  renderFeature: {fileID: -5280210477594457229, guid: c40be3174f62c4acf8c1216858c64956,
+    type: 2}
+  editModeMask:
+    serializedVersion: 2
+    m_Bits: 63
 --- !u!114 &3642988752851112928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75,7 +80,7 @@ MonoBehaviour:
     m_Right: 80
     m_Top: 20
     m_Bottom: 20
-  m_ChildAlignment: 1
+  m_ChildAlignment: 4
   m_Spacing: 20
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 1

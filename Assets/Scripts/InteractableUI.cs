@@ -6,8 +6,12 @@ using DG.Tweening;
 
 public class InteractableUI : Interactable
 {
+    [SerializeField] private Action interfaceAction;
+
     private Vector3 rotationBeforeDrag;
     private bool isBeingDragged;
+
+    [SerializeField] private Renderer actionRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -15,11 +19,31 @@ public class InteractableUI : Interactable
         interactableRenderers = GetComponentsInChildren<MeshRenderer>();
     }
 
+    public void Setup(Action action, Material actionMat)
+    {
+        print(action.name);
+        print(actionMat);
+        interfaceAction = action;
+        actionRenderer.materials = new Material[] { actionRenderer.materials[0], actionMat };
+    }
+
     // Update is called once per frame
     void Update()
     {
+        Vector2 delta = Mouse.current.delta.value;
+
+#if PLATFORM_STANDALONE_OSX
+
+        delta = Mouse.current.delta.value * 10;
+#endif
+
         if(isBeingDragged)
-            transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, -Mouse.current.delta.value.y, 10 * Time.deltaTime), transform.eulerAngles.y, Mathf.LerpAngle(transform.eulerAngles.z, Mouse.current.delta.value.x, 10 * Time.deltaTime));
+            transform.eulerAngles = new Vector3(Mathf.LerpAngle(transform.eulerAngles.x, -delta.y, 10 * Time.deltaTime), transform.eulerAngles.y, Mathf.LerpAngle(transform.eulerAngles.z, delta.x, 10 * Time.deltaTime));
+    }
+
+    public override void ClickHandler()
+    {
+        base.ClickHandler();
     }
 
     private void OnMouseDown()

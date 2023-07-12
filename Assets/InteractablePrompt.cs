@@ -38,7 +38,7 @@ public class InteractablePrompt : Interactable
 
         foreach (Action a in modalActions)
         {
-            names += "<color=#"+ColorUtility.ToHtmlStringRGB(a.actionColor)+">"+ a.actionName + "</color>  +  ";
+            names += "<b><color=#"+ColorUtility.ToHtmlStringRGB(a.actionColor)+">"+ a.actionName + "</color></b>  +  ";
         }
 
         if (modalActions.Count >= slotAmount)

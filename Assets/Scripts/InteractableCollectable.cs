@@ -25,11 +25,12 @@ public class InteractableCollectable : Interactable
         Vector3 pos = Camera.main.ScreenToWorldPoint(topOfScreenPos);
         pos += (Camera.main.transform.forward * 6);
         pos += (Camera.main.transform.up * 2.82f);
-        Collect();
-        //transform.DOJump(pos, .5f,1,.4f).OnComplete(()=>Collect());
-        //transform.GetChild(0).DOComplete();
-        //transform.GetChild(0).DOShakeScale(.2f, .5f, 20, 90, true);
-        //transform.DOScale(.3f, .4f);
+        //Collect();
+        transform.DOJump(pos, .35f, 1, .3f).OnComplete(() => Collect());
+        transform.GetChild(0).DOComplete();
+        transform.GetChild(0).DOShakeScale(.4f, 1f, 20, 90, true);
+        transform.GetChild(0).DORotate(new Vector3(-360, 0, 0), .4f, RotateMode.LocalAxisAdd);
+        transform.DOScale(.3f, .4f);
     }
 
     public void Collect()

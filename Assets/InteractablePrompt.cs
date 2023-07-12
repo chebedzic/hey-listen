@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,11 +6,17 @@ using UnityEngine;
 public class InteractablePrompt : Interactable
 {
     [SerializeField] private Transform modalReference;
-    private List<Action> modalActions;
+    [SerializeField] private List<Action> modalActions;
+    private ModalScript modalScript;
+    private int slotAmount;
+
+    public enum PrompType { confirm, cancel}
+    public PrompType prompt;
 
     private void Start()
     {
- 
+        modalScript = GetComponentInParent<ModalScript>();
+        slotAmount = transform.parent.GetComponentsInChildren<InteractableSlot>().Length;
     }
 
     public override void OnMouseDown()
@@ -17,13 +24,14 @@ public class InteractablePrompt : Interactable
         //TODO
         base.OnMouseDown();
 
+        if (prompt == PrompType.cancel)
+            return;
+
         modalActions = new List<Action>();
 
-        for (int i = 0; i < modalReference.childCount; i++)
+        foreach (InteractableSlot slot in transform.parent.GetComponentsInChildren<InteractableSlot>())
         {
-            int index = i;
-            InteractableSlot slot = modalReference.GetChild(index).GetComponentInChildren<InteractableSlot>();
-            if(slot.interactable.enabled) modalActions.Add(slot.SlotAction());
+            if (slot.interactable.enabled) modalActions.Add(slot.SlotAction());
         }
 
         string names = "Confirmed choice: ";
@@ -33,7 +41,11 @@ public class InteractablePrompt : Interactable
             names += "<color=#"+ColorUtility.ToHtmlStringRGB(a.actionColor)+">"+ a.actionName + "</color>  +  ";
         }
 
-        if(modalActions.Count>0)
+        if (modalActions.Count >= slotAmount)
+        {
             print(names);
+
+            modalScript.AttemptSolution(modalActions);
+        }
     }
 }

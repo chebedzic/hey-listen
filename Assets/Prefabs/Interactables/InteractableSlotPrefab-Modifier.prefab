@@ -8,6 +8,12 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1487038816298015633, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -2168610112337444441, guid: d3edf1a3024e143cfbff193acca6bec4,
+        type: 3}
     - target: {fileID: 1617857247604333801, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
       propertyPath: m_Name
@@ -16,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 1921261130396237609, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1921261130396237609, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
@@ -68,6 +74,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2518854317850800645, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -6137782448712396775, guid: f4e531283da9a4c808a8862e054234b6,
+        type: 3}
     - target: {fileID: 3245891119609147802, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
       propertyPath: m_Mesh
@@ -76,6 +88,11 @@ PrefabInstance:
     - target: {fileID: 3695188811219332955, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
       propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647678739269615502, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6661589091212596230, guid: 54e921bbf2ff347f698b366215bd40b3,

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class InteractableUI : Interactable
 {
@@ -14,17 +15,23 @@ public class InteractableUI : Interactable
     [SerializeField] private Renderer actionRenderer;
     [SerializeField] private MeshFilter meshFilter;
 
+    RectTransform rect;
+
     // Start is called before the first frame update
     void Start()
     {
         interactableRenderers = GetComponentsInChildren<MeshRenderer>();
+
     }
 
     public void Setup(Action action, Material actionMat)
     {
+
         if (action.actionMesh != null)
             if(meshFilter != null)
                 meshFilter.mesh = action.actionMesh;
+
+        rect = GetComponentInParent<RectTransform>();
 
         interfaceAction = action;
         actionRenderer.materials = new Material[] { actionRenderer.materials[0], actionMat };

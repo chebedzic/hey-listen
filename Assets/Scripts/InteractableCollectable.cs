@@ -24,7 +24,7 @@ public class InteractableCollectable : Interactable
         Vector2 topOfScreenPos = new Vector2(Screen.width / 2, Screen.height);
         Vector3 pos = Camera.main.ScreenToWorldPoint(topOfScreenPos);
         pos += (Camera.main.transform.forward * 6);
-        pos += (Camera.main.transform.up * 3);
+        pos += (Camera.main.transform.up * 2.82f);
         transform.DOJump(pos, .5f,1,.4f).OnComplete(()=>Collect());
         transform.GetChild(0).DOComplete();
         transform.GetChild(0).DOShakeScale(.2f, .5f, 20, 90, true);

@@ -14,6 +14,7 @@ public class ActionsManager : MonoBehaviour
     [SerializeField] private GameObject actionPrefab;
     private RectTransform actionsHolderRect;
     [SerializeField] private Renderer editModeQuad;
+    [SerializeField][ColorUsage(true, true)] Color editModeColor;
 
     [Header("Renderer Feature")]
     [SerializeReference] private UniversalRendererData rendererData;
@@ -59,6 +60,7 @@ public class ActionsManager : MonoBehaviour
         actionsHolderRect.DOAnchorPosY(show ? -actionsHolderRect.sizeDelta.y : 0, .2f, false);
 
         editModeQuad.material.DOFade(show ? .8f : 0, .1f);
+        editModeQuad.material.DOColor(show ? editModeColor : Color.black,"_EmissionColor", .1f);
     }
 
     void SetActiveStateOfRenderers(bool show)

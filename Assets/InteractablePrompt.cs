@@ -36,11 +36,12 @@ public class InteractablePrompt : Interactable
 
         string names = "Confirmed choice: ";
 
-        foreach (Action a in modalActions)
+        for (int i = 0; i < modalActions.Count; i++)
         {
-            names += "<b><color=#"+ColorUtility.ToHtmlStringRGB(a.actionColor)+">"+ a.actionName + "</color></b>  +  ";
-        }
+            Action a = modalActions[i];
+            names += "<b><color=#" + ColorUtility.ToHtmlStringRGB(a.actionColor) + ">" + a.actionName + "</color></b>"+ (i < modalActions.Count-1 ? "  +  " : string.Empty);
 
+        }
         if (modalActions.Count >= slotAmount)
         {
             print(names);

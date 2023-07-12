@@ -49,7 +49,7 @@ public class InteractableCollectable : Interactable
 
         if (GetComponentInParent<InteractableSlot>() != null)
         {
-            GetComponentInParent<InteractableSlot>().transform.DOScale(1.2f, .15f).SetEase(Ease.OutBack);
+            GetComponentInParent<InteractableSlot>().Highlight(true);
             CompanionManager.instance.currentSlot = GetComponentInParent<InteractableSlot>();
         }
     }
@@ -60,7 +60,7 @@ public class InteractableCollectable : Interactable
 
         if (GetComponentInParent<InteractableSlot>() != null)
         {
-            GetComponentInParent<InteractableSlot>().transform.DOScale(1, .15f).SetEase(Ease.OutBack);
+            GetComponentInParent<InteractableSlot>().Highlight(false);
             CompanionManager.instance.currentSlot = GetComponentInParent<InteractableSlot>();
         }
 

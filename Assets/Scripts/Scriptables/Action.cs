@@ -9,6 +9,7 @@ public class Action : ScriptableObject
     public string actionName;
     public Material actionMaterial;
     public Color actionColor = Color.red;
+    public Mesh actionMesh;
     public Sprite actionIcon;
     public ActionType actionType;
 }

@@ -12,6 +12,7 @@ public class InteractableUI : Interactable
     private bool isBeingDragged;
 
     [SerializeField] private Renderer actionRenderer;
+    [SerializeField] private MeshFilter meshFilter;
 
     // Start is called before the first frame update
     void Start()
@@ -21,6 +22,10 @@ public class InteractableUI : Interactable
 
     public void Setup(Action action, Material actionMat)
     {
+        if (action.actionMesh != null)
+            if(meshFilter != null)
+                meshFilter.mesh = action.actionMesh;
+
         interfaceAction = action;
         actionRenderer.materials = new Material[] { actionRenderer.materials[0], actionMat };
     }

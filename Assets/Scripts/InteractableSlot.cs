@@ -13,6 +13,15 @@ public class InteractableSlot : Interactable
     public override void Highlight(bool state)
     {
         //base.Highlight(state);
+        foreach (Renderer renderer in interactableRenderers)
+        {
+            foreach (Material mat in renderer.materials)
+            {
+                if (mat.HasFloat("_FresnelAmount"))
+                    mat.DOFloat(state ? 1 : 0, "_FresnelAmount", .2f);
+            }
+
+        }
     }
 
     public void FillSlot(bool fill, Action action)
@@ -34,15 +43,12 @@ public class InteractableSlot : Interactable
     {
         base.OnMouseEnter();
         CompanionManager.instance.currentSlot = this;
-        if (CompanionManager.instance.selectedInteractable != null)
-            transform.DOScale(1.2f, .15f).SetEase(Ease.OutBack);
     }
 
     public override void OnMouseExit()
     {
         base.OnMouseExit();
         CompanionManager.instance.currentSlot = null;
-        transform.DOScale(1, .15f).SetEase(Ease.OutBack);
     }
 
     public Action SlotAction()

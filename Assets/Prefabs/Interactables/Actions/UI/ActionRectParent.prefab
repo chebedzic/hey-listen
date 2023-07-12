@@ -198,10 +198,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb013b38a3820344a891be58a22164ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  enabled: 1
   interactableRenderers: []
   selected: 0
   interfaceAction: {fileID: 0}
   actionRenderer: {fileID: 5657375137759710763}
+  meshFilter: {fileID: 7595320768831666913}
 --- !u!23 &5657375137759710763 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 1919347378247428379, guid: 635f5733b78d445c496b99a79ff39929,
@@ -211,6 +216,12 @@ MeshRenderer:
 --- !u!4 &6663706143787048782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 602305448939059326, guid: 635f5733b78d445c496b99a79ff39929,
+    type: 3}
+  m_PrefabInstance: {fileID: 6062387105299474224}
+  m_PrefabAsset: {fileID: 0}
+--- !u!33 &7595320768831666913 stripped
+MeshFilter:
+  m_CorrespondingSourceObject: {fileID: 4415237429411388881, guid: 635f5733b78d445c496b99a79ff39929,
     type: 3}
   m_PrefabInstance: {fileID: 6062387105299474224}
   m_PrefabAsset: {fileID: 0}

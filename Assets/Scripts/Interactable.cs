@@ -3,18 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
+using Unity.VisualScripting;
 
 [SelectionBase]
 public class Interactable : MonoBehaviour
 {
+    public bool enabled = true;
+
     public UnityEvent OnClick;
 
-    public bool enabled = true;
     [HideInInspector] public Renderer[] interactableRenderers;
     [HideInInspector] public bool selected;
 
+    [Header("Puzzle")]
+    public Action[] receivedActions;
+    private StateMachine stateMachine;
+    [SerializeField] private FlowGraph flow;
+
     private void Awake()
     {
+        stateMachine = GetComponent<StateMachine>();
         interactableRenderers = GetComponentsInChildren<Renderer>();
     }
 
@@ -49,6 +57,18 @@ public class Interactable : MonoBehaviour
     public virtual void OnMouseDown()
     {
         OnClick.Invoke();
+
+        if(stateMachine != null)
+        {
+            //stateMachine
+            string combination = string.Empty;
+            foreach (Action action in receivedActions)
+            {
+                combination += action.name;
+            }
+
+            CustomEvent.Trigger(this.gameObject, "attempt");
+        }
     }
 
     public virtual void OnMouseEnter()

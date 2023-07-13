@@ -9,7 +9,6 @@ public class ModalScript : MonoBehaviour
 
     public void AttemptSolution(List<Action> actions)
     {
-        //send list of actions to interactable
-        //linkedInteractable.puzzle.
+        linkedInteractable.TryPuzzle(actions);
     }
 }

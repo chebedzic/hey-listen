@@ -16,7 +16,6 @@ public class Interactable : MonoBehaviour
     [HideInInspector] public bool selected;
 
     [Header("Puzzle")]
-    public Action[] receivedActions;
     private StateMachine stateMachine;
     [SerializeField] private FlowGraph flow;
 
@@ -57,17 +56,14 @@ public class Interactable : MonoBehaviour
     public virtual void OnMouseDown()
     {
         OnClick.Invoke();
+    }
 
-        if(stateMachine != null)
+    public void TryPuzzle(List<Action> actionList)
+    {
+        if (stateMachine != null)
         {
             //stateMachine
-            string combination = string.Empty;
-            foreach (Action action in receivedActions)
-            {
-                combination += action.name;
-            }
-
-            CustomEvent.Trigger(this.gameObject, "attempt");
+            CustomEvent.Trigger(this.gameObject, "attempt", actionList);
         }
     }
 

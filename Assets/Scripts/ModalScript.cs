@@ -86,7 +86,7 @@ public class ModalScript : MonoBehaviour
         // Calculate the desired Z position based on the camera's field of view
         float desiredZPosition = Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad) * distanceFromCamera;
         
-        transform.DOMove(state ? new Vector3(worldCenter.x, 3, desiredZPosition - 3) : originalPosition, .25f).SetEase(Ease.OutSine);
+        transform.DOMove(state ? new Vector3(worldCenter.x, transform.position.y + 3, desiredZPosition - 2) : originalPosition, .25f).SetEase(Ease.OutSine);
 
     }
 

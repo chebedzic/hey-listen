@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2612667163969878988}
   - component: {fileID: 5258204561485688873}
   - component: {fileID: 3976910640867299353}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,7 +99,7 @@ GameObject:
   - component: {fileID: 5751983108891799259}
   - component: {fileID: 6756705347810980937}
   - component: {fileID: 5401499883642894389}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: T
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   - component: {fileID: 3099558001501995069}
   - component: {fileID: 8758770720367387208}
   - component: {fileID: 4980388247056366287}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -257,7 +257,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5670544580571154364}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +296,7 @@ GameObject:
   - component: {fileID: 7114127307749188349}
   - component: {fileID: 8695587173698854201}
   - component: {fileID: 2909582286078523991}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -373,7 +373,7 @@ GameObject:
   - component: {fileID: 1023815623646221965}
   - component: {fileID: 802307299627484938}
   - component: {fileID: 6843563736107488345}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -450,7 +450,7 @@ GameObject:
   - component: {fileID: 4114359749906822148}
   - component: {fileID: 7168712673183711163}
   - component: {fileID: 3296241738102482818}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 7562878999024195458}
   - component: {fileID: 6471491582195359259}
   - component: {fileID: 3955814936188421280}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 1361936304895408166}
   - component: {fileID: 7084259146190530233}
   - component: {fileID: 7377080753981701033}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Arrows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -705,7 +705,7 @@ GameObject:
   - component: {fileID: 3051680205139291249}
   - component: {fileID: 5065745786321995100}
   - component: {fileID: 7200769048439481828}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -782,7 +782,7 @@ GameObject:
   - component: {fileID: 5697569973478097617}
   - component: {fileID: 4629203620320291476}
   - component: {fileID: 164204314186849383}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -894,7 +894,7 @@ RectTransform:
   m_Children:
   - {fileID: 6517823514565165556}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -915,6 +915,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   linkedInteractable: {fileID: 0}
   playButton: {fileID: 8855357860453135734}
+  currentModalActions: []
 --- !u!223 &8834952629768720504
 Canvas:
   m_ObjectHideFlags: 0
@@ -1010,7 +1011,7 @@ GameObject:
   - component: {fileID: 135197967827194561}
   - component: {fileID: 4936335876413210490}
   - component: {fileID: 7407758253582079264}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1087,7 +1088,7 @@ GameObject:
   - component: {fileID: 854153744833447857}
   - component: {fileID: 6087163114419657653}
   - component: {fileID: 3125425027831059669}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: slot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1164,7 +1165,7 @@ GameObject:
   - component: {fileID: 1207200016084192441}
   - component: {fileID: 7392689520738023090}
   - component: {fileID: 7255648689451321505}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1252,7 +1253,7 @@ GameObject:
   - component: {fileID: 6706208718469631163}
   - component: {fileID: 5092789965493490780}
   - component: {fileID: 8954958504755678007}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1340,7 +1341,7 @@ GameObject:
   - component: {fileID: 6879687109661471543}
   - component: {fileID: 6851747198789849135}
   - component: {fileID: 7005585360458706143}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1428,7 +1429,7 @@ GameObject:
   - component: {fileID: 1635040980741099960}
   - component: {fileID: 8843856238614415716}
   - component: {fileID: 8913768345265804682}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1517,7 +1518,7 @@ GameObject:
   - component: {fileID: 3905711111914642716}
   - component: {fileID: 4161604428672269963}
   - component: {fileID: 7840615959072301702}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1620,7 +1621,7 @@ GameObject:
   - component: {fileID: 4165110198259935819}
   - component: {fileID: 5165222898749615948}
   - component: {fileID: 8985489629029364377}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Modal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1809,10 +1810,40 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4009462802069225786, guid: fefa282e5bee96e438ada2d51aacee81,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4323947796623228025, guid: fefa282e5bee96e438ada2d51aacee81,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4795368732218568072, guid: fefa282e5bee96e438ada2d51aacee81,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6069003441535307129, guid: fefa282e5bee96e438ada2d51aacee81,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8011369191010258030, guid: fefa282e5bee96e438ada2d51aacee81,
         type: 3}
       propertyPath: m_Name
       value: InteractableSlotPrefab-Modifier
+      objectReference: {fileID: 0}
+    - target: {fileID: 8011369191010258030, guid: fefa282e5bee96e438ada2d51aacee81,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8762850218289802399, guid: fefa282e5bee96e438ada2d51aacee81,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9197209899122633654, guid: fefa282e5bee96e438ada2d51aacee81,
         type: 3}
@@ -1893,14 +1924,34 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2585849472523416525, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2610988047760232386, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2902304794466471566, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3695188811219332955, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
       propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647678739269615502, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253849779738910591, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6661589091212596230, guid: 54e921bbf2ff347f698b366215bd40b3,
@@ -1913,10 +1964,20 @@ PrefabInstance:
       propertyPath: enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7916576703546596968, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8892542855293566617, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
       propertyPath: m_Name
       value: InteractableSlotPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892542855293566617, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

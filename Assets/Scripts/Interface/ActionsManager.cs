@@ -11,11 +11,19 @@ public class ActionsManager : MonoBehaviour
 
     private CompanionManager companionManager;
     public List<Action> availableActions;
-    [SerializeField] private GameObject actionPrefab;
     private RectTransform actionsHolderRect;
+
+    [Header("External References")]
+    [SerializeField] private GameObject actionPrefab;
     [SerializeField] private Renderer editModeQuad;
-    [SerializeField][ColorUsage(true, true)] Color editModeColor;
-    [SerializeField] private float editModeOffset = 3;
+    [SerializeField] RectTransform weaponHolder;
+
+    [Header("Parameters")]
+    [SerializeField] private float editModeOffsetSpeed = 3;
+    [Range(0,1)]
+    [SerializeField] private float editModeTransparency = .7f;
+    [SerializeField][ColorUsage(true, true)] Color editModeEmissiveColor;
+
 
     private float offset;
 
@@ -39,7 +47,7 @@ public class ActionsManager : MonoBehaviour
         if (!CompanionManager.instance.isInEditorMode)
             return;
 
-        offset += editModeOffset * Time.deltaTime;
+        offset += editModeOffsetSpeed * Time.deltaTime;
 
         editModeQuad.material.mainTextureOffset = new Vector2(offset, 0);
     }
@@ -60,8 +68,10 @@ public class ActionsManager : MonoBehaviour
 
         actionsHolderRect.DOAnchorPosY(show ? -actionsHolderRect.sizeDelta.y : 0, .2f, false);
 
-        //editModeQuad.material.DOFade(show ? .8f : 0, .1f);
-        editModeQuad.material.DOColor(show ? editModeColor : Color.black,"_EmissionColor", .1f);
+        weaponHolder.DOAnchorPosX(show ? -weaponHolder.sizeDelta.x : 0, .2f, false);
+
+        editModeQuad.material.DOFade(show ? editModeTransparency : 0, .1f);
+        editModeQuad.material.DOColor(show ? editModeEmissiveColor : Color.black,"_EmissionColor", .1f);
     }
 
     public void TryCollectAction(Action action)

@@ -101,7 +101,7 @@ public class CompanionManager : MonoBehaviour
 
     void OnReset()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 
     public void SetEditMode(bool state)

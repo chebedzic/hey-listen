@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: RenderObjectsOpaques
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
     passTag: RenderObjectsOpaques
-    Event: 500
+    Event: 550
     filterSettings:
       RenderQueueType: 0
       LayerMask:
         serializedVersion: 2
-        m_Bits: 192
+        m_Bits: 512
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0
@@ -28,7 +28,7 @@ MonoBehaviour:
     overrideShaderPassIndex: 0
     overrideMode: 1
     overrideDepthState: 0
-    depthCompareFunction: 4
+    depthCompareFunction: 0
     enableWrite: 0
     stencilSettings:
       overrideStencilState: 0
@@ -40,7 +40,7 @@ MonoBehaviour:
     cameraSettings:
       overrideCamera: 0
       restoreCamera: 1
-      offset: {x: 0, y: 0, z: 0, w: 0}
+      offset: {x: 0, y: 0, z: 0.24, w: 1}
       cameraFieldOfView: 60
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b3d386ba5cd94485973aee1479b272e, type: 3}
   m_Name: RenderObjectsTransparent
   m_EditorClassIdentifier: 
-  m_Active: 0
+  m_Active: 1
   settings:
     passTag: RenderObjectsTransparent
     Event: 500
@@ -177,7 +177,7 @@ MonoBehaviour:
       RenderQueueType: 1
       LayerMask:
         serializedVersion: 2
-        m_Bits: 192
+        m_Bits: 512
       PassNames: []
     overrideMaterial: {fileID: 0}
     overrideMaterialPassIndex: 0

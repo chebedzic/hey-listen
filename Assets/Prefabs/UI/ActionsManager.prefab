@@ -370,7 +370,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7497722487062500325}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0, y: -540, z: 133}
+  m_LocalPosition: {x: 0, y: -545.0631, z: 141.76947}
   m_LocalScale: {x: 11568.864, y: 8263.477, z: 8263.477}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -635,15 +635,10 @@ MonoBehaviour:
   actionPrefab: {fileID: 2098055881895068637, guid: 3edffedbe1ffd4f3bae4808ddf1497e1,
     type: 3}
   editModeQuad: {fileID: 7972780860877285284}
-  editModeColor: {r: 0, g: 0.082715616, b: 0.16037738, a: 1}
-  editModeOffset: 3
-  rendererData: {fileID: 11400000, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
-  renderFeatures:
-  - {fileID: -5280210477594457229, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
-  - {fileID: 8390079768211208689, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
-  editModeMask:
-    serializedVersion: 2
-    m_Bits: 63
+  weaponHolder: {fileID: 0}
+  editModeOffsetSpeed: 0.5
+  editModeTransparency: 0.8
+  editModeEmissiveColor: {r: 0, g: 0.057984337, b: 0.11320752, a: 1}
 --- !u!114 &3642988752851112928
 MonoBehaviour:
   m_ObjectHideFlags: 0

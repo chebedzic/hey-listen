@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6033243401816723694}
   - component: {fileID: 62360119440635246}
   - component: {fileID: 4559170360860806255}
-  m_Layer: 6
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,6 +91,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 392859906650391448, guid: 39e0a7837c83e413e97345f93b096bb5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 1068081136329072262, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: combinationLibrary
@@ -119,6 +124,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorPuzzle Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 1424901155637502825, guid: 39e0a7837c83e413e97345f93b096bb5,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3737924110388868627, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: _data._json
@@ -145,7 +155,7 @@ PrefabInstance:
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}

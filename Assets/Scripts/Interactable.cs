@@ -64,7 +64,7 @@ public class Interactable : MonoBehaviour
     {
         OnClick.Invoke();
 
-        if (linkedModal == null)
+        if (linkedModal == null && stateMachine == true)
             print("No modal linked with object");
 
         if (stateMachine != null && linkedModal != null)

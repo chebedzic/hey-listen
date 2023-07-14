@@ -64,12 +64,18 @@ public class Interactable : MonoBehaviour
     {
         OnClick.Invoke();
 
+        if (linkedModal == null)
+            print("No modal linked with object");
+
         if (stateMachine != null && linkedModal != null)
         {
             var combination = CompanionManager.instance.combinationLibrary.GetCombination(linkedModal.currentModalActions);
 
             if (combination == null)
+            {
+                CustomEvent.Trigger(this.gameObject, "test", combination);
                 return;
+            }
 
             //stateMachine
             CustomEvent.Trigger(this.gameObject, "attempt", combination);

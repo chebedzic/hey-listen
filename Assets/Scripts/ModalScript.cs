@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 
+[SelectionBase]
 public class ModalScript : MonoBehaviour
 {
 
@@ -64,7 +65,11 @@ public class ModalScript : MonoBehaviour
 
     void OnEditMode(bool state)
     {
+
+
         collider.enabled = !state;
+
+        //return;
 
         // Get the main camera
         Camera mainCamera = Camera.main;
@@ -90,5 +95,17 @@ public class ModalScript : MonoBehaviour
         CompanionManager.instance.currentModal = null;
         transform.GetChild(0).DOScale(1, .2f);
         CursorHandler.instance.HoverInteractable(false);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.white;
+
+        if (linkedInteractable == null)
+            return;
+
+        Gizmos.DrawSphere(transform.position, .2f);
+        Gizmos.DrawLine(transform.position, linkedInteractable.transform.position);
+        Gizmos.DrawSphere(linkedInteractable.transform.position, .2f);
     }
 }

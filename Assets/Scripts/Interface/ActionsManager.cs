@@ -66,9 +66,9 @@ public class ActionsManager : MonoBehaviour
         if (!show)
             transform.DOMoveX(0, .2f);
 
-        actionsHolderRect.DOAnchorPosY(show ? -actionsHolderRect.sizeDelta.y : 0, .2f, false);
+        actionsHolderRect.DOAnchorPosY(show ? -actionsHolderRect.sizeDelta.y -(actionsHolderRect.sizeDelta.y *.8f) : 0, .2f, false);
 
-        weaponHolder.DOAnchorPosX(show ? -weaponHolder.sizeDelta.x : 0, .2f, false);
+        weaponHolder.DOAnchorPosY(show ? -weaponHolder.sizeDelta.y : 0, .2f, false);
 
         editModeQuad.material.DOFade(show ? editModeTransparency : 0, .1f);
         editModeQuad.material.DOColor(show ? editModeEmissiveColor : Color.black,"_EmissionColor", .1f);

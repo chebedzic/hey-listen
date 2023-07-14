@@ -104,7 +104,7 @@ PrefabInstance:
     - target: {fileID: 6719906517474782568, guid: 1cd9399a28e52d543ad2ef1c475b71c7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 6719906517474782568, guid: 1cd9399a28e52d543ad2ef1c475b71c7,
         type: 3}
@@ -204,10 +204,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4f420369dbb1a43ad9c6ea18596e2ee3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabled: 0
   OnClick:
     m_PersistentCalls:
       m_Calls: []
-  enabled: 0
   interactableRenderers: []
   selected: 0
   slotType: 0
@@ -254,7 +254,7 @@ PrefabInstance:
     - target: {fileID: 5773477126340102468, guid: 52b60634b0fbfed44a0aa2e8bcfe71f6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.3
+      value: -0.232
       objectReference: {fileID: 0}
     - target: {fileID: 5773477126340102468, guid: 52b60634b0fbfed44a0aa2e8bcfe71f6,
         type: 3}

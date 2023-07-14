@@ -21,7 +21,6 @@ public class InteractablePrompt : Interactable
 
     public override void OnMouseDown()
     {
-        //TODO
         base.OnMouseDown();
 
         if (prompt == PrompType.cancel)
@@ -45,7 +44,7 @@ public class InteractablePrompt : Interactable
         if (modalActions.Count >= slotAmount)
         {
             print(names);
-
+            CompanionManager.instance.SetEditMode(false);
             modalScript.AttemptSolution(modalActions);
         }
     }

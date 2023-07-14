@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ActionType { input, modifier };
 [CreateAssetMenu(menuName = "Scriptable Objects/Action")]
 public class Action : ScriptableObject
 {

@@ -28,7 +28,12 @@ public class CompanionManager : MonoBehaviour
     public Interactable currentInteractable;
     public Interactable selectedInteractable;
     public InteractableSlot currentSlot;
-    private bool isInEditorMode;
+    public ModalScript currentModal;
+
+    [Header("Edit Mode")]
+    public bool isInEditorMode;
+
+    public CombinationLibrary combinationLibrary;
 
     private void Awake()
     {
@@ -44,7 +49,6 @@ public class CompanionManager : MonoBehaviour
             return;
 
         Movement();
-        InteractableDetection();
 
     }
 
@@ -62,8 +66,8 @@ public class CompanionManager : MonoBehaviour
         NavMeshHit hit;
         bool isValid = NavMesh.SamplePosition(worldPosition, out hit, .3f, NavMesh.AllAreas);
 
-        if (!isValid)
-            return;
+        //if (!isValid)
+        //    return;
 
         if ((transform.position - hit.position).magnitude >= .02f)
             transform.position = Vector3.Lerp(transform.position, worldPosition, mouseLerp * Time.deltaTime);
@@ -72,19 +76,6 @@ public class CompanionManager : MonoBehaviour
 
         if ((worldPosition - transform.position).magnitude > 0.01f)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredDirection), rotationSpeed * Time.deltaTime);
-    }
-
-    void InteractableDetection()
-    {
-        //screenPosition = Mouse.current.position.value;
-        //Ray ray = Camera.main.ScreenPointToRay(screenPosition);
-
-        //if (Physics.Raycast(ray, out RaycastHit hitData, Mathf.Infinity))
-        //{
-        //    if (hitData.transform.GetComponent<Interactable>() == null && currentInteractable != null)
-        //        currentInteractable = null;
-        //}
-
     }
 
     public float MovementMagnitude()
@@ -97,7 +88,7 @@ public class CompanionManager : MonoBehaviour
     void OnFire(InputValue value)
     {
 
-        if (currentInteractable == null)
+        if (currentInteractable == null && currentModal == null)
             HeroManager.instance.SetHeroDestination(worldPosition);
 
         OnMouseClick.Invoke(worldPosition);
@@ -105,12 +96,17 @@ public class CompanionManager : MonoBehaviour
 
     public void OnEdit()
     {
-        ToggleEditMode();
+        SetEditMode(!isInEditorMode);
     }
 
-    public void ToggleEditMode()
+    void OnReset()
     {
-        isInEditorMode = !isInEditorMode;
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0);
+    }
+
+    public void SetEditMode(bool state)
+    {
+        isInEditorMode = state;
 
         if (isInEditorMode)
         {

@@ -21,6 +21,9 @@ public class InteractableCollectable : Interactable
 
         enabled = false;
 
+        if (GetComponentInParent<InteractableSlot>() != null)
+            GetComponentInParent<InteractableSlot>().UpdateSlot();
+
         Vector2 topOfScreenPos = new Vector2(Screen.width / 2, Screen.height);
         Vector3 pos = Camera.main.ScreenToWorldPoint(topOfScreenPos);
         pos += (Camera.main.transform.forward * 6);

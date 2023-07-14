@@ -9,6 +9,12 @@ public class InteractableSlot : Interactable
     public ActionType slotType;
     [SerializeField] private Transform slotActionReference;
     public InteractableCollectable interactable;
+    private ModalScript modalParent;
+
+    private void Start()
+    {
+        modalParent = GetComponentInParent<ModalScript>();
+    }
 
     public override void Highlight(bool state)
     {
@@ -37,6 +43,13 @@ public class InteractableSlot : Interactable
         slotActionReference.DOComplete();
         slotActionReference.DOShakeScale(.2f, .5f, 20, 90, true);
         slotActionReference.gameObject.SetActive(fill);
+
+        UpdateSlot();
+    }
+
+    public void UpdateSlot()
+    {
+        modalParent.SlotUpdated();
     }
 
     public override void OnMouseEnter()

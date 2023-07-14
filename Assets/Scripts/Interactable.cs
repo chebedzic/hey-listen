@@ -19,10 +19,17 @@ public class Interactable : MonoBehaviour
     private StateMachine stateMachine;
     [SerializeField] private FlowGraph flow;
 
+    private ModalScript linkedModal;
+
     private void Awake()
     {
         stateMachine = GetComponent<StateMachine>();
         interactableRenderers = GetComponentsInChildren<Renderer>();
+    }
+
+    public void SetModal(ModalScript modal)
+    {
+        linkedModal = modal;
     }
 
     public virtual void Highlight(bool state)
@@ -56,19 +63,33 @@ public class Interactable : MonoBehaviour
     public virtual void OnMouseDown()
     {
         OnClick.Invoke();
+
+        if (stateMachine != null && linkedModal != null)
+        {
+            var combination = CompanionManager.instance.combinationLibrary.GetCombination(linkedModal.currentModalActions);
+
+            if (combination == null)
+                return;
+
+            //stateMachine
+            CustomEvent.Trigger(this.gameObject, "attempt", combination);
+        }
     }
 
-    public void TryPuzzle(List<Action> actionList)
+    public void TryPuzzle(List<Action> actionList, ModalScript modal)
     {
         if (stateMachine != null)
         {
+            var combination = CompanionManager.instance.combinationLibrary.GetCombination(actionList);
+ 
             //stateMachine
-            CustomEvent.Trigger(this.gameObject, "attempt", actionList);
+            CustomEvent.Trigger(this.gameObject, "attempt", combination);
         }
     }
 
     public virtual void OnMouseEnter()
     {
+
         CompanionManager.instance.currentInteractable = this;
         Highlight(true);
 
@@ -77,6 +98,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void OnMouseExit()
     {
+
         CompanionManager.instance.currentInteractable = null;
         Highlight(false);
 

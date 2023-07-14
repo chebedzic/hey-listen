@@ -105,7 +105,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5751983108891799259
 RectTransform:
   m_ObjectHideFlags: 0
@@ -302,7 +302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7114127307749188349
 RectTransform:
   m_ObjectHideFlags: 0
@@ -711,7 +711,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3051680205139291249
 RectTransform:
   m_ObjectHideFlags: 0
@@ -872,6 +872,7 @@ GameObject:
   - component: {fileID: 8834952629768720504}
   - component: {fileID: 8749409820437473742}
   - component: {fileID: 1026639305080717385}
+  - component: {fileID: 3585366154308557904}
   m_Layer: 0
   m_Name: ModalCanvas
   m_TagString: Untagged
@@ -893,7 +894,7 @@ RectTransform:
   m_Children:
   - {fileID: 6517823514565165556}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -913,6 +914,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   linkedInteractable: {fileID: 0}
+  playButton: {fileID: 8855357860453135734}
 --- !u!223 &8834952629768720504
 Canvas:
   m_ObjectHideFlags: 0
@@ -976,6 +978,27 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!65 &3585366154308557904
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614075020645834918}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3, y: 1.2, z: 1.48}
+  m_Center: {x: 0, y: 0.5, z: -0.7}
 --- !u!1 &6604564330386504941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1534,10 +1557,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6302b9ea01a4034aacd54002932f1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabled: 1
   OnClick:
     m_PersistentCalls:
       m_Calls: []
-  enabled: 1
   interactableRenderers: []
   selected: 0
   modalReference: {fileID: 6517823514565165556}

@@ -15,11 +15,9 @@ public class ActionsManager : MonoBehaviour
     private RectTransform actionsHolderRect;
     [SerializeField] private Renderer editModeQuad;
     [SerializeField][ColorUsage(true, true)] Color editModeColor;
+    [SerializeField] private float editModeOffset = 3;
 
-    [Header("Renderer Feature")]
-    [SerializeReference] private UniversalRendererData rendererData;
-    [SerializeReference] private ScriptableRendererFeature[] renderFeatures;
-    [SerializeField] private LayerMask editModeMask;
+    private float offset;
 
     private void Awake()
     {
@@ -36,6 +34,16 @@ public class ActionsManager : MonoBehaviour
         //Setup();
     }
 
+    private void Update()
+    {
+        if (!CompanionManager.instance.isInEditorMode)
+            return;
+
+        offset += editModeOffset * Time.deltaTime;
+
+        editModeQuad.material.mainTextureOffset = new Vector2(offset, 0);
+    }
+
     void Setup()
     {
         foreach (Action action in availableActions)
@@ -47,40 +55,13 @@ public class ActionsManager : MonoBehaviour
 
     void ShowActions(bool show)
     {
-        if (show)
-        {
-            SetActiveStateOfRenderers(show);
-            rendererData.opaqueLayerMask = editModeMask;
-        }
-        else
-        {
-            transform.DOMoveX(0, .2f).OnComplete(() => SetActiveStateOfRenderers(false));
-        }
+        if (!show)
+            transform.DOMoveX(0, .2f);
 
         actionsHolderRect.DOAnchorPosY(show ? -actionsHolderRect.sizeDelta.y : 0, .2f, false);
 
-        editModeQuad.material.DOFade(show ? .8f : 0, .1f);
+        //editModeQuad.material.DOFade(show ? .8f : 0, .1f);
         editModeQuad.material.DOColor(show ? editModeColor : Color.black,"_EmissionColor", .1f);
-    }
-
-    void SetActiveStateOfRenderers(bool show)
-    {
-        foreach (ScriptableRendererFeature rendererFeature in renderFeatures)
-            rendererFeature.SetActive(show);
-
-        if (!show)
-        {
-            rendererData.opaqueLayerMask = ~0; 
-            rendererData.transparentLayerMask = ~0; 
-        }
-    }
-
-    private void OnDestroy()
-    {
-        SetActiveStateOfRenderers(false);
-        rendererData.opaqueLayerMask = ~0;
-        rendererData.transparentLayerMask = ~0;
-
     }
 
     public void TryCollectAction(Action action)

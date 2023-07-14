@@ -222,6 +222,16 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2170371889509951509, guid: 87f8a4417297d40338935e40f9c04efc,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 90a2e5989ddae401597f076d59feafbb, type: 2}
+    - target: {fileID: 2170371889509951509, guid: 87f8a4417297d40338935e40f9c04efc,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: a551da68dddcf9242bdfdc3512e3c066, type: 2}
     - target: {fileID: 7865141101283178688, guid: 87f8a4417297d40338935e40f9c04efc,
         type: 3}
       propertyPath: m_Name
@@ -255,14 +265,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb013b38a3820344a891be58a22164ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabled: 1
   OnClick:
     m_PersistentCalls:
       m_Calls: []
-  enabled: 1
   interactableRenderers: []
   selected: 0
   interfaceAction: {fileID: 11400000, guid: d4a2e0c0f26224ff1876b6fc20711766, type: 2}
   actionRenderer: {fileID: 6513525123383825673}
+  meshFilter: {fileID: 0}
 --- !u!4 &5232484915578700908 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 929853015663540592, guid: 87f8a4417297d40338935e40f9c04efc,

@@ -21,6 +21,7 @@ public class ModalScript : MonoBehaviour
         collider = GetComponent<Collider>();
         CompanionManager.instance.OnEditorMode.AddListener(OnEditMode);
         playButton.SetActive(false);
+        if(linkedInteractable)
         linkedInteractable.SetModal(this);
     }
 
@@ -87,7 +88,6 @@ public class ModalScript : MonoBehaviour
         float desiredZPosition = Mathf.Tan(mainCamera.fieldOfView * 0.5f * Mathf.Deg2Rad) * distanceFromCamera;
         
         transform.DOMove(state ? new Vector3(worldCenter.x, transform.position.y + 3, desiredZPosition - 2) : originalPosition, .25f).SetEase(Ease.OutSine);
-
     }
 
     private void OnMouseExit()

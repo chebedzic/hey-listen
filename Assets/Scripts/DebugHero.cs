@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class DebugHero : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class DebugHero : MonoBehaviour
             pos = hit.point;
 
         MouseClickPositionEvent.Invoke(pos);
+    }
+
+    public void LoadRoom(int level)
+    {
+        SceneManager.LoadSceneAsync(level, LoadSceneMode.Additive);
     }
 
     void OnA()

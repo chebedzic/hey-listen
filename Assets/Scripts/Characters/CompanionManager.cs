@@ -38,6 +38,13 @@ public class CompanionManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+        LightProbes.needsRetetrahedralization += LightProbes_needsRetetrahedralization;
+    }
+
+    private void LightProbes_needsRetetrahedralization()
+    {
+        LightProbes.Tetrahedralize();
     }
 
     private void Update()
@@ -111,7 +118,9 @@ public class CompanionManager : MonoBehaviour
         if (isInEditorMode)
         {
             transform.DOComplete();
-            transform.DOMove(new Vector3(-3, 5, -4), .3f, false);
+            Vector3 cameraPos = Camera.main.transform.position;
+            Vector3 finalPos = cameraPos + new Vector3(-3, -5, 2);
+            transform.DOMove(finalPos, .3f, false);
             transform.DORotate(new Vector3(50, 15, 0), .3f, RotateMode.Fast);
         }
 

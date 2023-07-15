@@ -28,6 +28,7 @@ public class InteractableCollectable : Interactable
         Vector3 pos = Camera.main.ScreenToWorldPoint(topOfScreenPos);
         pos += (Camera.main.transform.forward * 6);
         pos += (Camera.main.transform.up * 2.82f);
+
         //Collect();
         transform.DOJump(pos, .35f, 1, .3f).OnComplete(() => Collect());
         transform.GetChild(0).DOComplete();

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,7 @@ public class HeroManager : MonoBehaviour
 
     private NavMeshAgent navMeshAgent;
     bool canMove = true;
+    private bool hasEnteredOffMeshLink = false;
 
     private void Awake()
     {
@@ -25,8 +27,22 @@ public class HeroManager : MonoBehaviour
 
     void Update()
     {
-        
+        if (navMeshAgent.isOnOffMeshLink && !hasEnteredOffMeshLink)
+        {
+            SetHeroDestination(navMeshAgent.currentOffMeshLinkData.endPos);
+            transform.DOComplete();
+            transform.DOLookAt(navMeshAgent.currentOffMeshLinkData.endPos, .1f, AxisConstraint.Y);
+            hasEnteredOffMeshLink = true;
+        }
+
+        if(navMeshAgent.remainingDistance < .1f && !navMeshAgent.isOnOffMeshLink)
+        {
+            if (hasEnteredOffMeshLink)
+                hasEnteredOffMeshLink = false;
+        }
+
     }
+
 
     void SetMovementAvailability(bool state)
     {
@@ -46,6 +62,11 @@ public class HeroManager : MonoBehaviour
     public float GetHeroVelocity()
     {
         return navMeshAgent.velocity.magnitude;
+    }
+
+    public bool IsAgentCrossingLink()
+    {
+        return navMeshAgent.isOnOffMeshLink;
     }
 
     public float GetHeroSpeed()

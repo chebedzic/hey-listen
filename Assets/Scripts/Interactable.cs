@@ -4,6 +4,7 @@ using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
 using Unity.VisualScripting;
+using UnityEngine.AI;
 
 [SelectionBase]
 public class Interactable : MonoBehaviour
@@ -20,6 +21,8 @@ public class Interactable : MonoBehaviour
     [SerializeField] private FlowGraph flow;
 
     private ModalScript linkedModal;
+
+    [SerializeField] private OffMeshLink offMeshLink;
 
     private void Awake()
     {
@@ -91,6 +94,24 @@ public class Interactable : MonoBehaviour
             //stateMachine
             CustomEvent.Trigger(this.gameObject, "attempt", combination);
         }
+    }
+
+    public Animator GetHeroAnimator()
+    {
+        return HeroManager.instance.GetComponentInChildren<Animator>();
+    }
+
+    public NavMeshAgent GetHeroAgent()
+    {
+        return HeroManager.instance.GetComponent<NavMeshAgent>();
+    }
+
+    public void SetRelatedLink(bool state)
+    {
+        if (offMeshLink == null)
+            return;
+
+        offMeshLink.activated = state;
     }
 
     public virtual void OnMouseEnter()

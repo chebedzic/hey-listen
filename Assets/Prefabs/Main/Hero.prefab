@@ -18653,7 +18653,7 @@ ParticleSystem:
     intensityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3
+      scalar: 7
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -24731,6 +24731,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   heroVisual: {fileID: 0}
+  canMove: 1
+  isInteracting: 0
 --- !u!195 &4599722609186288483
 NavMeshAgent:
   m_ObjectHideFlags: 0

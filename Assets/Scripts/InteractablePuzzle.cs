@@ -32,9 +32,9 @@ public class InteractablePuzzle : Interactable
 
     public void TryPuzzle(List<Action> actionList, InteractableModal modal)
     {
-        if (stateMachine != null)
+        if (stateMachine != null && !heroManager.isInteracting)
         {
-            HeroManager.instance.isInteracting = true;
+            heroManager.isInteracting = true;
             ActionCombination combination = CompanionManager.instance.combinationLibrary.GetCombination(actionList);
             StartCoroutine(BringHero(combination));
 
@@ -43,7 +43,8 @@ public class InteractablePuzzle : Interactable
 
     public void SetHeroInteraction(bool isInteracting)
     {
-        heroManager.isInteracting = isInteracting;
+        if(heroManager!= null)
+            heroManager.isInteracting = isInteracting;
     }
 
     IEnumerator BringHero(ActionCombination combination)

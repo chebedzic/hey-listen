@@ -54,6 +54,9 @@ public class HeroVisual : MonoBehaviour
     {
         foreach (Renderer renderer in renderers)
         {
+            if (!renderer.material.HasFloat("_FresnelAmount"))
+                break;
+
             renderer.material.DOComplete();
             renderer.material.SetColor("_FresnelColor", enemyHitColor);
             renderer.material.DOFloat(1, "_FresnelAmount", .1f).OnComplete(() => renderer.material.DOFloat(0, "_FresnelAmount", .2f));

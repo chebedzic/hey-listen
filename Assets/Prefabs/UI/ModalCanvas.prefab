@@ -52,13 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6302b9ea01a4034aacd54002932f1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabled: 1
-  OnClick:
-    m_PersistentCalls:
-      m_Calls: []
+  interactable: 1
+  inFocus: 0
   interactableRenderers: []
   selected: 0
-  offMeshLink: {fileID: 0}
   modalReference: {fileID: 6517823514565165556}
   modalActions: []
   prompt: 1
@@ -1133,12 +1130,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 5614075020645834918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a08e0dd9728451784de8a2b7d1392f, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ee07dee20a0b9343925c66aa87102c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkedInteractable: {fileID: 0}
-  playButton: {fileID: 8855357860453135734}
+  interactable: 1
+  inFocus: 0
+  interactableRenderers: []
+  selected: 0
+  linkedPuzzle: {fileID: 0}
+  offMeshLink: {fileID: 0}
   currentModalActions: []
+  playButton: {fileID: 8855357860453135734}
 --- !u!223 &8834952629768720504
 Canvas:
   m_ObjectHideFlags: 0
@@ -1781,13 +1783,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6302b9ea01a4034aacd54002932f1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabled: 1
-  OnClick:
-    m_PersistentCalls:
-      m_Calls: []
+  interactable: 1
+  inFocus: 0
   interactableRenderers: []
   selected: 0
-  offMeshLink: {fileID: 0}
   modalReference: {fileID: 6517823514565165556}
   modalActions: []
   prompt: 0
@@ -1965,6 +1964,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1023815623646221965}
     m_Modifications:
+    - target: {fileID: 6661589091212596230, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 32709
+      objectReference: {fileID: 0}
     - target: {fileID: 1076080589973573086, guid: fefa282e5bee96e438ada2d51aacee81,
         type: 3}
       propertyPath: m_RootOrder
@@ -2074,11 +2078,6 @@ PrefabInstance:
         type: 3}
       propertyPath: enabled
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6661589091212596230, guid: 54e921bbf2ff347f698b366215bd40b3,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 32709
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

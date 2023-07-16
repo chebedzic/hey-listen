@@ -5,15 +5,14 @@ using DG.Tweening;
 
 public class InteractableSlot : Interactable
 {
-
     public ActionType slotType;
     [SerializeField] private Transform slotActionReference;
-    public InteractableCollectable interactable;
-    private ModalScript modalParent;
+    public InteractableCollectable interactableCollectable;
+    private InteractableModal modalParent;
 
     private void Start()
     {
-        modalParent = GetComponentInParent<ModalScript>();
+        modalParent = GetComponentInParent<InteractableModal>();
     }
 
     public override void Highlight(bool state)
@@ -32,12 +31,12 @@ public class InteractableSlot : Interactable
 
     public void FillSlot(bool fill, Action action)
     {
-        if (interactable.enabled)
-            interactable.Collect();
+        if (interactableCollectable.gameObject.activeSelf)
+            interactableCollectable.Collect();
 
-        interactable.collectableAction = action;
-        interactable.Setup();
-        interactable.enabled = true;
+        interactableCollectable.collectableAction = action;
+        interactableCollectable.Setup();
+        interactableCollectable.interactable = true;
         slotActionReference.localScale = Vector3.one;
         slotActionReference.localPosition = Vector3.zero;
         slotActionReference.DOComplete();
@@ -66,7 +65,7 @@ public class InteractableSlot : Interactable
 
     public Action SlotAction()
     {
-        return interactable.collectableAction;
+        return interactableCollectable.collectableAction;
     }
 
 }

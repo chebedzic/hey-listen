@@ -7,7 +7,7 @@ public class InteractablePrompt : Interactable
 {
     [SerializeField] private Transform modalReference;
     [SerializeField] private List<Action> modalActions;
-    private ModalScript modalScript;
+    private InteractableModal modalScript;
     private int slotAmount;
 
     public enum PrompType { confirm, cancel}
@@ -15,7 +15,7 @@ public class InteractablePrompt : Interactable
 
     private void Start()
     {
-        modalScript = GetComponentInParent<ModalScript>();
+        modalScript = GetComponentInParent<InteractableModal>();
         slotAmount = transform.parent.GetComponentsInChildren<InteractableSlot>().Length;
     }
 
@@ -36,7 +36,7 @@ public class InteractablePrompt : Interactable
 
         if (prompt == PrompType.cancel)
         {
-            modalScript.SetEditMode(false);
+            modalScript.SetModalForEditMode(false);
             return;
         }
 
@@ -44,7 +44,7 @@ public class InteractablePrompt : Interactable
 
         foreach (InteractableSlot slot in transform.parent.GetComponentsInChildren<InteractableSlot>())
         {
-            if (slot.interactable.enabled) modalActions.Add(slot.SlotAction());
+            if (slot.interactableCollectable.interactable) modalActions.Add(slot.SlotAction());
         }
 
         string names = "Confirmed choice: ";
@@ -58,7 +58,7 @@ public class InteractablePrompt : Interactable
         if (modalActions.Count >= slotAmount)
         {
             print(names);
-            modalScript.SetEditMode(false);
+            modalScript.SetModalForEditMode(false);
             modalScript.AttemptSolution(modalActions);
         }
     }

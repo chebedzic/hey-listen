@@ -14,28 +14,35 @@ public class RoomTrigger : MonoBehaviour
     [SerializeField] private BoxCollider collider;
 
     [HideInInspector] public Interactable[] roomInteractables;
-    [HideInInspector] public ModalScript[] roomModals;
     [HideInInspector] public GameObject roomCompanionSurface;
 
     private void Awake()
     {
-        roomInteractables = GetComponentsInChildren<Interactable>();
-        roomModals = GetComponentsInChildren<ModalScript>();
-        roomCompanionSurface = transform.GetChild(0).gameObject;
+        // Look for all interactables that are part of the parent room
+        roomInteractables = transform.parent.GetComponentsInChildren<Interactable>();
 
+        // Look for all sibling objects
+        for (int i = 0; i < transform.parent.childCount; i++)
+        {
+            //Find the one with the companion tag to set as the companion surface
+            if (transform.parent.GetChild(i).CompareTag("CompanionSurface"))
+                roomCompanionSurface = transform.parent.GetChild(i).gameObject;
+
+            //If there is a camera object in the room, disable it
+            if(transform.parent.GetChild(i).GetComponent<Camera>() != null)
+                transform.parent.GetChild(i).gameObject.SetActive(false);
+        }
+
+        // Deactivate everything by default
         SetRoomActive(false);
+
     }
 
     public void SetRoomActive(bool active)
     {
         foreach ( Interactable interactable in roomInteractables )
         {
-            interactable.enabled = active;
-        }
-
-        foreach(ModalScript modal in roomModals)
-        {
-            modal.enabled = active;
+            interactable.interactable = active;
         }
 
         roomCompanionSurface.SetActive(active);

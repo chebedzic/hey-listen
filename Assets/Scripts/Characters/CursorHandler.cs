@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using DG.Tweening;
 
+public enum CursorType { arrow, hover, navigate}
 public class CursorHandler : MonoBehaviour
 {
     public static CursorHandler instance;
@@ -32,11 +33,27 @@ public class CursorHandler : MonoBehaviour
         cursorImage.color = settings.arrowColor;
     }
 
-    public void HoverInteractable(bool hover)
+    public void HoverInteractable(bool hover, CursorType type)
     {
-        cursorImage.sprite = hover ? settings.handCursor : settings.arrowCursor;
-        cursorImage.DOColor(hover ? settings.handColor : settings.arrowColor, .2f);
+        Sprite cursorSprite;
+        switch (type)
+        {
+            case CursorType.hover:
+                cursorSprite = settings.handCursor;
+                break;
+            case CursorType.navigate:
+                cursorSprite = settings.navigateCursor;
+
+                break;
+            default:
+                cursorSprite = settings.navigateCursor;
+                break;
+        }   
+
+        cursorImage.sprite = hover ? cursorSprite : settings.arrowCursor;
+        //cursorImage.DOColor(hover ? settings.handColor : settings.arrowColor, .2f);
     }
+
 
     void FollowCursor(Vector3 pos)
     {

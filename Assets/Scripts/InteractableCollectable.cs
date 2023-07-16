@@ -5,31 +5,35 @@ using DG.Tweening;
 
 public class InteractableCollectable : Interactable
 {
-    [SerializeField] public Action collectableAction;
+    public bool canCollect = true;
+
+    public Action collectableAction;
+
+    public InteractableSlot parentSlot;
 
     [SerializeField] private Renderer actionRenderer;
 
     private void Start()
     {
         actionRenderer = GetComponentInChildren<Renderer>();
+
+        if(GetComponentInParent<InteractableSlot>() != null)
+            parentSlot = GetComponentInParent<InteractableSlot>();
     }
 
     public override void OnMouseDown()
     {
-        if (!enabled)
+        if (!canCollect)
             return;
 
-        enabled = false;
-
-        if (GetComponentInParent<InteractableSlot>() != null)
-            GetComponentInParent<InteractableSlot>().UpdateSlot();
+        if (parentSlot == null)
+            canCollect = false;
 
         Vector2 topOfScreenPos = new Vector2(Screen.width / 2, Screen.height);
         Vector3 pos = Camera.main.ScreenToWorldPoint(topOfScreenPos);
         pos += (Camera.main.transform.forward * 6);
         pos += (Camera.main.transform.up * 2.82f);
 
-        //Collect();
         transform.DOJump(pos, .35f, 1, .3f).OnComplete(() => Collect());
         transform.GetChild(0).DOComplete();
         transform.GetChild(0).DOShakeScale(.4f, 1f, 20, 90, true);
@@ -41,6 +45,9 @@ public class InteractableCollectable : Interactable
     {
         ActionsManager.instance.TryCollectAction(collectableAction);
         gameObject.SetActive(false);
+
+        if (parentSlot != null)
+            parentSlot.UpdateSlot();
     }
 
     public void Setup()

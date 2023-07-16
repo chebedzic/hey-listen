@@ -28,8 +28,8 @@ public class CompanionManager : MonoBehaviour
     public Interactable currentInteractable;
     public Interactable selectedInteractable;
     public InteractableSlot currentSlot;
-    public ModalScript currentModal;
-    public ModalScript focusedModal;
+    public InteractableModal currentModal;
+    public InteractableModal focusedModal;
 
     [Header("Edit Mode")]
     public bool isInEditorMode;
@@ -80,7 +80,7 @@ public class CompanionManager : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredDirection), rotationSpeed * Time.deltaTime);
     }
 
-    public void SetEditMode(bool state, ModalScript modalToEdit)
+    public void SetEditMode(bool state, InteractableModal modalToEdit)
     {
         focusedModal = state ? modalToEdit : null;
 

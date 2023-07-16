@@ -27,6 +27,10 @@ public class HeroManager : MonoBehaviour
 
     void Update()
     {
+        if (!navMeshAgent.isOnNavMesh)
+            return;
+
+
         if (navMeshAgent.isOnOffMeshLink && !hasEnteredOffMeshLink)
         {
             SetHeroDestination(navMeshAgent.currentOffMeshLinkData.endPos);

@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 public class LoadRooms : MonoBehaviour
 {
 
-    [SerializeField] private int[] allRooms;
-
     // Start is called before the first frame update
     void Start()
     {
-        foreach (int room in allRooms)
-            SceneManager.LoadSceneAsync(room, LoadSceneMode.Additive);
+        for (int i = SceneManager.GetActiveScene().buildIndex + 1; i < SceneManager.sceneCountInBuildSettings; i++)
+        {
+            SceneManager.LoadSceneAsync(i, LoadSceneMode.Additive);
+        }
     }
 
     // Update is called once per frame

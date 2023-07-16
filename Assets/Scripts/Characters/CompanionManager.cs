@@ -47,6 +47,7 @@ public class CompanionManager : MonoBehaviour
     private void LightProbes_needsRetetrahedralization()
     {
         LightProbes.Tetrahedralize();
+        print("update lightprobes");
     }
 
     private void Update()

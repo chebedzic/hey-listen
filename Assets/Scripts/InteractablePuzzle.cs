@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class InteractablePuzzle : Interactable
 {
@@ -11,12 +12,13 @@ public class InteractablePuzzle : Interactable
     [SerializeField] private OffMeshLink offMeshLink;
     private StateMachine stateMachine;
     private InteractableModal linkedModal;
+    private Animator animator;
 
     private void Awake()
     {
+        animator = GetComponentInChildren<Animator>();
         stateMachine = GetComponent<StateMachine>();
     }
-
     public void TryPuzzle(List<Action> actionList, InteractableModal modal)
     {
         if (stateMachine != null)
@@ -24,7 +26,7 @@ public class InteractablePuzzle : Interactable
             var combination = CompanionManager.instance.combinationLibrary.GetCombination(actionList);
 
             //stateMachine
-            CustomEvent.Trigger(this.gameObject, "attempt", combination);
+            CustomEvent.Trigger(this.gameObject, "TryInteraction", combination);
         }
     }
 
@@ -56,8 +58,14 @@ public class InteractablePuzzle : Interactable
             }
 
             //stateMachine
-            CustomEvent.Trigger(this.gameObject, "attempt", combination);
+            CustomEvent.Trigger(this.gameObject, "TryInteraction", combination);
         }
+    }
+
+    public void TriggerAnimator(string trigger)
+    {
+        if(animator)
+            animator.SetTrigger(trigger);
     }
 
 

@@ -155,7 +155,7 @@ PrefabInstance:
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
@@ -220,10 +220,6 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1424901155637502825, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 1948755649425692033}
-    - targetCorrespondingSourceObject: {fileID: 1424901155637502825, guid: 39e0a7837c83e413e97345f93b096bb5,
-        type: 3}
       insertIndex: 2
       addedObject: {fileID: 8259223754626995607}
     - targetCorrespondingSourceObject: {fileID: 392859906650391448, guid: 39e0a7837c83e413e97345f93b096bb5,
@@ -265,23 +261,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 5219398429452255078}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1948755649425692033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6604884248751676431}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3bd5139e04887fe4b8f9acc110530a58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  interactable: 1
-  inFocus: 0
-  interactableRenderers: []
-  selected: 0
-  offMeshLink: {fileID: 0}
 --- !u!65 &8259223754626995607
 BoxCollider:
   m_ObjectHideFlags: 0

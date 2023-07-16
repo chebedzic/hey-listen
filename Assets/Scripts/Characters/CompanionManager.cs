@@ -40,14 +40,6 @@ public class CompanionManager : MonoBehaviour
     {
         instance = this;
 
-        //Event meeded for LightProbe refresh on additive loading scenes
-        LightProbes.needsRetetrahedralization += LightProbes_needsRetetrahedralization;
-    }
-
-    private void LightProbes_needsRetetrahedralization()
-    {
-        LightProbes.Tetrahedralize();
-        print("update lightprobes");
     }
 
     private void Update()
@@ -110,7 +102,8 @@ public class CompanionManager : MonoBehaviour
     {
 
         if (currentInteractable == null && currentModal == null)
-            HeroManager.instance.SetHeroDestination(worldPosition);
+            if(!HeroManager.instance.isInteracting)
+                HeroManager.instance.SetHeroDestination(worldPosition);
 
         OnMouseClick.Invoke(worldPosition);
     }

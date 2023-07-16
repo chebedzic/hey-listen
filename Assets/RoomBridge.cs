@@ -41,6 +41,7 @@ public class RoomBridge : Interactable
 
     private void OnDisable()
     {
-        CursorHandler.instance.HoverInteractable(false, CursorType.navigate);
+        if(CursorHandler.instance != null)
+            CursorHandler.instance.HoverInteractable(false, CursorType.navigate);
     }
 }

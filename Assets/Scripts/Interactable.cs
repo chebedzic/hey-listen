@@ -14,12 +14,19 @@ public class Interactable : MonoBehaviour
     public bool interactable = true;
     public bool inFocus = false;
 
+    [HideInInspector] public Collider interactableCollider;
     [HideInInspector] public Renderer[] interactableRenderers;
     [HideInInspector] public bool selected;
 
-    private void Awake()
+    public virtual void Awake()
     {
         interactableRenderers = GetComponentsInChildren<Renderer>();
+    }
+
+    private void Start()
+    {
+        interactableRenderers = GetComponentsInChildren<Renderer>();
+        interactableCollider = GetComponent<Collider>();
     }
 
     private void OnDestroy()
@@ -72,6 +79,10 @@ public class Interactable : MonoBehaviour
             }
 
         }
+    }
+    public void SetColliderState(bool enabled)
+    {
+        interactableCollider.enabled = enabled;
     }
 
     public virtual void OnMouseDrag() { }

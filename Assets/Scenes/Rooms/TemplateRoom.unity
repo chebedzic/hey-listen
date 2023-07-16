@@ -16684,6 +16684,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorPuzzle Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 6604884248751676431, guid: 485a9dcedcb5e414892da871319f699a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -19066,6 +19071,16 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1858745184}
     m_Modifications:
+    - target: {fileID: 1306753192996684341, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
+        type: 3}
+      propertyPath: m_Activated
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892285340652189817, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2922045944804126640, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
         type: 3}
       propertyPath: m_RootOrder

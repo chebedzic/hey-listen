@@ -15,11 +15,11 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
   m_Fog: 1
-  m_FogColor: {r: 0.23592025, g: 0.31643328, b: 0.4433962, a: 1}
+  m_FogColor: {r: 0.21966892, g: 0.29336366, b: 0.4056604, a: 1}
   m_FogMode: 1
   m_FogDensity: 0.13
-  m_LinearFogStart: 10.71
-  m_LinearFogEnd: 16
+  m_LinearFogStart: 10
+  m_LinearFogEnd: 19
   m_AmbientSkyColor: {r: 1, g: 1, b: 1, a: 1}
   m_AmbientEquatorColor: {r: 0.28502133, g: 0.7129, b: 0.990566, a: 1}
   m_AmbientGroundColor: {r: 1, g: 1, b: 1, a: 1}
@@ -1482,7 +1482,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1633559054
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1842,16 +1842,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4599722609186288483, guid: 855c3b5ae1ad942228dabc8db4678724,
-        type: 3}
-      propertyPath: m_Acceleration
-      value: 150
-      objectReference: {fileID: 0}
-    - target: {fileID: 4599722609186288483, guid: 855c3b5ae1ad942228dabc8db4678724,
-        type: 3}
-      propertyPath: m_AngularSpeed
-      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 7796198458216666592, guid: 855c3b5ae1ad942228dabc8db4678724,
         type: 3}

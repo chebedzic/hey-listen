@@ -10,8 +10,7 @@ using UnityEngine.AI;
 public class Interactable : MonoBehaviour
 {
     public bool enabled = true;
-
-    public UnityEvent OnClick;
+    public bool inFocus = false;
 
     [HideInInspector] public Renderer[] interactableRenderers;
     [HideInInspector] public bool selected;
@@ -65,7 +64,8 @@ public class Interactable : MonoBehaviour
 
     public virtual void OnMouseDown()
     {
-        OnClick.Invoke();
+        //if (!inFocus)
+        //    return;
 
         if (linkedModal == null && stateMachine == true)
             print("No modal linked with object");
@@ -112,10 +112,14 @@ public class Interactable : MonoBehaviour
             return;
 
         offMeshLink.activated = state;
+
+        offMeshLink.GetComponentInChildren<Collider>().enabled = state;
     }
 
     public virtual void OnMouseEnter()
     {
+        //if (!inFocus)
+        //    return;
 
         CompanionManager.instance.currentInteractable = this;
         Highlight(true);
@@ -125,6 +129,8 @@ public class Interactable : MonoBehaviour
 
     public virtual void OnMouseExit()
     {
+        //if (!inFocus)
+        //    return;
 
         CompanionManager.instance.currentInteractable = null;
         Highlight(false);

@@ -29,6 +29,7 @@ public class CompanionManager : MonoBehaviour
     public Interactable selectedInteractable;
     public InteractableSlot currentSlot;
     public ModalScript currentModal;
+    public ModalScript focusedModal;
 
     [Header("Edit Mode")]
     public bool isInEditorMode;
@@ -39,6 +40,7 @@ public class CompanionManager : MonoBehaviour
     {
         instance = this;
 
+        //Event meeded for LightProbe refresh on additive loading scenes
         LightProbes.needsRetetrahedralization += LightProbes_needsRetetrahedralization;
     }
 
@@ -57,6 +59,10 @@ public class CompanionManager : MonoBehaviour
 
         Movement();
 
+        //Exception needed because Input System is currently not working on WEBGL
+        #if PLATFORM_WEBGL
+        if(Mouse.current.leftButton.wasPressedThisFrame) OnFire();
+        #endif
     }
 
     void Movement()
@@ -68,51 +74,16 @@ public class CompanionManager : MonoBehaviour
 
         Vector3 desiredDirection = worldPosition - transform.position;
 
-        //transform.position = Vector3.Lerp(transform.position, worldPosition, mouseLerp * Time.deltaTime);
-
-        NavMeshHit hit;
-        bool isValid = NavMesh.SamplePosition(worldPosition, out hit, .3f, NavMesh.AllAreas);
-
-        //if (!isValid)
-        //    return;
-
-        if ((transform.position - hit.position).magnitude >= .02f)
-            transform.position = Vector3.Lerp(transform.position, worldPosition, mouseLerp * Time.deltaTime);
-
-        //Visual Rotation
+        transform.position = Vector3.Lerp(transform.position, worldPosition, mouseLerp * Time.deltaTime);
 
         if ((worldPosition - transform.position).magnitude > 0.01f)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredDirection), rotationSpeed * Time.deltaTime);
     }
 
-    public float MovementMagnitude()
+    public void SetEditMode(bool state, ModalScript modalToEdit)
     {
-        return (worldPosition - transform.position).magnitude;
-    }
+        focusedModal = state ? modalToEdit : null;
 
-    #region Input
-
-    void OnFire(InputValue value)
-    {
-
-        if (currentInteractable == null && currentModal == null)
-            HeroManager.instance.SetHeroDestination(worldPosition);
-
-        OnMouseClick.Invoke(worldPosition);
-    }
-
-    public void OnEdit()
-    {
-        SetEditMode(!isInEditorMode);
-    }
-
-    void OnReset()
-    {
-        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
-    }
-
-    public void SetEditMode(bool state)
-    {
         isInEditorMode = state;
 
         if (isInEditorMode)
@@ -125,6 +96,27 @@ public class CompanionManager : MonoBehaviour
         }
 
         OnEditorMode.Invoke(isInEditorMode);
+    }
+
+    public float MovementMagnitude()
+    {
+        return (worldPosition - transform.position).magnitude;
+    }
+
+    #region Input
+
+    void OnFire()
+    {
+
+        if (currentInteractable == null && currentModal == null)
+            HeroManager.instance.SetHeroDestination(worldPosition);
+
+        OnMouseClick.Invoke(worldPosition);
+    }
+
+    void OnReset()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 
     #endregion

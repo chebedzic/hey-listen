@@ -4,15 +4,32 @@ using UnityEngine;
 
 public class RoomManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+
+    public static RoomManager instance;
+
+    public List<RoomTrigger> rooms;
+    [SerializeField] private RoomTrigger currentRoom;
+
+    private void Awake()
     {
-        
+        instance= this;
     }
 
-    // Update is called once per frame
-    void Update()
+    void Start()
     {
-        
+
+    }
+
+    public void RoomSetup(RoomTrigger incomingRoom)
+    {
+        if(incomingRoom != currentRoom)
+        {
+            foreach (RoomTrigger room in rooms)
+            {
+                room.SetRoomActive(false);
+            }
+            currentRoom = incomingRoom;
+            currentRoom.SetRoomActive(true);
+        }
     }
 }

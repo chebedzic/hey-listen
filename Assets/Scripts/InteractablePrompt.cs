@@ -19,12 +19,26 @@ public class InteractablePrompt : Interactable
         slotAmount = transform.parent.GetComponentsInChildren<InteractableSlot>().Length;
     }
 
+    public override void OnMouseEnter()
+    {
+        if (CompanionManager.instance.focusedModal != modalScript)
+            return; 
+
+        base.OnMouseEnter();
+    }
+
     public override void OnMouseDown()
     {
         base.OnMouseDown();
 
-        if (prompt == PrompType.cancel)
+        if (CompanionManager.instance.focusedModal != modalScript)
             return;
+
+        if (prompt == PrompType.cancel)
+        {
+            modalScript.SetEditMode(false);
+            return;
+        }
 
         modalActions = new List<Action>();
 
@@ -44,7 +58,7 @@ public class InteractablePrompt : Interactable
         if (modalActions.Count >= slotAmount)
         {
             print(names);
-            CompanionManager.instance.SetEditMode(false);
+            modalScript.SetEditMode(false);
             modalScript.AttemptSolution(modalActions);
         }
     }

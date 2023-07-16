@@ -19,7 +19,6 @@ public class ModalScript : MonoBehaviour
         slots = GetComponentsInChildren<InteractableSlot>();
         originalPosition = transform.position;
         collider = GetComponent<Collider>();
-        CompanionManager.instance.OnEditorMode.AddListener(OnEditMode);
         playButton.SetActive(false);
         if(linkedInteractable)
         linkedInteractable.SetModal(this);
@@ -57,18 +56,14 @@ public class ModalScript : MonoBehaviour
     private void OnMouseDown()
     {
         if (!CompanionManager.instance.isInEditorMode)
-        {
-            CompanionManager.instance.SetEditMode(true);
-            collider.enabled = false;
-
-        }
+            SetEditMode(true);
     }
 
-    void OnEditMode(bool state)
+    public void SetEditMode(bool state)
     {
 
-
         collider.enabled = !state;
+        CompanionManager.instance.SetEditMode(state, this);
 
         //return;
 

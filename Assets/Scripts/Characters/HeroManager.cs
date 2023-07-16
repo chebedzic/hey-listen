@@ -30,8 +30,6 @@ public class HeroManager : MonoBehaviour
         if (navMeshAgent.isOnOffMeshLink && !hasEnteredOffMeshLink)
         {
             SetHeroDestination(navMeshAgent.currentOffMeshLinkData.endPos);
-            transform.DOComplete();
-            transform.DOLookAt(navMeshAgent.currentOffMeshLinkData.endPos, .1f, AxisConstraint.Y);
             hasEnteredOffMeshLink = true;
         }
 

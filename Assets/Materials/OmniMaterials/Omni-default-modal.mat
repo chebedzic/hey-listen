@@ -107,6 +107,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
+    - _NoiseScale: 60
     - _NoiseStrength: 0.02
     - _NormalMap: 0
     - _NormalMapStrength: 0.5
@@ -129,9 +130,10 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _FresnelColor: {r: 0, g: 3.0190742, b: 3.9491246, a: 1}
+    - _NormalMapColor: {r: 1, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _Specular: {r: 0, g: 0, b: 0, a: 0}
-    - _TintColor: {r: 0.40923816, g: 0.614893, b: 0.7830189, a: 1}
+    - _TintColor: {r: 0.5943396, g: 0.5851453, b: 0.56854755, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3229909673786752896
 MonoBehaviour:

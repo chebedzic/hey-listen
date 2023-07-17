@@ -7,5 +7,6 @@ public class CursorSettings : ScriptableObject
     public Color arrowColor;
     public Sprite handCursor;
     public Color handColor;
-    public Sprite navigateCursor;
+    public Sprite[] navigateCursors;
+    public float edgeDistanceThreshold;
 }

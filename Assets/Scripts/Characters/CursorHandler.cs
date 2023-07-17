@@ -42,16 +42,55 @@ public class CursorHandler : MonoBehaviour
                 cursorSprite = settings.handCursor;
                 break;
             case CursorType.navigate:
-                cursorSprite = settings.navigateCursor;
+                cursorSprite = settings.navigateCursors[ChooseNavigateIndex()];
 
                 break;
             default:
-                cursorSprite = settings.navigateCursor;
+                cursorSprite = settings.handCursor;
                 break;
         }   
 
         cursorImage.sprite = hover ? cursorSprite : settings.arrowCursor;
         //cursorImage.DOColor(hover ? settings.handColor : settings.arrowColor, .2f);
+    }
+
+
+    int ChooseNavigateIndex()
+    {
+        Vector3 mousePosition = Mouse.current.position.value;
+
+        // Get the screen edges
+        float screenWidth = Screen.width;
+        float screenHeight = Screen.height;
+
+        // Calculate the distances to the screen edges
+        float topDistance = screenHeight - mousePosition.y;
+        float bottomDistance = mousePosition.y;
+        float rightDistance = screenWidth - mousePosition.x;
+        float leftDistance = mousePosition.x;
+
+        // Find the minimum distance among the four directions
+        float minDistance = Mathf.Min(topDistance, bottomDistance, rightDistance, leftDistance);
+
+        // Choose the direction based on the minimum distance
+        if (minDistance == topDistance)
+        {
+            return 0;
+        }
+        else if (minDistance == bottomDistance)
+        {
+            return 1;
+        }
+        else if (minDistance == rightDistance)
+        {
+            return 2;
+        }
+        else if (minDistance == leftDistance)
+        {
+            return 3;
+        }
+
+        return 0;
     }
 
 

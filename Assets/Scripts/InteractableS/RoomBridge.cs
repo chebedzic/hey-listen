@@ -6,6 +6,15 @@ using UnityEngine.AI;
 public class RoomBridge : Interactable
 {
     public Vector3 offset;
+    private OffMeshLink offMeshLink;
+
+    public override void Awake()
+    {
+        base.Awake();
+
+        offMeshLink = GetComponentInParent<OffMeshLink>();
+
+    }
 
     public void TryBridge()
     {
@@ -19,6 +28,9 @@ public class RoomBridge : Interactable
         Gizmos.DrawLine(transform.position, transform.position + offset);
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position + offset, .2f);
+
+        Gizmos.color = Color.white;
+        Gizmos.DrawSphere(transform.position + (Vector3.up * 5),.4f);
     }
 
     public override void OnMouseDown()
@@ -43,5 +55,16 @@ public class RoomBridge : Interactable
     {
         if(CursorHandler.instance != null)
             CursorHandler.instance.HoverInteractable(false, CursorType.navigate);
+    }
+
+    public bool CanBeActiveOnStart()
+    {
+        if (offMeshLink == null)
+            return true;
+
+        if (offMeshLink.activated)
+            return true;
+
+        return false;
     }
 }

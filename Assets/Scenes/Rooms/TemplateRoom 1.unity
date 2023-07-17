@@ -9767,6 +9767,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9091682452881082813, guid: f754518f9480f134095d9ea51b146aa3,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 11.713558
+      objectReference: {fileID: 0}
+    - target: {fileID: 9091682452881082813, guid: f754518f9480f134095d9ea51b146aa3,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 0.08680725
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -15968,7 +15978,7 @@ PrefabInstance:
     - target: {fileID: 1460509760424374807, guid: ebfccd90f2c03cc4db3e6acd72bab61c,
         type: 3}
       propertyPath: m_Size.x
-      value: 3
+      value: 3.0000002
       objectReference: {fileID: 0}
     - target: {fileID: 1460509760424374807, guid: ebfccd90f2c03cc4db3e6acd72bab61c,
         type: 3}
@@ -15978,7 +15988,12 @@ PrefabInstance:
     - target: {fileID: 1460509760424374807, guid: ebfccd90f2c03cc4db3e6acd72bab61c,
         type: 3}
       propertyPath: m_Size.z
-      value: 2.5
+      value: 1.872237
+      objectReference: {fileID: 0}
+    - target: {fileID: 1460509760424374807, guid: ebfccd90f2c03cc4db3e6acd72bab61c,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.31388164
       objectReference: {fileID: 0}
     - target: {fileID: 4706566120396651103, guid: ebfccd90f2c03cc4db3e6acd72bab61c,
         type: 3}
@@ -16055,8 +16070,13 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2892285340652189817, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
         type: 3}
+      propertyPath: m_Size.z
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2892285340652189817, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
+        type: 3}
       propertyPath: m_Center.z
-      value: 4
+      value: 6.52
       objectReference: {fileID: 0}
     - target: {fileID: 2922045944804126640, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
         type: 3}

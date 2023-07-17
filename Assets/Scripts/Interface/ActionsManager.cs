@@ -72,6 +72,8 @@ public class ActionsManager : MonoBehaviour
 
         editModeQuad.material.DOFade(show ? editModeTransparency : 0, .1f);
         editModeQuad.material.DOColor(show ? editModeEmissiveColor : Color.black,"_EmissionColor", .1f);
+
+        GetComponentInChildren<Collider>().enabled = show;
     }
 
     public void TryCollectAction(Action action)

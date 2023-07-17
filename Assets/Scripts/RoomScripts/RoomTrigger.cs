@@ -44,7 +44,7 @@ public class RoomTrigger : MonoBehaviour
         roomCompanionSurface.SetActive(active);
         foreach (RoomBridge bridge in roomBridges)
         {
-            if (bridge.CanBeActiveOnStart() && bridge.interactableCollider != null)
+            if (bridge.interactableCollider != null)
                 bridge.interactableCollider.enabled = active;
         }
 

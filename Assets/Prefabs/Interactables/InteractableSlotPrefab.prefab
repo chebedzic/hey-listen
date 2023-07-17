@@ -104,7 +104,7 @@ PrefabInstance:
     - target: {fileID: 6719906517474782568, guid: 1cd9399a28e52d543ad2ef1c475b71c7,
         type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6719906517474782568, guid: 1cd9399a28e52d543ad2ef1c475b71c7,
         type: 3}
@@ -161,6 +161,11 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 0.45
       objectReference: {fileID: 0}
+    - target: {fileID: 8636564908285996992, guid: 1cd9399a28e52d543ad2ef1c475b71c7,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2419608642769031479, guid: 1cd9399a28e52d543ad2ef1c475b71c7, type: 3}
     m_RemovedGameObjects:
@@ -205,6 +210,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerEnter:
     m_PersistentCalls:
       m_Calls: []
   interactable: 1

@@ -7,6 +7,7 @@ public class HeroVisual : MonoBehaviour
 {
 
     private Animator animator;
+    private HeroSound heroSound;
     private HeroManager heroManager;
     [SerializeField] private ParticleSystem heroHitParticle;
     [SerializeField] private ParticleSystem enemyHitParticle;
@@ -19,6 +20,7 @@ public class HeroVisual : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         heroManager = GetComponentInParent<HeroManager>();
         renderers = GetComponentsInChildren<Renderer>();
+        heroSound = GetComponentInChildren<HeroSound>();
     }
 
     void Update()

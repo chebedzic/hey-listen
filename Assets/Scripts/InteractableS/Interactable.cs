@@ -9,6 +9,7 @@ using UnityEngine.Events;
 public class Interactable : MonoBehaviour
 {
     public UnityEvent OnClick;
+    [HideInInspector] public UnityEvent OnPointerEnter;
 
     [Header("States")]
     public bool interactable = true;
@@ -40,7 +41,7 @@ public class Interactable : MonoBehaviour
 
     public virtual void OnMouseDown()
     {
-        //Base
+        //Event
         OnClick?.Invoke();
     }
    
@@ -51,6 +52,9 @@ public class Interactable : MonoBehaviour
         Highlight(true);
 
         CursorHandler.instance.HoverInteractable(true, CursorType.hover);
+
+        //Event
+        OnPointerEnter?.Invoke();
     }
 
     public virtual void OnMouseExit()

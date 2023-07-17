@@ -25,11 +25,13 @@ public class CompanionVisual : MonoBehaviour
     [SerializeField] ParticleSystem whistleParticle;
 
     private bool canWhistle = true;
+    private HeroSound companionSound;
 
     void Start()
     {
         companionManager = GetComponentInParent<CompanionManager>();
         companionAnimator = GetComponentInChildren<Animator>();
+        companionSound = GetComponentInChildren<HeroSound>();
 
         //Event Listening
         companionManager.OnMouseClick.AddListener(PlayClickParticle);
@@ -51,7 +53,7 @@ public class CompanionVisual : MonoBehaviour
     void PlayClickParticle(Vector3 position)
     {
         //TODO replace with general state machine
-        if (!canWhistle || companionManager.currentInteractable != null || companionManager.currentModal != null)
+        if (!canWhistle || (companionManager.currentInteractable != null && companionManager.currentInteractable.GetComponent<RoomBridge>() == null) || companionManager.currentModal != null)
             return;
 
         if (clickParticle == null)
@@ -65,6 +67,8 @@ public class CompanionVisual : MonoBehaviour
 
         whistleParticle.Play();
         companionAnimator.SetTrigger("whistle");
+
+        companionSound.PlayWhistleSound();
     }
 
     void SetHeadAim(bool state)

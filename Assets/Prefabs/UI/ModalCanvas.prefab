@@ -55,6 +55,9 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls: []
+  OnPointerEnter:
+    m_PersistentCalls:
+      m_Calls: []
   interactable: 1
   inFocus: 0
   interactableCollider: {fileID: 0}
@@ -1097,6 +1100,7 @@ GameObject:
   - component: {fileID: 8749409820437473742}
   - component: {fileID: 1026639305080717385}
   - component: {fileID: 3585366154308557904}
+  - component: {fileID: 5519455652694039606}
   m_Layer: 0
   m_Name: ModalCanvas
   m_TagString: Untagged
@@ -1138,6 +1142,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+  OnPointerEnter:
     m_PersistentCalls:
       m_Calls: []
   interactable: 1
@@ -1234,6 +1241,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 1.2, z: 1.48}
   m_Center: {x: 0, y: 0.5, z: -0.7}
+--- !u!114 &5519455652694039606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5614075020645834918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e211f70e98b9ce43b0d523c49a330be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6604564330386504941
 GameObject:
   m_ObjectHideFlags: 0
@@ -1795,6 +1814,9 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls: []
+  OnPointerEnter:
+    m_PersistentCalls:
+      m_Calls: []
   interactable: 1
   inFocus: 0
   interactableCollider: {fileID: 0}
@@ -1977,11 +1999,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1023815623646221965}
     m_Modifications:
-    - target: {fileID: 6661589091212596230, guid: 54e921bbf2ff347f698b366215bd40b3,
-        type: 3}
-      propertyPath: m_SortingLayer
-      value: 32709
-      objectReference: {fileID: 0}
     - target: {fileID: 1076080589973573086, guid: fefa282e5bee96e438ada2d51aacee81,
         type: 3}
       propertyPath: m_RootOrder
@@ -2091,6 +2108,11 @@ PrefabInstance:
         type: 3}
       propertyPath: enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6661589091212596230, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_SortingLayer
+      value: 32709
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

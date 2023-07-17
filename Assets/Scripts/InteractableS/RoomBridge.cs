@@ -35,19 +35,33 @@ public class RoomBridge : Interactable
 
     public override void OnMouseDown()
     {
-        if(!interactable) return;
+        if (offMeshLink != null)
+            if (!offMeshLink.activated)
+                return;
+
         TryBridge();
     }
 
     public override void OnMouseEnter()
     {
-        if (!interactable) return;
+        CompanionManager.instance.currentInteractable = this;
+        OnPointerEnter?.Invoke();
+
+        if (offMeshLink != null)
+            if (!offMeshLink.activated)
+                return;
+
         CursorHandler.instance.HoverInteractable(true, CursorType.navigate);
     }
 
     public override void OnMouseExit()
     {
-        if (!interactable) return;
+        base.OnMouseExit();
+
+        if (offMeshLink != null)
+            if (!offMeshLink.activated)
+                return;
+
         CursorHandler.instance.HoverInteractable(false, CursorType.navigate);
     }
 
@@ -57,14 +71,4 @@ public class RoomBridge : Interactable
             CursorHandler.instance.HoverInteractable(false, CursorType.navigate);
     }
 
-    public bool CanBeActiveOnStart()
-    {
-        if (offMeshLink == null)
-            return true;
-
-        if (offMeshLink.activated)
-            return true;
-
-        return false;
-    }
 }

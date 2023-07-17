@@ -4,7 +4,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using Cinemachine;
 
 [SelectionBase]
 public class InteractableModal : Interactable

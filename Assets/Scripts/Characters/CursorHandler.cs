@@ -23,7 +23,7 @@ public class CursorHandler : MonoBehaviour
     private void Start()
     {
 
-        companion = FindObjectOfType<CompanionManager>();
+        companion = FindAnyObjectByType<CompanionManager>();
         cursorImage = GetComponent<Image>();
         companion.OnMouseMovement.AddListener(FollowCursor);
         companion.OnMouseClick.AddListener(HandleClick);

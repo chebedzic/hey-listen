@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1090953203595365332
 RectTransform:
   m_ObjectHideFlags: 0
@@ -52,8 +52,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6302b9ea01a4034aacd54002932f1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
   interactable: 1
   inFocus: 0
+  interactableCollider: {fileID: 0}
   interactableRenderers: []
   selected: 0
   modalReference: {fileID: 6517823514565165556}
@@ -1133,14 +1137,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ee07dee20a0b9343925c66aa87102c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
   interactable: 1
   inFocus: 0
+  interactableCollider: {fileID: 0}
   interactableRenderers: []
   selected: 0
   linkedPuzzle: {fileID: 0}
   offMeshLink: {fileID: 0}
   currentModalActions: []
   playButton: {fileID: 8855357860453135734}
+  cancelButton: {fileID: 111512706007889954}
 --- !u!223 &8834952629768720504
 Canvas:
   m_ObjectHideFlags: 0
@@ -1186,7 +1195,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &1026639305080717385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1749,7 +1758,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4639116897699414380
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1783,8 +1792,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6302b9ea01a4034aacd54002932f1c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnClick:
+    m_PersistentCalls:
+      m_Calls: []
   interactable: 1
   inFocus: 0
+  interactableCollider: {fileID: 0}
   interactableRenderers: []
   selected: 0
   modalReference: {fileID: 6517823514565165556}

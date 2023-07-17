@@ -11,6 +11,7 @@ public class HeroVisual : MonoBehaviour
     [SerializeField] private ParticleSystem heroHitParticle;
     [SerializeField] private ParticleSystem enemyHitParticle;
     [SerializeField] [ColorUsage(true,true)] private Color enemyHitColor;
+    [SerializeField] private ParticleSystem confusionParticle;
     private Renderer[] renderers;
 
     void Start()
@@ -31,6 +32,11 @@ public class HeroVisual : MonoBehaviour
         TriggerHeroAnimation("death");
         PlayHitParticle(true);
         BlinkEmission();
+    }
+
+    public void PlayConfusedParticle()
+    {
+        confusionParticle.Play();
     }
 
     public void TriggerHeroAnimation(string trigger)

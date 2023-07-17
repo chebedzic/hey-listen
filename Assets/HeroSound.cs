@@ -36,4 +36,14 @@ public class HeroSound : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.companion_Whistle, audioSource);
     }
+
+    public void PlayHurtSound()
+    {
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_HurtSound, audioSource);
+    }
+
+    public void PlaySwordSound()
+    {
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Attack, audioSource);
+    }
 }

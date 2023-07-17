@@ -53,6 +53,7 @@ public class InteractablePuzzle : Interactable
     {
         HeroManager.instance.SetHeroDestination(transform.position + (transform.forward * heroDistance));
         yield return new WaitForSeconds(.05f);
+        yield return new WaitForEndOfFrame();
         yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
         HeroManager.instance.SetHeroDestination(HeroManager.instance.transform.position);
         HeroManager.instance.transform.DOLookAt(transform.position, .3f, AxisConstraint.Y);

@@ -101,7 +101,7 @@ public class CompanionManager : MonoBehaviour
     void OnFire()
     {
 
-        if (currentInteractable == null && currentModal == null)
+        if (currentInteractable == null && currentModal == null && focusedModal == null)
             if(!HeroManager.instance.isInteracting)
                 HeroManager.instance.SetHeroDestination(worldPosition);
 

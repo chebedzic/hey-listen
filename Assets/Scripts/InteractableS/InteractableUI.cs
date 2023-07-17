@@ -54,7 +54,7 @@ public class InteractableUI : Interactable
 
     public override void OnMouseDown()
     {
-        //base.OnMouseDown();
+        base.OnMouseDown();
 
         CompanionManager.instance.selectedInteractable = this;
         rotationBeforeDrag = transform.eulerAngles;

@@ -92,7 +92,13 @@ public class InteractableModal : Interactable
 
         transform.DOMove(state ? new Vector3(modalPos.x, modalPos.y, modalPos.z) : originalPosition, .25f).SetEase(state ? Ease.OutBack : Ease.OutSine);
 
-        cancelButton.SetActive(state);
+        StartCoroutine(WaitForFrame());
+
+        IEnumerator WaitForFrame()
+        {
+            yield return new WaitForEndOfFrame();
+            cancelButton.SetActive(state);
+        }
     }
 
     public void AttemptSolution(List<Action> actions)

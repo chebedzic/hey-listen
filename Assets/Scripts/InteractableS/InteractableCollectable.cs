@@ -23,6 +23,8 @@ public class InteractableCollectable : Interactable
 
     public override void OnMouseDown()
     {
+        base.OnMouseDown();
+
         if (!canCollect)
             return;
 

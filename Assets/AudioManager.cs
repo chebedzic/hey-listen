@@ -25,7 +25,7 @@ public class AudioManager : MonoBehaviour
         float pitch = soundGroup.pitch;
 
         if (soundGroup.randomPitch)
-            pitch = Random.Range(pitch - .2f, pitch + 2f);
+            pitch = Random.Range(pitch - soundGroup.randomPitchVariation, pitch + soundGroup.randomPitchVariation);
 
         tempSource.pitch = pitch;
 

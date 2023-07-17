@@ -17,12 +17,12 @@ public class InteractableVisualHandler : MonoBehaviour
 
     void PlayClickSound()
     {
-        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.UI_hover, null);
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.UI_releaseAction, null);
     }
 
     void PlayHoverSound()
     {
-        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.UI_releaseAction, null);
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.UI_hover, null);
     }
 
 

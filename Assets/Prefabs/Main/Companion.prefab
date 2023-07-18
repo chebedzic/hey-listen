@@ -20111,7 +20111,7 @@ Transform:
   m_Children:
   - {fileID: 2682523796772001354}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &7049630189283170586
 MonoBehaviour:
@@ -20143,6 +20143,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   holdedAction: {fileID: 0}
+  collectableActionPrefab: {fileID: 4232881478955727444, guid: 52b60634b0fbfed44a0aa2e8bcfe71f6,
+    type: 3}
   currentInteractable: {fileID: 0}
   currentSlot: {fileID: 0}
   currentModal: {fileID: 0}

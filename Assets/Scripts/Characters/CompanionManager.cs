@@ -26,7 +26,8 @@ public class CompanionManager : MonoBehaviour
     private Vector3 worldPosition;
 
     [Header("Hold Action")]
-    public Action holdedAction;
+    public Action heldAction;
+    public GameObject collectableActionPrefab;
 
     [Header("Interactable")]
     public Interactable currentInteractable;
@@ -38,9 +39,9 @@ public class CompanionManager : MonoBehaviour
 
     public CombinationLibrary combinationLibrary;
 
-    public void SetHoldedAction(Action action) 
+    public void SetHeldAction(Action action) 
     {
-        holdedAction = action;
+        heldAction = action;
 
         OnActionCollect?.Invoke(action);
     }
@@ -99,7 +100,6 @@ public class CompanionManager : MonoBehaviour
 
     void OnFire()
     {
-
         if (currentInteractable == null && currentModal == null)
             if(!HeroManager.instance.isInteracting)
                 HeroManager.instance.SetHeroDestination(worldPosition);
@@ -107,11 +107,33 @@ public class CompanionManager : MonoBehaviour
         OnMouseClick.Invoke(worldPosition);
     }
 
+    void OnDrop()
+    {
+        if (currentInteractable == null && currentModal == null)
+            if (!HeroManager.instance.isInteracting)
+                DropCollectable();
+                
+    }
+
+
     void OnReset()
     {
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
     }
 
     #endregion
+    void DropCollectable()
+    {
+        if (heldAction != null)
+        {
+            Action storedAction = heldAction;
+
+            SetHeldAction(null);
+
+            InteractableCollectable collectable = Instantiate(collectableActionPrefab, transform.position, Quaternion.identity).GetComponent<InteractableCollectable>();
+            collectable.Setup(storedAction);
+            collectable.transform.DOJump(transform.position + transform.forward * 2, 1, 1, .3f);
+        }
+    }
 
 }

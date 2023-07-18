@@ -53,12 +53,19 @@ public class InteractableSlot : Interactable
     {
         base.OnMouseDown();
 
-        FillSlot(CompanionManager.instance.holdedAction);
+        FillSlot(CompanionManager.instance.heldAction);
 
     }
 
     public override void OnMouseEnter()
     {
+        if(CompanionManager.instance.heldAction == null && insideCollectable.collectableAction == null)
+        {
+            modalParent.transform.DOComplete();
+            modalParent.transform.DOScale(1.1f, .3f).SetEase(Ease.OutBack);
+            return;
+        }
+
         base.OnMouseEnter();
         CompanionManager.instance.currentSlot = this;
         
@@ -68,6 +75,9 @@ public class InteractableSlot : Interactable
 
     public override void OnMouseExit()
     {
+        modalParent.transform.DOComplete();
+        modalParent.transform.DOScale(1, .3f).SetEase(Ease.OutBack);
+
         base.OnMouseExit();
         CompanionManager.instance.currentSlot = null;
 

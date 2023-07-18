@@ -14,6 +14,13 @@ public class InteractableCollectable : Interactable
     [SerializeField] private Renderer actionRenderer;
     [SerializeField] private MeshFilter actionMesh;
 
+    public void Setup(Action action)
+    {
+        collectableAction = action;
+        actionRenderer.materials = new Material[] { actionRenderer.materials[0], action.actionMaterial };
+        actionMesh.mesh = action.actionMesh;
+    }
+
     public override void Awake()
     {
         base.Awake();
@@ -37,16 +44,21 @@ public class InteractableCollectable : Interactable
         Action storedAction = collectableAction;
 
         //Check if companion already has an action
-        if (CompanionManager.instance.holdedAction == null)
+        if (CompanionManager.instance.heldAction == null)
         {
-            gameObject.SetActive(false);
+            if (parentSlot == null)
+                Destroy(gameObject);
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
         else
         {
-            ReplaceCollectable(CompanionManager.instance.holdedAction);
+            ReplaceCollectable(CompanionManager.instance.heldAction);
         }
 
-        CompanionManager.instance.SetHoldedAction(storedAction);
+        CompanionManager.instance.SetHeldAction(storedAction);
 
         OnCollect.Invoke();
     }
@@ -61,9 +73,9 @@ public class InteractableCollectable : Interactable
             return;
         }
 
+        collectableAction = action;
         actionRenderer.materials = new Material[] { actionRenderer.materials[0], action.actionMaterial };
         actionMesh.mesh = action.actionMesh;
-        collectableAction = action;
     }
 
 

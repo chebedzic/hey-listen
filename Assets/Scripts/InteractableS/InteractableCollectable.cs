@@ -2,22 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class InteractableCollectable : Interactable
 {
-    public bool canCollect = true;
+    [HideInInspector] public UnityEvent OnCollect;
 
     public Action collectableAction;
-
     public InteractableSlot parentSlot;
 
     [SerializeField] private Renderer actionRenderer;
+    [SerializeField] private MeshFilter actionMesh;
 
-    private void Start()
+    public override void Awake()
     {
+        base.Awake();
         actionRenderer = GetComponentInChildren<Renderer>();
+        actionMesh = GetComponentInChildren<MeshFilter>();
 
-        if(GetComponentInParent<InteractableSlot>() != null)
+        if (GetComponentInParent<InteractableSlot>() != null)
             parentSlot = GetComponentInParent<InteractableSlot>();
     }
 
@@ -25,61 +28,54 @@ public class InteractableCollectable : Interactable
     {
         base.OnMouseDown();
 
-        if (!canCollect)
-            return;
+        Collect();
 
-        if (parentSlot == null)
-            canCollect = false;
-
-        Vector2 topOfScreenPos = new Vector2(Screen.width / 2, Screen.height);
-        Vector3 pos = Camera.main.ScreenToWorldPoint(topOfScreenPos);
-        pos += (Camera.main.transform.forward * 6);
-        pos += (Camera.main.transform.up * 2.82f);
-
-        transform.DOJump(pos, .35f, 1, .3f).OnComplete(() => Collect());
-        transform.GetChild(0).DOComplete();
-        transform.GetChild(0).DOShakeScale(.4f, 1f, 20, 90, true);
-        transform.GetChild(0).DORotate(new Vector3(-360, 0, 0), .4f, RotateMode.LocalAxisAdd);
-        transform.DOScale(.3f, .4f);
     }
 
     public void Collect()
     {
-        ActionsManager.instance.TryCollectAction(collectableAction);
-        gameObject.SetActive(false);
+        Action storedAction = collectableAction;
 
-        if (parentSlot != null)
-            parentSlot.UpdateSlot();
+        //Check if companion already has an action
+        if (CompanionManager.instance.holdedAction == null)
+        {
+            gameObject.SetActive(false);
+        }
+        else
+        {
+            ReplaceCollectable(CompanionManager.instance.holdedAction);
+        }
+
+        CompanionManager.instance.SetHoldedAction(storedAction);
+
+        OnCollect.Invoke();
     }
 
-    public void Setup()
+
+    public void ReplaceCollectable(Action action)
     {
-        actionRenderer.materials = new Material[] { actionRenderer.materials[0], collectableAction.actionMaterial };
+        if(action == null)
+        {
+            collectableAction = null;
+            //gameObject
+            return;
+        }
+
+        actionRenderer.materials = new Material[] { actionRenderer.materials[0], action.actionMaterial };
+        actionMesh.mesh = action.actionMesh;
+        collectableAction = action;
     }
 
 
     public override void OnMouseEnter()
     {
         base.OnMouseEnter();
-
-        if (GetComponentInParent<InteractableSlot>() != null)
-        {
-            //GetComponentInParent<InteractableSlot>().OnMouseEnter();
-            CompanionManager.instance.currentSlot = GetComponentInParent<InteractableSlot>();
-        }
     }
+
 
     public override void OnMouseExit()
     {
         base.OnMouseExit();
-
-        if (GetComponentInParent<InteractableSlot>() != null)
-        {
-            //GetComponentInParent<InteractableSlot>().OnMouseExit();
-            CompanionManager.instance.currentSlot = GetComponentInParent<InteractableSlot>();
-        }
-
-        CompanionManager.instance.currentSlot = null;
 
     }
 

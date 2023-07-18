@@ -22,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 1921261130396237609, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1921261130396237609, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
@@ -90,6 +90,21 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6137782448712396775, guid: f4e531283da9a4c808a8862e054234b6,
         type: 3}
+    - target: {fileID: 2585849472523416525, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2610988047760232386, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_LightProbeUsage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2902304794466471566, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3089023683258797214, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -115,9 +130,29 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[1]'
       value: 
       objectReference: {fileID: 2100000, guid: a551da68dddcf9242bdfdc3512e3c066, type: 2}
+    - target: {fileID: 3720772524563895076, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3720772524563895076, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647678739269615502, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4647678739269615502, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6253849779738910591, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6661589091212596230, guid: 54e921bbf2ff347f698b366215bd40b3,
@@ -135,10 +170,20 @@ PrefabInstance:
       propertyPath: slotType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7916576703546596968, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8892542855293566617, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
       propertyPath: m_Name
       value: InteractableSlotPrefab-Modifier
+      objectReference: {fileID: 0}
+    - target: {fileID: 8892542855293566617, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

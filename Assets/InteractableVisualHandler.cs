@@ -7,6 +7,7 @@ public class InteractableVisualHandler : MonoBehaviour
 {
 
     private Interactable interactable;
+    private InteractableCollectable collectable;
 
     [SerializeField] private bool shakeOnHover = true;
     private Renderer[] interactableRenderers;
@@ -14,10 +15,16 @@ public class InteractableVisualHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+
         interactable = GetComponent<Interactable>();
+        collectable = GetComponent<InteractableCollectable>();
+
         interactableRenderers = GetComponentsInChildren<Renderer>();
         interactable.OnClick.AddListener(PlayClickSound);
         interactable.OnPointerEnter.AddListener(HoverVisual);
+
+        if(collectable)
+            collectable.OnCollect.AddListener(CollectVisual);
     }
 
 
@@ -27,6 +34,16 @@ public class InteractableVisualHandler : MonoBehaviour
 
         if (state)
             PlayHoverSound();
+    }
+
+    void CollectVisual()
+    {
+        //if (transform.childCount > 0)
+        //{
+        //    transform.GetChild(0).DOComplete();
+        //    transform.GetChild(0).DOShakeScale(.2f, .5f, 20, 20, true);
+        //}
+
     }
 
     void PlayClickSound()

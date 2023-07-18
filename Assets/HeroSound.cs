@@ -42,6 +42,11 @@ public class HeroSound : MonoBehaviour
         AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_HurtSound, audioSource);
     }
 
+    public void PlayEnemyHurtSound()
+    {
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.enemy_Hurt, audioSource);
+    }
+
     public void PlaySwordSound()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Attack, audioSource);
@@ -50,5 +55,10 @@ public class HeroSound : MonoBehaviour
     public void PlayJumpSound()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Jump, audioSource);
+    }
+
+    public void PlaySpinSound()
+    {
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Spin, audioSource);
     }
 }

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class DebugHero : MonoBehaviour
 {
+    InteractableModal[] modals;
 
     [SerializeField] float debugMovementDistance = 2;
     void OnA()
@@ -28,6 +29,14 @@ public class DebugHero : MonoBehaviour
     void OnD()
     {
         DebugMoveHero(Vector3.right);
+    }
+
+    void OnM()
+    {
+        foreach (InteractableModal modal in FindObjectsByType<InteractableModal>(FindObjectsInactive.Include, FindObjectsSortMode.None)) 
+        {
+            modal.gameObject.SetActive(!modal.gameObject.activeSelf);
+        }
     }
 
     void DebugMoveHero(Vector3 dir)

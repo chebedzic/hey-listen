@@ -22,8 +22,8 @@ MonoBehaviour:
   hero_HurtSound:
     clips:
     - {fileID: 8300000, guid: fbc8a00cd31dc774098cf6346aa37229, type: 3}
-    volume: 4
-    pitch: 0.8
+    volume: 3
+    pitch: 1
     randomPitch: 0
     randomPitchVariation: 0.1
   hero_Attack:
@@ -31,6 +31,13 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 519b5d7cdc57f3049881f5293dee9e17, type: 3}
     volume: 4
     pitch: 1.8
+    randomPitch: 0
+    randomPitchVariation: 0.1
+  hero_Spin:
+    clips:
+    - {fileID: 8300000, guid: 3b6f983310a9107499af587eec595559, type: 3}
+    volume: 1.7
+    pitch: 1.7
     randomPitch: 0
     randomPitchVariation: 0.1
   hero_Jump:
@@ -53,6 +60,13 @@ MonoBehaviour:
     pitch: 1
     randomPitch: 0
     randomPitchVariation: 0.1
+  enemy_Hurt:
+    clips:
+    - {fileID: 8300000, guid: d5fd230a51dbb2447850031fe5abfe3b, type: 3}
+    volume: 1
+    pitch: 1.4
+    randomPitch: 1
+    randomPitchVariation: 0.3
   boss_Hit:
     clips: []
     volume: 1

@@ -94,7 +94,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000004, guid: 1af8126af20e4914681fdac82361a41e,
+  m_LightingDataAsset: {fileID: 112000000, guid: 95b3192e1e5de0e458e3de02b7048815,
     type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 001bd54bfc4e7427da72ba075f630ba8,
     type: 2}
@@ -2004,6 +2004,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: AudioManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6265637209170993819, guid: 20931310d17f1144799b64d9fdd39fd5,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8262298421790782268, guid: 20931310d17f1144799b64d9fdd39fd5,
         type: 3}

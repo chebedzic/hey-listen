@@ -130,9 +130,10 @@ public class CompanionManager : MonoBehaviour
 
             SetHeldAction(null);
 
-            InteractableCollectable collectable = Instantiate(collectableActionPrefab, transform.position, Quaternion.identity).GetComponent<InteractableCollectable>();
+            InteractableCollectable collectable = Instantiate(collectableActionPrefab, transform.position, Quaternion.Euler(0,180,0)).GetComponent<InteractableCollectable>();
             collectable.Setup(storedAction);
-            collectable.transform.DOJump(transform.position + transform.forward * 2, 1, 1, .3f);
+            collectable.transform.DORotate(new Vector3(360, 0, 0), .5f, RotateMode.LocalAxisAdd).SetEase(Ease.OutBack);
+            collectable.transform.DOJump(transform.position, 3, 1, .4f);
         }
     }
 

@@ -22,7 +22,7 @@ public class InteractableSlot : Interactable
             if (action.actionType != slotType)
             {
                 modalParent.transform.DOComplete();
-                modalParent.transform.DOPunchPosition(modalParent.transform.right / 3, .2f, 20, 1);
+                modalParent.transform.DOPunchPosition(modalParent.transform.right / 3, .5f, 10, 1);
                 return;
             }
 
@@ -51,6 +51,13 @@ public class InteractableSlot : Interactable
 
     public override void OnMouseDown()
     {
+        if (CompanionManager.instance.heldAction == null && insideCollectable.collectableAction == null)
+        {
+            modalParent.transform.DOComplete();
+            modalParent.transform.DOScale(1.1f, .3f).SetEase(Ease.OutBack);
+            return;
+        }
+
         base.OnMouseDown();
 
         FillSlot(CompanionManager.instance.heldAction);

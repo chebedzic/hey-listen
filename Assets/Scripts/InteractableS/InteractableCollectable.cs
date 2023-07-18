@@ -35,7 +35,8 @@ public class InteractableCollectable : Interactable
     {
         base.OnMouseDown();
 
-        Collect();
+        if(CompanionManager.instance.currentInteractable == this)
+            Collect();
 
     }
 

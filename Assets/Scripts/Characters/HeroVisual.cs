@@ -39,6 +39,8 @@ public class HeroVisual : MonoBehaviour
     public void PlayConfusedParticle()
     {
         confusionParticle.Play();
+
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Confusion, null);
     }
 
     public void TriggerHeroAnimation(string trigger)

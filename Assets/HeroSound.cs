@@ -46,4 +46,9 @@ public class HeroSound : MonoBehaviour
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Attack, audioSource);
     }
+
+    public void PlayJumpSound()
+    {
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Jump, audioSource);
+    }
 }

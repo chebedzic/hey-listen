@@ -33,10 +33,18 @@ MonoBehaviour:
     pitch: 1.8
     randomPitch: 0
     randomPitchVariation: 0.1
+  hero_Jump:
+    clips:
+    - {fileID: 8300000, guid: 8b5dff0873d543f46844c5c5fa646f66, type: 3}
+    volume: 3
+    pitch: 1.2
+    randomPitch: 0
+    randomPitchVariation: 0.1
   hero_Confusion:
-    clips: []
-    volume: 1
-    pitch: 1
+    clips:
+    - {fileID: 8300000, guid: cc67223da557ab04cb4b614678d7f35f, type: 3}
+    volume: 0.7
+    pitch: 2
     randomPitch: 0
     randomPitchVariation: 0.1
   hero_Clarity:

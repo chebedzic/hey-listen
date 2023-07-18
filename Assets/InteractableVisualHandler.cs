@@ -25,5 +25,8 @@ public class InteractableVisualHandler : MonoBehaviour
         AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.UI_hover, null);
     }
 
+    public void PlaySound()
+    {
 
+    }
 }

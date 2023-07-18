@@ -12,7 +12,15 @@ public enum OffMeshLinkMoveMethod
 [RequireComponent(typeof(NavMeshAgent))]
 public class AgentLinkMover : MonoBehaviour
 {
+    public static AgentLinkMover instance;
+
     public OffMeshLinkMoveMethod method = OffMeshLinkMoveMethod.Parabola;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     IEnumerator Start()
     {
         NavMeshAgent agent = GetComponent<NavMeshAgent>();

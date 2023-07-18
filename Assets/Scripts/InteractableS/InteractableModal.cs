@@ -51,6 +51,11 @@ public class InteractableModal : Interactable
             SetModalForEditMode(true);
     }
 
+    public override void OnMouseEnter()
+    {
+        base.OnMouseEnter();
+    }
+
     public override void OnMouseExit()
     {
         base.OnMouseExit();
@@ -85,6 +90,11 @@ public class InteractableModal : Interactable
     {
         collider.enabled = !state;
         CompanionManager.instance.SetEditMode(state, this);
+
+        foreach (InteractableSlot slot in slots)
+        {
+            slot.interactableCollider.enabled = state;
+        }
 
         // Get the main camera
         Camera mainCamera = Camera.main;

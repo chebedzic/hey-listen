@@ -1,40 +1,39 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class DebugHero : MonoBehaviour
 {
 
-    public UnityEvent<Vector3> MouseClickPositionEvent;
-    public UnityEvent OnPressA;
-    public UnityEvent OnPressS;
-
-    void OnFire()
-    {
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
-        Vector3 pos = new Vector3();
-
-        if (Physics.Raycast(ray, out hit))
-            pos = hit.point;
-
-        MouseClickPositionEvent.Invoke(pos);
-    }
-
-    public void LoadRoom(int level)
-    {
-        SceneManager.LoadSceneAsync(level, LoadSceneMode.Additive);
-    }
-
+    [SerializeField] float debugMovementDistance = 2;
     void OnA()
     {
-        OnPressA.Invoke();
+        DebugMoveHero(-Vector3.right);
     }
 
     void OnS()
     {
-        OnPressS.Invoke();
+        DebugMoveHero(-Vector3.forward);
+    }
+
+    void OnW()
+    {
+        DebugMoveHero(Vector3.forward);
+
+    }
+
+    void OnD()
+    {
+        DebugMoveHero(Vector3.right);
+    }
+
+    void DebugMoveHero(Vector3 dir)
+    {
+        HeroManager.instance.GetComponent<NavMeshAgent>().enabled = false;
+        HeroManager.instance.transform.position += dir * debugMovementDistance;
+        HeroManager.instance.GetComponent<NavMeshAgent>().enabled = true;
     }
 }

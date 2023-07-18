@@ -13,6 +13,7 @@ public class InteractableSlot : Interactable
     private void Start()
     {
         modalParent = GetComponentInParent<InteractableModal>();
+        interactableCollider.enabled = false;
     }
 
     public override void Highlight(bool state)
@@ -53,14 +54,21 @@ public class InteractableSlot : Interactable
 
     public override void OnMouseEnter()
     {
+        if (CompanionManager.instance.focusedModal == null)
+            return;
+
         base.OnMouseEnter();
         CompanionManager.instance.currentSlot = this;
     }
 
     public override void OnMouseExit()
     {
+        if (CompanionManager.instance.focusedModal == null)
+            return;
+
         base.OnMouseExit();
         CompanionManager.instance.currentSlot = null;
+
     }
 
     public Action SlotAction()

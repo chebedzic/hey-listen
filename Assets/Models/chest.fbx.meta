@@ -3,7 +3,22 @@ guid: edd6df108738ed54e9eac4003119ee27
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: 01_button_metallic
+    second: {fileID: 2100000, guid: 90a2e5989ddae401597f076d59feafbb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: vertexColor
+    second: {fileID: 2100000, guid: b699ff1baf67546a289ab69180cfa1d1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: voidblack
+    second: {fileID: 2100000, guid: 2697d8a67338b4163b37835a52d7c5eb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

@@ -16,20 +16,6 @@ public class InteractableSlot : Interactable
         interactableCollider.enabled = false;
     }
 
-    public override void Highlight(bool state)
-    {
-        //base.Highlight(state);
-        foreach (Renderer renderer in interactableRenderers)
-        {
-            foreach (Material mat in renderer.materials)
-            {
-                if (mat.HasFloat("_FresnelAmount"))
-                    mat.DOFloat(state ? 1 : 0, "_FresnelAmount", .2f);
-            }
-
-        }
-    }
-
     public void FillSlot(bool fill, Action action)
     {
         if (interactableCollectable.gameObject.activeSelf)

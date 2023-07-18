@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public class Interactable : MonoBehaviour
 {
     public UnityEvent OnClick;
-    [HideInInspector] public UnityEvent OnPointerEnter;
+    [HideInInspector] public UnityEvent<bool> OnPointerEnter;
 
     [Header("States")]
     public bool interactable = true;
@@ -49,42 +49,26 @@ public class Interactable : MonoBehaviour
     {
 
         CompanionManager.instance.currentInteractable = this;
-        Highlight(true);
+        //Highlight(true);
 
         CursorHandler.instance.HoverInteractable(true, CursorType.hover);
 
         //Event
-        OnPointerEnter?.Invoke();
+        OnPointerEnter?.Invoke(true);
     }
 
     public virtual void OnMouseExit()
     {
 
         CompanionManager.instance.currentInteractable = null;
-        Highlight(false);
+        //Highlight(false);
 
         CursorHandler.instance.HoverInteractable(false, CursorType.hover);
 
+        OnPointerEnter?.Invoke(false);
+
     }
-    public virtual void Highlight(bool state)
-    {
 
-        if (state && transform.childCount > 0)
-        {
-            transform.GetChild(0).DOComplete();
-            transform.GetChild(0).DOShakeScale(.2f, .5f, 20, 20, true);
-        }
-
-        foreach (Renderer renderer in interactableRenderers)
-        {
-            foreach (Material mat in renderer.materials)
-            {
-                if (mat.HasFloat("_FresnelAmount"))
-                    mat.DOFloat(state ? 1 : 0, "_FresnelAmount", .2f);
-            }
-
-        }
-    }
     public void SetColliderState(bool enabled)
     {
         interactableCollider.enabled = enabled;

@@ -22,6 +22,14 @@ public class LoadRooms : MonoBehaviour
         //{
         //    SceneManager.LoadSceneAsync(i, LoadSceneMode.Additive);
         //}
+
+        StartCoroutine(WaitForSecond());
+
+        IEnumerator WaitForSecond()
+        {
+            yield return new WaitForSeconds(2);
+            LightProbes.Tetrahedralize();
+        }
     }
 
     IEnumerator LoadingRooms()

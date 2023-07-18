@@ -79,11 +79,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: PitPuzzle Variant Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2887653402320662469, guid: 39e0a7837c83e413e97345f93b096bb5,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: -5495902117074765545, guid: ca4dcce8dd4b5438386db20621346ead,
+        type: 3}
     - target: {fileID: 4940421551573391167, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: heroDistance
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 4999267307608579061, guid: 39e0a7837c83e413e97345f93b096bb5,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: b6547737b8a18364a8f45c8a96a20f61, type: 2}
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: m_RootOrder

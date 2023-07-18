@@ -64,7 +64,7 @@ public class InteractableCollectable : Interactable
 
         if (GetComponentInParent<InteractableSlot>() != null)
         {
-            GetComponentInParent<InteractableSlot>().Highlight(true);
+            //GetComponentInParent<InteractableSlot>().OnMouseEnter();
             CompanionManager.instance.currentSlot = GetComponentInParent<InteractableSlot>();
         }
     }
@@ -75,7 +75,7 @@ public class InteractableCollectable : Interactable
 
         if (GetComponentInParent<InteractableSlot>() != null)
         {
-            GetComponentInParent<InteractableSlot>().Highlight(false);
+            //GetComponentInParent<InteractableSlot>().OnMouseExit();
             CompanionManager.instance.currentSlot = GetComponentInParent<InteractableSlot>();
         }
 

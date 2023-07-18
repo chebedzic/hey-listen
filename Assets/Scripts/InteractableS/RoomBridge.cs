@@ -45,7 +45,7 @@ public class RoomBridge : Interactable
     public override void OnMouseEnter()
     {
         CompanionManager.instance.currentInteractable = this;
-        OnPointerEnter?.Invoke();
+        OnPointerEnter?.Invoke(true);
 
         if (offMeshLink != null)
             if (!offMeshLink.activated)

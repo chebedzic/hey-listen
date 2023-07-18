@@ -164,6 +164,11 @@ PrefabInstance:
     - target: {fileID: 8636564908285996992, guid: 1cd9399a28e52d543ad2ef1c475b71c7,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8636564908285996992, guid: 1cd9399a28e52d543ad2ef1c475b71c7,
+        type: 3}
+      propertyPath: shakeOnHover
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
@@ -182,7 +187,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4359764895967161560, guid: 1cd9399a28e52d543ad2ef1c475b71c7,
         type: 3}
-      insertIndex: -1
+      insertIndex: 1
       addedObject: {fileID: 7774828025017801025}
   m_SourcePrefab: {fileID: 100100000, guid: 1cd9399a28e52d543ad2ef1c475b71c7, type: 3}
 --- !u!4 &1281587457024970121 stripped

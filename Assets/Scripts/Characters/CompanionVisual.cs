@@ -13,6 +13,10 @@ public class CompanionVisual : MonoBehaviour
     [SerializeField] ParticleSystem clickParticle;
     [SerializeField] float particleUpOffset;
 
+    [Header("Holded Action Visual")]
+    [SerializeField] Renderer holdedActionRenderer;
+    [SerializeField] MeshFilter holdedActionMeshFilter;
+
     [Header("Procedural Animation")]
     [SerializeField] private Rig headAimRig;
     [SerializeField] private Transform headAimTarget;
@@ -36,6 +40,7 @@ public class CompanionVisual : MonoBehaviour
         //Event Listening
         companionManager.OnMouseClick.AddListener(PlayClickParticle);
         companionManager.OnEditorMode.AddListener(SetHeadAim);
+        companionManager.OnActionCollect.AddListener(ActionCollect);
     }
 
     private void Update()
@@ -49,6 +54,20 @@ public class CompanionVisual : MonoBehaviour
 
     }
 
+    private void ActionCollect(Action action)
+    {
+        holdedActionMeshFilter.gameObject.SetActive(action != null);
+
+        if (action == null)
+            return;
+
+        holdedActionMeshFilter.transform.DOComplete();
+        holdedActionMeshFilter.transform.DOShakeScale(.2f, .5f, 20, 20, true);
+
+        holdedActionRenderer.materials = new Material[] { holdedActionRenderer.materials[0], action.actionMaterial };
+
+        holdedActionMeshFilter.mesh = action.actionMesh;
+    }
 
     void PlayClickParticle(Vector3 position)
     {

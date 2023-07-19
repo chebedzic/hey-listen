@@ -14,6 +14,7 @@ public class CompanionManager : MonoBehaviour
     //Events
     [HideInInspector] public UnityEvent<Vector3> OnMouseMovement;
     [HideInInspector] public UnityEvent<Vector3> OnMouseClick;
+    [HideInInspector] public UnityEvent<Action> OnActionCollect;
     [HideInInspector] public UnityEvent<bool> OnEditorMode;
 
     [Header("Parameters")]
@@ -24,17 +25,26 @@ public class CompanionManager : MonoBehaviour
     private Vector3 screenPosition;
     private Vector3 worldPosition;
 
+    [Header("Hold Action")]
+    public Action heldAction;
+    public GameObject collectableActionPrefab;
+
     [Header("Interactable")]
     public Interactable currentInteractable;
-    public Interactable selectedInteractable;
     public InteractableSlot currentSlot;
     public InteractableModal currentModal;
-    public InteractableModal focusedModal;
 
     [Header("Edit Mode")]
     public bool isInEditorMode;
 
     public CombinationLibrary combinationLibrary;
+
+    public void SetHeldAction(Action action) 
+    {
+        heldAction = action;
+
+        OnActionCollect?.Invoke(action);
+    }
 
     private void Awake()
     {
@@ -60,6 +70,14 @@ public class CompanionManager : MonoBehaviour
 
     void Movement()
     {
+        if (currentModal != null)
+        {
+            Vector3 modalPosLerped = Vector3.Lerp(transform.position, currentModal.companionPositionReference.position, mouseLerp * Time.deltaTime);
+            transform.position = modalPosLerped;
+            transform.LookAt(Vector3.Lerp(transform.position, currentModal.transform.position, mouseLerp * Time.deltaTime));
+            return;
+        }
+
         Ray ray = Camera.main.ScreenPointToRay(screenPosition);
 
         if (Physics.Raycast(ray, out RaycastHit hitData, Mathf.Infinity, groundLayerMask))
@@ -73,24 +91,6 @@ public class CompanionManager : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredDirection), rotationSpeed * Time.deltaTime);
     }
 
-    public void SetEditMode(bool state, InteractableModal modalToEdit)
-    {
-        focusedModal = state ? modalToEdit : null;
-
-        isInEditorMode = state;
-
-        if (isInEditorMode)
-        {
-            transform.DOComplete();
-            Vector3 cameraPos = Camera.main.transform.position;
-            Vector3 finalPos = cameraPos + new Vector3(-3, -5, 2);
-            transform.DOMove(finalPos, .3f, false);
-            transform.DORotate(new Vector3(50, 15, 0), .3f, RotateMode.Fast);
-        }
-
-        OnEditorMode.Invoke(isInEditorMode);
-    }
-
     public float MovementMagnitude()
     {
         return (worldPosition - transform.position).magnitude;
@@ -100,13 +100,21 @@ public class CompanionManager : MonoBehaviour
 
     void OnFire()
     {
-
-        if (currentInteractable == null && currentModal == null && focusedModal == null)
+        if (currentInteractable == null && currentModal == null)
             if(!HeroManager.instance.isInteracting)
                 HeroManager.instance.SetHeroDestination(worldPosition);
 
         OnMouseClick.Invoke(worldPosition);
     }
+
+    void OnDrop()
+    {
+        if (currentInteractable == null && currentModal == null)
+            if (!HeroManager.instance.isInteracting)
+                DropCollectable();
+                
+    }
+
 
     void OnReset()
     {
@@ -114,5 +122,19 @@ public class CompanionManager : MonoBehaviour
     }
 
     #endregion
+    void DropCollectable()
+    {
+        if (heldAction != null)
+        {
+            Action storedAction = heldAction;
+
+            SetHeldAction(null);
+
+            InteractableCollectable collectable = Instantiate(collectableActionPrefab, transform.position, Quaternion.Euler(0,180,0)).GetComponent<InteractableCollectable>();
+            collectable.Setup(storedAction);
+            collectable.transform.DORotate(new Vector3(360, 0, 0), .5f, RotateMode.LocalAxisAdd).SetEase(Ease.OutBack);
+            collectable.transform.DOJump(transform.position, 3, 1, .4f);
+        }
+    }
 
 }

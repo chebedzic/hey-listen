@@ -7,28 +7,39 @@ public class InteractableSlot : Interactable
 {
     public ActionType slotType;
     [SerializeField] private Transform slotActionReference;
-    public InteractableCollectable interactableCollectable;
+    public InteractableCollectable insideCollectable;
     private InteractableModal modalParent;
 
     private void Start()
     {
         modalParent = GetComponentInParent<InteractableModal>();
-        interactableCollider.enabled = false;
     }
 
-    public void FillSlot(bool fill, Action action)
+    public void FillSlot(Action action)
     {
-        if (interactableCollectable.gameObject.activeSelf)
-            interactableCollectable.Collect();
+        if (action != null)
+        {
+            if (action.actionType != slotType)
+            {
+                modalParent.transform.DOComplete();
+                modalParent.transform.DOPunchPosition(modalParent.transform.right / 3, .5f, 10, 1);
+                return;
+            }
 
-        interactableCollectable.collectableAction = action;
-        interactableCollectable.Setup();
-        interactableCollectable.interactable = true;
+            modalParent.transform.DOComplete();
+            modalParent.transform.DOPunchScale(Vector3.one / 6, .2f, 15, 1);
+
+            insideCollectable.OnMouseEnter();
+        }
+
+        insideCollectable.Collect();
+        insideCollectable.collectableAction = action;
+
         slotActionReference.localScale = Vector3.one;
         slotActionReference.localPosition = Vector3.zero;
         slotActionReference.DOComplete();
         slotActionReference.DOShakeScale(.2f, .5f, 20, 90, true);
-        slotActionReference.gameObject.SetActive(fill);
+        slotActionReference.gameObject.SetActive(action != null);
 
         UpdateSlot();
     }
@@ -38,28 +49,55 @@ public class InteractableSlot : Interactable
         modalParent.SlotUpdated();
     }
 
+    public override void OnMouseDown()
+    {
+        if (CompanionManager.instance.heldAction == null && insideCollectable.collectableAction == null)
+        {
+            modalParent.transform.DOComplete();
+            modalParent.transform.DOScale(1.1f, .3f).SetEase(Ease.OutBack);
+            return;
+        }
+
+        base.OnMouseDown();
+
+        FillSlot(CompanionManager.instance.heldAction);
+
+    }
+
     public override void OnMouseEnter()
     {
-        if (CompanionManager.instance.focusedModal == null)
+        if(CompanionManager.instance.heldAction == null && insideCollectable.collectableAction == null)
+        {
+            modalParent.transform.DOComplete();
+            modalParent.transform.DOScale(1.1f, .3f).SetEase(Ease.OutBack);
             return;
+        }
 
         base.OnMouseEnter();
         CompanionManager.instance.currentSlot = this;
+        
+        insideCollectable.OnMouseEnter();
+
     }
 
     public override void OnMouseExit()
     {
-        if (CompanionManager.instance.focusedModal == null)
-            return;
+        modalParent.transform.DOComplete();
+        modalParent.transform.DOScale(1, .3f).SetEase(Ease.OutBack);
 
         base.OnMouseExit();
         CompanionManager.instance.currentSlot = null;
+
+        if (insideCollectable.collectableAction != null)
+        {
+            insideCollectable.OnMouseExit();
+        }
 
     }
 
     public Action SlotAction()
     {
-        return interactableCollectable.collectableAction;
+        return insideCollectable.collectableAction;
     }
 
 }

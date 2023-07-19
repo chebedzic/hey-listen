@@ -8,7 +8,7 @@ using UnityEngine.Events;
 [SelectionBase]
 public class Interactable : MonoBehaviour
 {
-    public UnityEvent OnClick;
+    [HideInInspector] public UnityEvent OnClick;
     [HideInInspector] public UnityEvent<bool> OnPointerEnter;
 
     [Header("States")]
@@ -49,7 +49,6 @@ public class Interactable : MonoBehaviour
     {
 
         CompanionManager.instance.currentInteractable = this;
-        //Highlight(true);
 
         CursorHandler.instance.HoverInteractable(true, CursorType.hover);
 
@@ -61,7 +60,6 @@ public class Interactable : MonoBehaviour
     {
 
         CompanionManager.instance.currentInteractable = null;
-        //Highlight(false);
 
         CursorHandler.instance.HoverInteractable(false, CursorType.hover);
 

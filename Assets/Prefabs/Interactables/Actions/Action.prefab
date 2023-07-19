@@ -71,7 +71,7 @@ PrefabInstance:
     - target: {fileID: 8379652355775840613, guid: 1cd9399a28e52d543ad2ef1c475b71c7,
         type: 3}
       propertyPath: m_Radius
-      value: 0.5
+      value: 0.7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 2419608642769031479, guid: 1cd9399a28e52d543ad2ef1c475b71c7, type: 3}
@@ -109,11 +109,18 @@ MonoBehaviour:
   OnClick:
     m_PersistentCalls:
       m_Calls: []
-  enabled: 1
+  OnPointerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  interactable: 1
+  inFocus: 0
+  interactableCollider: {fileID: 0}
   interactableRenderers: []
   selected: 0
   collectableAction: {fileID: 11400000, guid: 1c6a4dc09862f499db1b624d799245c7, type: 2}
+  parentSlot: {fileID: 0}
   actionRenderer: {fileID: 5297951502160718465}
+  actionMesh: {fileID: 0}
 --- !u!4 &5773477126340102468 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6206323738920820680, guid: 1cd9399a28e52d543ad2ef1c475b71c7,

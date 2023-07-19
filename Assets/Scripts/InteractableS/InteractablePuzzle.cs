@@ -90,14 +90,14 @@ public class InteractablePuzzle : Interactable
 
         if (stateMachine != null && linkedModal != null)
         {
-            TryPuzzle(linkedModal.currentModalActions, linkedModal);
+            TryPuzzle(linkedModal.actionList, linkedModal);
         }
     }
 
     //Only reference by distance trigger that I made for testing
     public void TriggerPuzzle()
     {
-        TryPuzzle(linkedModal.currentModalActions, linkedModal);
+        TryPuzzle(linkedModal.actionList, linkedModal);
     }
 
     public void TriggerAnimator(string trigger, int animatorIndex = -1)

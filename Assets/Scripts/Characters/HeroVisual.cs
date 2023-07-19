@@ -7,26 +7,82 @@ public class HeroVisual : MonoBehaviour
 {
 
     private Animator animator;
-    private HeroSound heroSound;
     private HeroManager heroManager;
+    private Renderer[] renderers;
+
+    [Header("Particles")]
     [SerializeField] private ParticleSystem heroHitParticle;
     [SerializeField] private ParticleSystem enemyHitParticle;
     [SerializeField] [ColorUsage(true,true)] private Color enemyHitColor;
     [SerializeField] private ParticleSystem confusionParticle;
-    private Renderer[] renderers;
+
+    [Header("Equipment References")]
+    [SerializeField] private GameObject swordGameobject;
+    [SerializeField] private GameObject shieldGameobject;
+    [SerializeField] private Transform equipmentRigPosition;
+    [SerializeField] [ColorUsage(true, true)] Color equipmentBlinkColor;
+    private Renderer[] equipmentRenderers;
 
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
         heroManager = GetComponentInParent<HeroManager>();
+        equipmentRenderers = swordGameobject.transform.parent.GetComponentsInChildren<Renderer>();
         renderers = GetComponentsInChildren<Renderer>();
-        heroSound = GetComponentInChildren<HeroSound>();
+        heroManager.OnGetEquipment.AddListener(EquipmentVisual);
+
+        EquipmentVisual(heroManager.currentEquipment);
     }
 
     void Update()
     {
         animator.SetFloat("velocity", heroManager.IsAgentCrossingLink() ? 2 : heroManager.GetHeroVelocity().Remap(0,heroManager.GetHeroSpeed(),0,2));
     }
+
+    public void EquipmentVisual(Equipment equipment)
+    {
+        if (equipment == null)
+        {
+            SetEquipmentVisibility(gameObject);
+            return;
+        }
+
+        if (equipment != null)
+        {
+            transform.parent.eulerAngles = new Vector3(0, 180, 0);
+            animator.SetTrigger("equip");
+        }
+
+        switch (equipment.type)
+        {
+            case EquipmentType.sword:
+                SetEquipmentVisibility(swordGameobject);
+                break;
+            case EquipmentType.shield:
+                SetEquipmentVisibility(shieldGameobject);
+                break;
+            default:
+                break;
+        }
+    }
+
+    void SetEquipmentVisibility(GameObject equipment)
+    {
+        shieldGameobject.SetActive(equipment == shieldGameobject);
+        swordGameobject.SetActive(equipment == swordGameobject);
+
+        equipmentRigPosition.DOComplete();
+        equipmentRigPosition.DOShakeScale(.3f, .8f,15, 90, true);
+
+        foreach (Renderer renderer in equipmentRenderers)
+        {
+            renderer.material.SetColor("_FresnelColor", equipmentBlinkColor);
+            renderer.material.DOComplete();
+            renderer.material.DOFloat(1, "_FresnelAmount", .1f).OnComplete(() => renderer.material.DOFloat(0, "_FresnelAmount", .4f));
+        }
+
+    }
+
     public void HitByEnemy()
     {
         transform.DOComplete();
@@ -67,10 +123,18 @@ public class HeroVisual : MonoBehaviour
             if (!renderer.material.HasFloat("_FresnelAmount"))
                 break;
 
+            Color storeColor = renderer.material.GetColor("_FresnelColor");
+
             renderer.material.DOComplete();
             renderer.material.SetColor("_FresnelColor", enemyHitColor);
-            renderer.material.DOFloat(1, "_FresnelAmount", .1f).OnComplete(() => renderer.material.DOFloat(0, "_FresnelAmount", .2f));
+            renderer.material.DOFloat(1, "_FresnelAmount", .1f).OnComplete(()=>CompleteBlink(renderer, storeColor));
         }
+    }
+
+    void CompleteBlink(Renderer renderer, Color color)
+    {
+        renderer.material.DOFloat(0, "_FresnelAmount", .2f);
+        renderer.material.SetColor("_FresnelColor", color);
     }
 
 

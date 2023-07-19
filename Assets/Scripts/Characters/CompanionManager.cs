@@ -33,6 +33,7 @@ public class CompanionManager : MonoBehaviour
     public Interactable currentInteractable;
     public InteractableSlot currentSlot;
     public InteractableModal currentModal;
+    public InteractableEquipment currentEquipmentBubble;
 
     [Header("Edit Mode")]
     public bool isInEditorMode;
@@ -100,12 +101,20 @@ public class CompanionManager : MonoBehaviour
 
     void OnFire()
     {
+        if (EquipmentManager.instance.visible && currentEquipmentBubble == null)
+            EquipmentManager.instance.ShowEquipments(false);
+
         if (currentInteractable == null && currentModal == null)
-            if(!HeroManager.instance.isInteracting)
+        {
+            if (!HeroManager.instance.isInteracting)
+            {
                 HeroManager.instance.SetHeroDestination(worldPosition);
+            }
+        }
 
         OnMouseClick.Invoke(worldPosition);
     }
+
 
     void OnDrop()
     {

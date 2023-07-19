@@ -3,17 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class HeroManager : MonoBehaviour
 {
     public static HeroManager instance;
-    [HideInInspector] public HeroVisual heroVisual;
 
+    [HideInInspector] public UnityEvent<Equipment> OnGetEquipment;
+
+    [HideInInspector] public HeroVisual heroVisual;
     private NavMeshAgent navMeshAgent;
+
+    [Header("States")]
     public bool canMove = true;
     public bool isInteracting = false;
     private bool hasEnteredOffMeshLink = false;
+
+    [Header("Equipment")]
+    public Equipment currentEquipment;
 
     private void Awake()
     {
@@ -51,6 +59,14 @@ public class HeroManager : MonoBehaviour
     void SetMovementAvailability(bool state)
     {
         canMove = !state;
+    }
+
+
+    public void SetHeroEquipment(Equipment equipment)
+    {
+        currentEquipment = equipment;
+
+        OnGetEquipment?.Invoke(currentEquipment);
     }
 
     public void SetHeroDestination(Vector3 destination)

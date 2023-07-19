@@ -49,6 +49,14 @@ public class HeroSound : MonoBehaviour
 
     public void PlaySwordSound()
     {
+        if(HeroManager.instance.currentEquipment != null)
+        {
+            if(HeroManager.instance.currentEquipment.type == EquipmentType.shield)
+            {
+                AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Attack, audioSource);
+                return;
+            }
+        }
         AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Attack, audioSource);
     }
 

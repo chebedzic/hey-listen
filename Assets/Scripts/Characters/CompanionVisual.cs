@@ -62,7 +62,7 @@ public class CompanionVisual : MonoBehaviour
             return;
 
         holdedActionMeshFilter.transform.DOComplete();
-        holdedActionMeshFilter.transform.DOShakeScale(.2f, .5f, 20, 20, true);
+        holdedActionMeshFilter.transform.DOShakeScale(.2f, .9f, 20, 20, true);
 
         holdedActionRenderer.materials = new Material[] { holdedActionRenderer.materials[0], action.actionMaterial };
 

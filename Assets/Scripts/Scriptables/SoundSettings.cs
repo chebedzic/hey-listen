@@ -6,6 +6,7 @@ public class SoundSettings : ScriptableObject
     public AudioGroup hero_StepSound;
     public AudioGroup hero_HurtSound;
     public AudioGroup hero_Attack;
+    public AudioGroup hero_Parry;
     public AudioGroup hero_Spin;
     public AudioGroup hero_Jump;
     public AudioGroup hero_Confusion;

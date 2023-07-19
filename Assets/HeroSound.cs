@@ -53,7 +53,7 @@ public class HeroSound : MonoBehaviour
         {
             if(HeroManager.instance.currentEquipment.type == EquipmentType.shield)
             {
-                AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Attack, audioSource);
+                AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Parry, audioSource);
                 return;
             }
         }

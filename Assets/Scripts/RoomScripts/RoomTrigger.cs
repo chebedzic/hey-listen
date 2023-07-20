@@ -14,13 +14,13 @@ public class RoomTrigger : MonoBehaviour
     [SerializeField] private GeneralSettings generalSettings;
     [SerializeField] private BoxCollider collider;
 
-    [HideInInspector] public RoomBridge[] roomBridges;
+    [HideInInspector] public Interactable[] roomInteractions;
     [HideInInspector] public GameObject roomCompanionSurface;
 
     private void Awake()
     {
         // Look for all interactables that are part of the parent room
-        roomBridges = transform.parent.GetComponentsInChildren<RoomBridge>();
+        roomInteractions = transform.parent.GetComponentsInChildren<Interactable>();
 
         // Look for all sibling objects
         for (int i = 0; i < transform.parent.childCount; i++)
@@ -41,11 +41,24 @@ public class RoomTrigger : MonoBehaviour
 
     public void SetRoomActive(bool active)
     {
+        GameManager.instance.activeRoom = this;
+
         roomCompanionSurface.SetActive(active);
-        foreach (RoomBridge bridge in roomBridges)
+        foreach (Interactable interaction in roomInteractions)
         {
-            if (bridge.interactableCollider != null)
-                bridge.interactableCollider.enabled = active;
+            if(interaction != null)
+                interaction.SetColliderState(active);
+        }
+
+        Interactable[] dynamicInteractables = GetComponentsInChildren<Interactable>();
+
+        if(dynamicInteractables.Length > 0)
+        {
+            foreach (Interactable interaction in dynamicInteractables)
+            {
+                if (interaction != null)
+                    interaction.SetColliderState(active);
+            }
         }
 
     }

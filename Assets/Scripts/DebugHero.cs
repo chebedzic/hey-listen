@@ -45,6 +45,11 @@ public class DebugHero : MonoBehaviour
         AudioManager.instance.SetMusicVolume(0);
     }
 
+    void OnI()
+    {
+        HeroManager.instance.isInteracting = false;
+    }
+
     void DebugMoveHero(Vector3 dir)
     {
         HeroManager.instance.GetComponent<NavMeshAgent>().enabled = false;

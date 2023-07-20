@@ -12,12 +12,15 @@ public class InteractableVisualHandler : MonoBehaviour
     [SerializeField] private bool shakeOnHover = true;
     private Renderer[] interactableRenderers;
 
+    private Light[] interactableLights;
+
     // Start is called before the first frame update
     void Start()
     {
 
         interactable = GetComponent<Interactable>();
         collectable = GetComponent<InteractableCollectable>();
+        interactableLights = GetComponentsInChildren<Light>();
 
         interactableRenderers = GetComponentsInChildren<Renderer>();
         interactable.OnClick.AddListener(PlayClickSound);
@@ -77,6 +80,14 @@ public class InteractableVisualHandler : MonoBehaviour
                     mat.DOFloat(state ? 1 : 0, "_FresnelAmount", .2f);
             }
 
+        }
+
+        if (interactableLights.Length > 0)
+        {
+            foreach(Light light in interactableLights)
+            {
+                light.DOIntensity(state ? 7 : 0, .5f);
+            }
         }
     }
 }

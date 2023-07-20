@@ -41,7 +41,8 @@ public class RoomTrigger : MonoBehaviour
 
     public void SetRoomActive(bool active)
     {
-        GameManager.instance.activeRoom = this;
+        if(active)
+            GameManager.instance.activeRoom = this;
 
         roomCompanionSurface.SetActive(active);
         foreach (Interactable interaction in roomInteractions)

@@ -8,7 +8,7 @@ using UnityEngine.Events;
 [SelectionBase]
 public class Interactable : MonoBehaviour
 {
-    [HideInInspector] public UnityEvent OnClick;
+    public UnityEvent OnClick;
     [HideInInspector] public UnityEvent<bool> OnPointerEnter;
 
     [Header("States")]

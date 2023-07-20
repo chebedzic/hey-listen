@@ -69,6 +69,13 @@ public class CursorHandler : MonoBehaviour
         float rightDistance = screenWidth - mousePosition.x;
         float leftDistance = mousePosition.x;
 
+        // Apply the threshold to the distances
+        topDistance = Mathf.Max(0, topDistance - settings.edgeDistanceThreshold);
+        bottomDistance = Mathf.Max(0, bottomDistance - settings.edgeDistanceThreshold);
+        rightDistance = Mathf.Max(0, rightDistance - settings.edgeDistanceThreshold) * .5f; // Apply the horizontal weight
+        leftDistance = Mathf.Max(0, leftDistance - settings.edgeDistanceThreshold) * .5f; // Apply the horizontal weight
+
+
         // Find the minimum distance among the four directions
         float minDistance = Mathf.Min(topDistance, bottomDistance, rightDistance, leftDistance);
 

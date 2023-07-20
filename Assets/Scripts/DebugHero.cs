@@ -10,6 +10,7 @@ public class DebugHero : MonoBehaviour
     InteractableModal[] modals;
 
     [SerializeField] float debugMovementDistance = 2;
+
     void OnA()
     {
         DebugMoveHero(-Vector3.right);
@@ -37,6 +38,11 @@ public class DebugHero : MonoBehaviour
         {
             modal.gameObject.SetActive(!modal.gameObject.activeSelf);
         }
+    }
+
+    void OnMuteMusic()
+    {
+        AudioManager.instance.SetMusicVolume(0);
     }
 
     void DebugMoveHero(Vector3 dir)

@@ -16,6 +16,11 @@ public class AudioManager : MonoBehaviour
         instance = this;
     }
 
+   public void SetMusicVolume(float volume)
+    {
+        musicSource.volume = volume;
+    }
+
     public void PlaySFX(AudioGroup soundGroup, AudioSource source)
     {
         AudioSource tempSource = source == null ? sfxSource : source;

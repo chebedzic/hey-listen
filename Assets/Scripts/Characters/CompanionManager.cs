@@ -104,7 +104,7 @@ public class CompanionManager : MonoBehaviour
         if (EquipmentManager.instance.visible && currentEquipmentBubble == null)
             EquipmentManager.instance.ShowEquipments(false);
 
-        if (currentInteractable == null && currentModal == null)
+        if (currentInteractable == null && currentSlot == null)
         {
             if (!HeroManager.instance.isInteracting)
             {

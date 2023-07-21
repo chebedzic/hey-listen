@@ -14,6 +14,21 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    public void SetActiveRoom(RoomTrigger room)
+    {
+        RoomTrigger oldRoom = activeRoom;
+        activeRoom = room;
+        if (oldRoom != null)
+            StartCoroutine(RoomDeactivationCooldown());
+
+        IEnumerator RoomDeactivationCooldown()
+        {
+            yield return new WaitForEndOfFrame();
+            yield return new WaitForSeconds(.1f);
+            oldRoom.SetRoomActive(false);
+        }
+    }
+
     // Start is called before the first frame update
     void Start()
     {

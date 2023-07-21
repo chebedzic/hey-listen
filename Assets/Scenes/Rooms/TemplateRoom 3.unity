@@ -11110,12 +11110,12 @@ PrefabInstance:
     - target: {fileID: 9091682452881082813, guid: f754518f9480f134095d9ea51b146aa3,
         type: 3}
       propertyPath: m_Size.z
-      value: 11.487631
+      value: 11.685999
       objectReference: {fileID: 0}
     - target: {fileID: 9091682452881082813, guid: f754518f9480f134095d9ea51b146aa3,
         type: 3}
       propertyPath: m_Center.z
-      value: 0.24381542
+      value: 0.14463139
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11709,7 +11709,7 @@ PrefabInstance:
         type: 3}
       propertyPath: offMeshLink
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6621004637229122158}
     - target: {fileID: 1948755649425692033, guid: 485a9dcedcb5e414892da871319f699a,
         type: 3}
       propertyPath: offMeshLink
@@ -18204,3 +18204,9 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a595c32c7e067fe4fa3fde9ac0abdbdd, type: 3}
+--- !u!191 &6621004637229122158 stripped
+OffMeshLink:
+  m_CorrespondingSourceObject: {fileID: 1306753192996684341, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
+    type: 3}
+  m_PrefabInstance: {fileID: 6621004637229122157}
+  m_PrefabAsset: {fileID: 0}

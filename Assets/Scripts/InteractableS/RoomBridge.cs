@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 
 public class RoomBridge : Interactable
 {
     public Vector3 offset;
     private OffMeshLink offMeshLink;
+
+    public InteractablePuzzle linkedDoor;
 
     public override void Awake()
     {
@@ -18,7 +22,28 @@ public class RoomBridge : Interactable
 
     public void TryBridge()
     {
+        if (linkedDoor != null) 
+        { 
+            if (!linkedDoor.offMeshLink.activated)
+            {
+                linkedDoor.offMeshLink.activated = true;
+                StartCoroutine(LinkedDoor());
+                return;
+            }
+        }
+
         HeroManager.instance.SetHeroDestination(transform.position + offset);
+    }
+
+    IEnumerator LinkedDoor()
+    {
+        print("startedCoroutine");
+        HeroManager.instance.SetHeroDestination(transform.position + offset);
+        yield return new WaitForSeconds(.2f);
+        yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
+        print("finished Coroutine");
+
+        linkedDoor.SetRelatedLink(false);
     }
 
     private void OnDrawGizmos()
@@ -69,6 +94,17 @@ public class RoomBridge : Interactable
     {
         if(CursorHandler.instance != null)
             CursorHandler.instance.HoverInteractable(false, CursorType.navigate);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.GetComponent<InteractablePuzzle>() != null)
+        {
+            if (other.CompareTag("Door"))
+            {
+                linkedDoor = other.GetComponent<InteractablePuzzle>();
+            }
+        }
     }
 
 }

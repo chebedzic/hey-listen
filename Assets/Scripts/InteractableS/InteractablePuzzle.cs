@@ -13,7 +13,7 @@ public class InteractablePuzzle : Interactable
 {
 
     [Header("Puzzle")]
-    [SerializeField] private OffMeshLink offMeshLink;
+    public OffMeshLink offMeshLink;
     private StateMachine stateMachine;
     private InteractableModal linkedModal;
     private Animator[] animators;
@@ -81,8 +81,11 @@ public class InteractablePuzzle : Interactable
 
         offMeshLink.activated = state;
 
-        if(offMeshLink.GetComponentInChildren<Collider>() != null)
-            offMeshLink.GetComponentInChildren<Collider>().enabled = state;
+        if (!state)
+            return;
+
+        if (offMeshLink.GetComponentInChildren<RoomBridge>() != null)
+            offMeshLink.GetComponentInChildren<RoomBridge>().TryBridge();
     }
 
     public override void OnMouseDown()

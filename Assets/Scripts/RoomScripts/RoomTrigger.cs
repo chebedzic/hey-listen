@@ -41,8 +41,8 @@ public class RoomTrigger : MonoBehaviour
 
     public void SetRoomActive(bool active)
     {
-        if(active)
-            GameManager.instance.activeRoom = this;
+        if (active)
+            GameManager.instance.SetActiveRoom(this);
 
         roomCompanionSurface.SetActive(active);
         foreach (Interactable interaction in roomInteractions)
@@ -66,20 +66,26 @@ public class RoomTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        CinemachineBrain brain = Camera.main.GetComponent<CinemachineBrain>();
-        CinemachineVirtualCamera virtualCam = (CinemachineVirtualCamera)brain.ActiveVirtualCamera;
-        Vector3 roomCamPlacement = new Vector3(transform.parent.position.x, virtualCam.transform.position.y, transform.parent.position.z - 6);
-        virtualCam.transform.DOComplete();
-        virtualCam.transform.DOMove(roomCamPlacement, generalSettings.roomCameraTransitionSpeed, false);
+        if (other.CompareTag("Hero"))
+        {
+            CinemachineBrain brain = Camera.main.GetComponent<CinemachineBrain>();
+            CinemachineVirtualCamera virtualCam = (CinemachineVirtualCamera)brain.ActiveVirtualCamera;
+            Vector3 roomCamPlacement = new Vector3(transform.parent.position.x, virtualCam.transform.position.y, transform.parent.position.z - 6);
+            virtualCam.transform.DOComplete();
+            virtualCam.transform.DOMove(roomCamPlacement, generalSettings.roomCameraTransitionSpeed, false);
 
-        //RoomManager.instance.RoomSetup(this);
-        SetRoomActive(true);
+            //RoomManager.instance.RoomSetup(this);
+            SetRoomActive(true);
+        }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        SetRoomActive(false);
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Hero"))
+    //    {
+    //        SetRoomActive(false);
+    //    }
+    //}
 
     private void OnDrawGizmos()
     {

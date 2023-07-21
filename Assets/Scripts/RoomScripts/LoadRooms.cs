@@ -1,56 +1,48 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 
 public class LoadRooms : MonoBehaviour
 {
 
-    List<AsyncOperation> scenesToLoad = new List<AsyncOperation>();
+#if UNITY_EDITOR
 
-    // Start is called before the first frame update
-    void Start()
+    public UnityEditor.SceneAsset[] targetSceneAsset;
+    private void OnValidate()
+    {
+        targetScenes = new string[targetSceneAsset.Length];
+        for (int i = 0; i < targetSceneAsset.Length; i++)
+            if (targetSceneAsset[i] != null)
+                targetScenes[i] = targetSceneAsset[i].name;
+            else
+                Debug.LogError("Target Scene Asset is NULL >:(");
+    }
+
+#endif
+
+    [HideInInspector] public string[] targetScenes;
+    public UnityEvent onLoadComplete;
+
+    public void Start()
     {
         StartCoroutine(LoadingRooms());
 
-        for (int i = SceneManager.GetActiveScene().buildIndex + 1; i < SceneManager.sceneCountInBuildSettings; i++)
+
+        IEnumerator LoadingRooms()
         {
-            scenesToLoad.Add(SceneManager.LoadSceneAsync(i, LoadSceneMode.Additive));
-        }
-
-        //for (int i = SceneManager.GetActiveScene().buildIndex + 1; i < SceneManager.sceneCountInBuildSettings; i++)
-        //{
-        //    SceneManager.LoadSceneAsync(i, LoadSceneMode.Additive);
-        //}
-
-        StartCoroutine(WaitForSecond());
-
-        IEnumerator WaitForSecond()
-        {
-            yield return new WaitForSeconds(2);
-            LightProbes.Tetrahedralize();
-        }
-    }
-
-    IEnumerator LoadingRooms()
-    {
-        float totalProgress = 0;
-
-        for (int i = 0; i < scenesToLoad.Count; i++)
-        {
-            while (!scenesToLoad[i].isDone)
+            foreach (var scene in targetScenes)
             {
-                totalProgress += scenesToLoad[i].progress;
-                yield return null;
+                AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+                while (!asyncLoad.isDone)
+                {
+                    yield return null;
+                }
             }
+            LightProbes.Tetrahedralize();
+            onLoadComplete.Invoke();
         }
-
-        LightProbes.Tetrahedralize();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

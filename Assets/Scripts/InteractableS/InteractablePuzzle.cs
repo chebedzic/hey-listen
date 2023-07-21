@@ -74,7 +74,7 @@ public class InteractablePuzzle : Interactable
 
     }
 
-    public void SetRelatedLink(bool state)
+    public void SetRelatedLink(bool state, bool tryBridge)
     {
         if (offMeshLink == null)
             return;
@@ -82,6 +82,9 @@ public class InteractablePuzzle : Interactable
         offMeshLink.activated = state;
 
         if (!state)
+            return;
+
+        if (!tryBridge)
             return;
 
         if (offMeshLink.GetComponentInChildren<RoomBridge>() != null)

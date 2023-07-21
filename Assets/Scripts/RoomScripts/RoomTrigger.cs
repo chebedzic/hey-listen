@@ -41,6 +41,9 @@ public class RoomTrigger : MonoBehaviour
 
     public void SetRoomActive(bool active)
     {
+        if (GameManager.instance.activeRoom == this)
+            return;
+
         if (active)
             GameManager.instance.SetActiveRoom(this);
 

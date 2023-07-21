@@ -43,7 +43,7 @@ public class RoomBridge : Interactable
         yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
         print("finished Coroutine");
 
-        linkedDoor.SetRelatedLink(false);
+        linkedDoor.SetRelatedLink(false, true);
     }
 
     private void OnDrawGizmos()
@@ -102,6 +102,8 @@ public class RoomBridge : Interactable
         {
             if (other.CompareTag("Door"))
             {
+                if (transform.CompareTag("Gap"))
+                    return;
                 linkedDoor = other.GetComponent<InteractablePuzzle>();
             }
         }

@@ -76,6 +76,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8401807968522875478}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 997cadd243113a54097a5a120363143a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 495289139162236708}
   m_SourcePrefab: {fileID: 100100000, guid: 997cadd243113a54097a5a120363143a, type: 3}
 --- !u!1 &1285458964066902388 stripped
 GameObject:
@@ -105,6 +109,18 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &495289139162236708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1285458964066902388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e76effa37ee1024d99bb4e908c510b3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1917705171383417806 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 997cadd243113a54097a5a120363143a,
@@ -127,7 +143,7 @@ PrefabInstance:
     - target: {fileID: 4940421551573391167, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: heroDistance
-      value: 2
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4940421551573391167, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
@@ -137,7 +153,7 @@ PrefabInstance:
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}

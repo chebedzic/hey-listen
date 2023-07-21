@@ -72,7 +72,6 @@ public class InteractablePuzzle : Interactable
         yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
         HeroManager.instance.SetHeroDestination(HeroManager.instance.transform.position);
         HeroManager.instance.transform.DOLookAt(transform.position, .3f, AxisConstraint.Y);
-        yield return new WaitForSeconds(.2f);
         //combination = CompanionManager.instance.combinationLibrary.GetCombination(linkedModal.actionList);
         CustomEvent.Trigger(this.gameObject, "TryInteraction", combination);
 

@@ -19968,7 +19968,7 @@ Transform:
   m_Children:
   - {fileID: 6209222089129159188}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &8952622647550951144
 MonoBehaviour:
@@ -19988,7 +19988,7 @@ MonoBehaviour:
   heroVisual: {fileID: 0}
   canMove: 1
   isInteracting: 0
-  currentEquipment: {fileID: 0}
+  currentEquipment: {fileID: 11400000, guid: 6fc1c1836469ed64c9f3e0bf9048b36f, type: 2}
 --- !u!195 &4599722609186288483
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -20105,7 +20105,7 @@ MonoBehaviour:
       m_Calls: []
   interactable: 1
   inFocus: 0
-  interactableCollider: {fileID: 0}
+  interactableColliders: []
   interactableRenderers: []
   selected: 0
 --- !u!1001 &207384365847850689

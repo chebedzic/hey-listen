@@ -19,6 +19,7 @@ public class DistanceTrigger : MonoBehaviour
             puzzle.TriggerPuzzle();
         }
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

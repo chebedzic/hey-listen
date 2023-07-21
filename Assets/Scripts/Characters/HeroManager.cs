@@ -69,17 +69,19 @@ public class HeroManager : MonoBehaviour
         OnGetEquipment?.Invoke(currentEquipment);
     }
 
-    public void SetHeroDestination(Vector3 destination)
+    public bool SetHeroDestination(Vector3 destination)
     {
         if (!canMove)
-            return;
+            return false;
 
-        navMeshAgent.SetDestination(destination);
-    }
-
-    public float AgentRemainingDistance()
-    {
-        return navMeshAgent.remainingDistance;
+        NavMeshPath path = new NavMeshPath();
+        if (navMeshAgent.CalculatePath(destination, path))
+        {
+            navMeshAgent.SetPath(path);
+            return path.status == NavMeshPathStatus.PathComplete;
+        }
+        else
+            return false;   
     }
 
     public bool AgentIsStopped()

@@ -60,8 +60,13 @@ public class InteractablePuzzle : Interactable
     IEnumerator BringHero(ActionCombination combination)
     {
         Vector3 placementPosition = positionHeroInFront ? transform.position + (transform.forward * heroDistance) : transform.position + ((heroManager.transform.position - transform.position) * heroDistance);
-        if(!(Vector3.Distance(heroManager.transform.position, placementPosition) <= heroDistance))
-            HeroManager.instance.SetHeroDestination(placementPosition);
+        if (!(Vector3.Distance(heroManager.transform.position, placementPosition) <= heroDistance))
+            if (!HeroManager.instance.SetHeroDestination(placementPosition)){
+                //can't reach interaction
+                heroManager.isInteracting = false;
+                yield break;
+            }
+        print("found destination");
         yield return new WaitForSeconds(.2f);
         yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
         HeroManager.instance.SetHeroDestination(HeroManager.instance.transform.position);

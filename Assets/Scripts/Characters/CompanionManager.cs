@@ -33,6 +33,7 @@ public class CompanionManager : MonoBehaviour
     public Interactable currentInteractable;
     public InteractableSlot currentSlot;
     public InteractableModal currentModal;
+    public bool currentCollectable;
     public InteractableEquipment currentEquipmentBubble;
 
     [Header("Edit Mode")]
@@ -104,7 +105,7 @@ public class CompanionManager : MonoBehaviour
         if (EquipmentManager.instance.visible && currentEquipmentBubble == null)
             EquipmentManager.instance.ShowEquipments(false);
 
-        if (currentInteractable == null && currentSlot == null)
+        if (currentInteractable == null && currentSlot == null && !currentCollectable)
         {
             if (!HeroManager.instance.isInteracting)
             {
@@ -143,6 +144,18 @@ public class CompanionManager : MonoBehaviour
             collectable.Setup(storedAction);
             collectable.transform.DORotate(new Vector3(360, 0, 0), .5f, RotateMode.LocalAxisAdd).SetEase(Ease.OutBack);
             collectable.transform.DOJump(transform.position, 3, 1, .4f);
+        }
+    }
+
+    public void CollectableSafetyCooldown()
+    {
+        currentCollectable = true;
+        StartCoroutine(CollectableAvailabilityCooldown());
+
+        IEnumerator CollectableAvailabilityCooldown()
+        {
+            yield return new WaitForSeconds(.1f);
+            currentCollectable = false;
         }
     }
 

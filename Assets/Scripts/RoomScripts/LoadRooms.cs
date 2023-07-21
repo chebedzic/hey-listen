@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class LoadRooms : MonoBehaviour
 {
+    [SerializeField] private bool loadOnStart;
 
 #if UNITY_EDITOR
 
@@ -24,9 +25,15 @@ public class LoadRooms : MonoBehaviour
 #endif
 
     [HideInInspector] public string[] targetScenes;
-    public UnityEvent onLoadComplete;
 
-    public void Start()
+    public UnityEvent onLoadComplete;
+    private void Start()
+    {
+        if (loadOnStart)
+            Load();
+    }
+
+    public void Load()
     {
         StartCoroutine(LoadingRooms());
 
@@ -44,5 +51,9 @@ public class LoadRooms : MonoBehaviour
             LightProbes.Tetrahedralize();
             onLoadComplete.Invoke();
         }
+    }
+    public void Unload(string scene)
+    {
+        SceneManager.UnloadSceneAsync(scene);
     }
 }

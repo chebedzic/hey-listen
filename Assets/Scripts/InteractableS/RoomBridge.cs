@@ -37,11 +37,13 @@ public class RoomBridge : Interactable
 
     IEnumerator LinkedDoor()
     {
+        linkedDoor.transform.GetChild(0).gameObject.SetActive(false);
         print("startedCoroutine");
         HeroManager.instance.SetHeroDestination(transform.position + offset);
         yield return new WaitForSeconds(.2f);
         yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
         print("finished Coroutine");
+        linkedDoor.transform.GetChild(0).gameObject.SetActive(true);
 
         linkedDoor.SetRelatedLink(false, true);
     }

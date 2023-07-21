@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider))]
 public class DistanceTrigger : MonoBehaviour
 {
-    Collider distanceTrigger;
     InteractablePuzzle puzzle;
 
-    // Start is called before the first frame update
     void Start()
     {
-        distanceTrigger = GetComponent<Collider>();
         puzzle = GetComponentInParent<InteractablePuzzle>();
     }
 
@@ -20,5 +18,11 @@ public class DistanceTrigger : MonoBehaviour
         {
             puzzle.TriggerPuzzle();
         }
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.matrix = transform.localToWorldMatrix;
+        Gizmos.DrawCube(Vector3.zero, Vector3.one);
     }
 }

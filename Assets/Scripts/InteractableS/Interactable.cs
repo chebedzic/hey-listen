@@ -19,10 +19,19 @@ public class Interactable : MonoBehaviour
     [HideInInspector] public Renderer[] interactableRenderers;
     [HideInInspector] public bool selected;
 
+    private int originalLayer;
+
+    public virtual void Update()
+    {
+        gameObject.layer = HeroManager.instance.isInteracting ? 2 : originalLayer;
+    }
+
     public virtual void Awake()
     {
         interactableRenderers = GetComponentsInChildren<Renderer>();
         interactableColliders = GetComponentsInChildren<Collider>();
+
+        originalLayer = gameObject.layer;
     }
 
     private void Start()
@@ -41,13 +50,13 @@ public class Interactable : MonoBehaviour
 
     public virtual void OnMouseDown()
     {
+
         //Event
         OnClick?.Invoke();
     }
    
     public virtual void OnMouseEnter()
     {
-
         CompanionManager.instance.currentInteractable = this;
 
         CursorHandler.instance.HoverInteractable(true, CursorType.hover);

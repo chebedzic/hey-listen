@@ -8,6 +8,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using UnityEngine.Pool;
 
 public class InteractablePuzzle : Interactable
 {
@@ -60,6 +61,7 @@ public class InteractablePuzzle : Interactable
     IEnumerator BringHero(ActionCombination combination)
     {
         Vector3 placementPosition = positionHeroInFront ? transform.position + (transform.forward * heroDistance) : transform.position + ((heroManager.transform.position - transform.position) * heroDistance);
+        placementPosition = offMeshLink != null && transform.CompareTag("Door") ? offMeshLink.startTransform.position : placementPosition;
         if (!(Vector3.Distance(heroManager.transform.position, placementPosition) <= heroDistance))
             if (!HeroManager.instance.SetHeroDestination(placementPosition)){
                 //can't reach interaction
@@ -70,6 +72,7 @@ public class InteractablePuzzle : Interactable
         yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
         HeroManager.instance.SetHeroDestination(HeroManager.instance.transform.position);
         HeroManager.instance.transform.DOLookAt(transform.position, .3f, AxisConstraint.Y);
+        //combination = CompanionManager.instance.combinationLibrary.GetCombination(linkedModal.actionList);
         CustomEvent.Trigger(this.gameObject, "TryInteraction", combination);
 
     }
@@ -89,6 +92,30 @@ public class InteractablePuzzle : Interactable
 
         if (offMeshLink.GetComponentInChildren<RoomBridge>() != null)
             offMeshLink.GetComponentInChildren<RoomBridge>().TryBridge();
+    }
+
+    public void BackToRoom(Vector3 finalPos)
+    {
+        StartCoroutine(LinkedDoor());
+
+        IEnumerator LinkedDoor()
+        {
+            offMeshLink.activated = true;
+            transform.GetChild(0).gameObject.SetActive(false);
+            HeroManager.instance.isInteracting = true;
+            HeroManager.instance.SetHeroDestination(finalPos);
+            yield return new WaitForSeconds(.2f);
+            yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
+            yield return new WaitUntil(() => !HeroManager.instance.IsAgentCrossingLink());
+            yield return new WaitForSeconds(.5f);
+            print("finished Coroutine");
+            HeroManager.instance.isInteracting = false;
+            transform.GetChild(0).gameObject.SetActive(true);
+            offMeshLink.activated = false;
+
+
+            SetRelatedLink(false, true);
+        }
     }
 
     public override void OnMouseDown()

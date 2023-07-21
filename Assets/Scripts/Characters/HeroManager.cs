@@ -16,7 +16,6 @@ public class HeroManager : MonoBehaviour
     private NavMeshAgent navMeshAgent;
 
     [Header("States")]
-    public bool canMove = true;
     public bool isInteracting = false;
     private bool hasEnteredOffMeshLink = false;
 
@@ -32,7 +31,6 @@ public class HeroManager : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
         heroVisual = GetComponentInChildren<HeroVisual>();
-        CompanionManager.instance.OnEditorMode.AddListener(SetMovementAvailability);
     }
 
     void Update()
@@ -56,11 +54,6 @@ public class HeroManager : MonoBehaviour
     }
 
 
-    void SetMovementAvailability(bool state)
-    {
-        canMove = !state;
-    }
-
 
     public void SetHeroEquipment(Equipment equipment)
     {
@@ -71,8 +64,7 @@ public class HeroManager : MonoBehaviour
 
     public bool SetHeroDestination(Vector3 destination, bool calculatePath = true)
     {
-        if (!canMove)
-            return false;
+
         if (calculatePath)
         {
             NavMeshPath path = new NavMeshPath();

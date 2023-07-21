@@ -16481,16 +16481,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8259223754626995607, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: m_Size.z
-      value: 2.3590083
-      objectReference: {fileID: 0}
-    - target: {fileID: 8259223754626995607, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: m_Center.z
-      value: -0.67950416
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -18802,6 +18792,11 @@ PrefabInstance:
       propertyPath: m_Activated
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1306753192996684341, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
+        type: 3}
+      propertyPath: m_AutoUpdatePositions
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2892285340652189817, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
         type: 3}
       propertyPath: m_Center.z
@@ -18825,7 +18820,7 @@ PrefabInstance:
     - target: {fileID: 2922045944804126640, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2922045944804126640, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
         type: 3}
@@ -18867,10 +18862,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: OffMeshLink
       objectReference: {fileID: 0}
+    - target: {fileID: 5101388031359653287, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 8840106714076427854, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
         type: 3}
       propertyPath: offset.z
-      value: 2.5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9022582667376341041, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
         type: 3}

@@ -34,7 +34,7 @@ public class Interactable : MonoBehaviour
         originalLayer = gameObject.layer;
     }
 
-    private void Start()
+    public virtual void Start()
     {
         interactableRenderers = GetComponentsInChildren<Renderer>();
         interactableColliders = GetComponentsInChildren<Collider>();

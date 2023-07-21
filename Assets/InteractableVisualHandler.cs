@@ -39,6 +39,12 @@ public class InteractableVisualHandler : MonoBehaviour
             PlayHoverSound();
     }
 
+    public void JumpToCenter(float delay = 1)
+    {
+        transform.DOComplete();
+        transform.DOLocalJump(Vector3.zero, 2, 1, .5f, false).SetDelay(delay);
+    }
+
     void CollectVisual()
     {
         //if (transform.childCount > 0)

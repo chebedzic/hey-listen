@@ -7,11 +7,14 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using UnityEngine.Pool;
 
 public class InteractablePuzzle : Interactable
 {
+
+    public UnityEvent OnFirstInteraction;
 
     [Header("Puzzle")]
     public OffMeshLink offMeshLink;
@@ -25,6 +28,23 @@ public class InteractablePuzzle : Interactable
     [SerializeField] private float heroDistance = 1.0f;
     [HideInInspector] public HeroManager heroManager;
     [HideInInspector] public HeroVisual heroVisual;
+
+    public bool modalRevealed;
+
+    public override void Start()
+    {
+        base.Start();
+
+        StartCoroutine(StartSequence());
+
+        IEnumerator StartSequence()
+        {
+            yield return new WaitForEndOfFrame();
+
+            if (linkedModal)
+                linkedModal.transform.GetChild(0).gameObject.SetActive(false);
+        }
+    }
 
     public override void Awake()
     {
@@ -56,6 +76,16 @@ public class InteractablePuzzle : Interactable
     {
         if(heroManager!= null)
             heroManager.isInteracting = isInteracting;
+    }
+
+    public void InvokeFirstInteraction()
+    {
+        OnFirstInteraction?.Invoke();
+    }
+
+    public void SetHeroZDestination(float z)
+    {
+        GetHeroAgent().SetDestination(GetHeroAgent().transform.position + (Vector3.forward * z));
     }
 
     IEnumerator BringHero(ActionCombination combination)
@@ -94,6 +124,17 @@ public class InteractablePuzzle : Interactable
             offMeshLink.GetComponentInChildren<RoomBridge>().TryBridge();
     }
 
+    public void RevealModal()
+    {
+        modalRevealed = true;
+        linkedModal.transform.GetChild(0).gameObject.SetActive(true);
+        linkedModal.transform.GetChild(0).DOComplete();
+        linkedModal.transform.GetChild(0).DOScale(0, .5f).From();
+
+    }
+
+
+    //A function I made specifically when you are returning from a room connected to a door interactable
     public void BackToRoom(Vector3 finalPos)
     {
         StartCoroutine(LinkedDoor());

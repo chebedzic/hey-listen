@@ -43,14 +43,14 @@ public class HeroManager : MonoBehaviour
 
         if (navMeshAgent.isOnOffMeshLink && !hasEnteredOffMeshLink)
         {
-            SetHeroDestination(navMeshAgent.currentOffMeshLinkData.endPos);
+            SetHeroDestination(navMeshAgent.currentOffMeshLinkData.endPos, false);
             hasEnteredOffMeshLink = true;
         }
 
-        if(navMeshAgent.remainingDistance < .1f && !navMeshAgent.isOnOffMeshLink)
+        if (navMeshAgent.remainingDistance < .1f && !navMeshAgent.isOnOffMeshLink)
         {
             if (hasEnteredOffMeshLink)
-                hasEnteredOffMeshLink = false;
+                hasEnteredOffMeshLink = false;  
         }
 
     }
@@ -69,19 +69,24 @@ public class HeroManager : MonoBehaviour
         OnGetEquipment?.Invoke(currentEquipment);
     }
 
-    public bool SetHeroDestination(Vector3 destination)
+    public bool SetHeroDestination(Vector3 destination, bool calculatePath = true)
     {
         if (!canMove)
             return false;
-
-        NavMeshPath path = new NavMeshPath();
-        if (navMeshAgent.CalculatePath(destination, path))
+        if (calculatePath)
         {
-            navMeshAgent.SetPath(path);
-            return path.status == NavMeshPathStatus.PathComplete;
+            NavMeshPath path = new NavMeshPath();
+            if (navMeshAgent.CalculatePath(destination, path))
+            {
+                navMeshAgent.SetPath(path);
+                return path.status == NavMeshPathStatus.PathComplete;
+            }
+            return false;
         }
         else
-            return false;   
+        {
+            return navMeshAgent.SetDestination(destination);
+        }
     }
 
     public bool AgentIsStopped()

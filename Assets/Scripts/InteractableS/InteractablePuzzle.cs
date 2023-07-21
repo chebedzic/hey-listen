@@ -66,7 +66,6 @@ public class InteractablePuzzle : Interactable
                 heroManager.isInteracting = false;
                 yield break;
             }
-        print("found destination");
         yield return new WaitForSeconds(.2f);
         yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
         HeroManager.instance.SetHeroDestination(HeroManager.instance.transform.position);

@@ -18,7 +18,7 @@ public class RoomBridge : Interactable
 
     public void TryBridge()
     {
-        HeroManager.instance.GetComponent<NavMeshAgent>().SetDestination(transform.position + offset);
+        HeroManager.instance.SetHeroDestination(transform.position + offset);
     }
 
     private void OnDrawGizmos()

@@ -67,6 +67,7 @@ public class CompanionManager : MonoBehaviour
         //Exception needed because Input System is currently not working on WEBGL
 #if PLATFORM_WEBGL
         if(Mouse.current.leftButton.wasPressedThisFrame) OnFire();
+        if(Mouse.current.rightButton.wasPressedThisFrame) OnDrop();
 #endif
     }
 

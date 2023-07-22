@@ -36,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 3835668531440629826}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3260095342900595463
 MeshFilter:
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 3835668531440629826}
   - component: {fileID: 5457093263244353577}
   - component: {fileID: 1786983505653036276}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -200,14 +200,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1069640814600993388}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 2.62}
+  m_LocalRotation: {x: 0.5792796, y: -0, z: -0, w: 0.815129}
+  m_LocalPosition: {x: 0, y: -1.16, z: 2.62}
   m_LocalScale: {x: 4.58674, y: 7.096312, z: 4.58674}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4706566120396651103}
   m_RootOrder: -1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 70.8, y: 0, z: 0}
 --- !u!33 &5457093263244353577
 MeshFilter:
   m_ObjectHideFlags: 0

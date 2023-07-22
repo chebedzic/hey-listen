@@ -20,6 +20,7 @@ public class InteractableModal : Interactable
 
     void Start()
     {
+        interactableRenderers = GetComponentsInChildren<Renderer>();
         //Get inside slots
         slots = GetComponentsInChildren<InteractableSlot>();
 
@@ -49,6 +50,17 @@ public class InteractableModal : Interactable
                 actionList.Add(slot.insideCollectable.collectableAction);
         }
 
+        HighlightModal(actionList.Count == slots.Length);
+
+    }
+    void HighlightModal(bool highlight)
+    {
+        var visualHandlers = GetComponentsInChildren<InteractableVisualHandler>();
+        foreach (InteractableVisualHandler handler in visualHandlers)
+        {
+            handler.forceHighlight = highlight;
+            handler.HoverVisual(highlight);
+        }
     }
 
 

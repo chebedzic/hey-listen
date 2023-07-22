@@ -33,6 +33,7 @@ public class CompanionManager : MonoBehaviour
     public Interactable currentInteractable;
     public InteractableSlot currentSlot;
     public InteractableModal currentModal;
+    public bool currentCollectable;
     public InteractableEquipment currentEquipmentBubble;
 
     [Header("Edit Mode")]
@@ -66,6 +67,7 @@ public class CompanionManager : MonoBehaviour
         //Exception needed because Input System is currently not working on WEBGL
 #if PLATFORM_WEBGL
         if(Mouse.current.leftButton.wasPressedThisFrame) OnFire();
+        if(Mouse.current.rightButton.wasPressedThisFrame) OnDrop();
 #endif
     }
 
@@ -101,11 +103,12 @@ public class CompanionManager : MonoBehaviour
 
     void OnFire()
     {
-        if (EquipmentManager.instance.visible && currentEquipmentBubble == null)
-            EquipmentManager.instance.ShowEquipments(false);
 
-        if (currentInteractable == null && currentModal == null)
+        if (currentInteractable == null && currentSlot == null && !currentCollectable)
         {
+            if (EquipmentManager.instance.visible && currentEquipmentBubble == null)
+                EquipmentManager.instance.ShowEquipments(false);
+
             if (!HeroManager.instance.isInteracting)
             {
                 HeroManager.instance.SetHeroDestination(worldPosition);
@@ -148,6 +151,18 @@ public class CompanionManager : MonoBehaviour
             collectable.Setup(storedAction);
             collectable.transform.DORotate(new Vector3(360, 0, 0), .5f, RotateMode.LocalAxisAdd).SetEase(Ease.OutBack);
             collectable.transform.DOJump(dropPosition, 3, 1, .4f);
+        }
+    }
+
+    public void CollectableSafetyCooldown()
+    {
+        currentCollectable = true;
+        StartCoroutine(CollectableAvailabilityCooldown());
+
+        IEnumerator CollectableAvailabilityCooldown()
+        {
+            yield return new WaitForSeconds(.1f);
+            currentCollectable = false;
         }
     }
 

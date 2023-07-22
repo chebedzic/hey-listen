@@ -48,7 +48,11 @@ public class InteractableCollectable : Interactable
         if (CompanionManager.instance.heldAction == null)
         {
             if (parentSlot == null)
+            {
+                CompanionManager.instance.currentCollectable = true;
+                CompanionManager.instance.CollectableSafetyCooldown();
                 Destroy(gameObject);
+            }
             else
             {
                 gameObject.SetActive(false);
@@ -63,7 +67,6 @@ public class InteractableCollectable : Interactable
 
         OnCollect.Invoke();
     }
-
 
     public void ReplaceCollectable(Action action)
     {

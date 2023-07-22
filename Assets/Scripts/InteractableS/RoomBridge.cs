@@ -26,26 +26,12 @@ public class RoomBridge : Interactable
         { 
             if (!linkedDoor.offMeshLink.activated)
             {
-                linkedDoor.offMeshLink.activated = true;
-                StartCoroutine(LinkedDoor());
+                linkedDoor.BackToRoom(transform.position+offset);
                 return;
             }
         }
 
         HeroManager.instance.SetHeroDestination(transform.position + offset);
-    }
-
-    IEnumerator LinkedDoor()
-    {
-        linkedDoor.transform.GetChild(0).gameObject.SetActive(false);
-        print("startedCoroutine");
-        HeroManager.instance.SetHeroDestination(transform.position + offset);
-        yield return new WaitForSeconds(.2f);
-        yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
-        print("finished Coroutine");
-        linkedDoor.transform.GetChild(0).gameObject.SetActive(true);
-
-        linkedDoor.SetRelatedLink(false, true);
     }
 
     private void OnDrawGizmos()
@@ -62,22 +48,29 @@ public class RoomBridge : Interactable
 
     public override void OnMouseDown()
     {
+        if (HeroManager.instance.isInteracting)
+            return;
+
         if (offMeshLink != null)
             if (!offMeshLink.activated)
                 return;
 
         TryBridge();
+
+        OnMouseExit();
     }
 
     public override void OnMouseEnter()
     {
+        if(HeroManager.instance.IsAgentCrossingLink()) return;
+
         CompanionManager.instance.currentInteractable = this;
-        OnPointerEnter?.Invoke(true);
 
         if (offMeshLink != null)
             if (!offMeshLink.activated)
                 return;
 
+        OnPointerEnter?.Invoke(true);
         CursorHandler.instance.HoverInteractable(true, CursorType.navigate);
     }
 

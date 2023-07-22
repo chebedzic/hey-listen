@@ -5377,6 +5377,8 @@ Transform:
   - {fileID: 1001792046}
   - {fileID: 1467305673}
   - {fileID: 1570928949}
+  - {fileID: 2097322901}
+  - {fileID: 1053368084253221211}
   m_Father: {fileID: 1858745184}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14189,9 +14191,7 @@ Transform:
   - {fileID: 1803336961}
   - {fileID: 1838979858}
   - {fileID: 1620129633}
-  - {fileID: 1053368084253221211}
   - {fileID: 2139770004}
-  - {fileID: 2097322901}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16651,11 +16651,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1858745184}
     m_Modifications:
-    - target: {fileID: 3911330577428414943, guid: 6d4dc77c772f0b74ab18e426cbcb2960,
-        type: 3}
-      propertyPath: m_Name
-      value: Bridge Variant
-      objectReference: {fileID: 0}
     - target: {fileID: 2599927467298808153, guid: 6d4dc77c772f0b74ab18e426cbcb2960,
         type: 3}
       propertyPath: m_Size.x
@@ -16670,6 +16665,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: -1.9092448
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911330577428414943, guid: 6d4dc77c772f0b74ab18e426cbcb2960,
+        type: 3}
+      propertyPath: m_Name
+      value: Bridge Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8142821835144489233, guid: 6d4dc77c772f0b74ab18e426cbcb2960,
         type: 3}
@@ -17158,7 +17158,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1858745184}
+    m_TransformParent: {fileID: 667121676}
     m_Modifications:
     - target: {fileID: 814263406038799535, guid: 48a0122f52f374bd4836970c449c160d,
         type: 3}
@@ -18040,7 +18040,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1858745184}
+    m_TransformParent: {fileID: 667121676}
     m_Modifications:
     - target: {fileID: 1482679256269143845, guid: bd6d6ef5f85621845b6af110826e732f,
         type: 3}
@@ -18146,7 +18146,7 @@ PrefabInstance:
     - target: {fileID: 2892285340652189817, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2892285340652189817, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
         type: 3}

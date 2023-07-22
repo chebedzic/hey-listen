@@ -103,11 +103,12 @@ public class CompanionManager : MonoBehaviour
 
     void OnFire()
     {
-        if (EquipmentManager.instance.visible && currentEquipmentBubble == null)
-            EquipmentManager.instance.ShowEquipments(false);
 
         if (currentInteractable == null && currentSlot == null && !currentCollectable)
         {
+            if (EquipmentManager.instance.visible && currentEquipmentBubble == null)
+                EquipmentManager.instance.ShowEquipments(false);
+
             if (!HeroManager.instance.isInteracting)
             {
                 HeroManager.instance.SetHeroDestination(worldPosition);

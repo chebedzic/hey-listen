@@ -26,6 +26,13 @@ MonoBehaviour:
     pitch: 1
     randomPitch: 0
     randomPitchVariation: 0.1
+  hero_InteractSound:
+    clips:
+    - {fileID: 8300000, guid: 50a2f49600f907e4a89beeeaea2373d0, type: 3}
+    volume: 2
+    pitch: 3.5
+    randomPitch: 0
+    randomPitchVariation: 0.1
   hero_Attack:
     clips:
     - {fileID: 8300000, guid: 519b5d7cdc57f3049881f5293dee9e17, type: 3}
@@ -81,9 +88,17 @@ MonoBehaviour:
     randomPitch: 0
     randomPitchVariation: 0.1
   interact_door:
-    clips: []
-    volume: 0.5
-    pitch: 1
+    clips:
+    - {fileID: 8300000, guid: 57a3323036f39474dbcfff7ee0cdce69, type: 3}
+    volume: 0.1
+    pitch: 1.2
+    randomPitch: 0
+    randomPitchVariation: 0.1
+  close_door:
+    clips:
+    - {fileID: 8300000, guid: b65804622ccf37d4496912a6c83820f2, type: 3}
+    volume: 0.1
+    pitch: 1.2
     randomPitch: 0
     randomPitchVariation: 0.1
   companion_Whistle:

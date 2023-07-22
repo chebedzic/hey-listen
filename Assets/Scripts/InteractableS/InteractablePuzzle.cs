@@ -142,7 +142,7 @@ public class InteractablePuzzle : Interactable
         IEnumerator LinkedDoor()
         {
             offMeshLink.activated = true;
-            transform.GetChild(0).gameObject.SetActive(false);
+            GetComponentInChildren<Animator>().SetTrigger("open");
             HeroManager.instance.isInteracting = true;
             HeroManager.instance.SetHeroDestination(finalPos);
             yield return new WaitForSeconds(.2f);
@@ -151,7 +151,7 @@ public class InteractablePuzzle : Interactable
             yield return new WaitForSeconds(.5f);
             print("finished Coroutine");
             HeroManager.instance.isInteracting = false;
-            transform.GetChild(0).gameObject.SetActive(true);
+            GetComponentInChildren<Animator>().SetTrigger("close");
             offMeshLink.activated = false;
 
 

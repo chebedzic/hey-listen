@@ -42,6 +42,11 @@ public class HeroSound : MonoBehaviour
         AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_HurtSound, audioSource);
     }
 
+    public void PlayInteractSound()
+    {
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_InteractSound, audioSource);
+    }
+
     public void PlayEnemyHurtSound()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.enemy_Hurt, audioSource);
@@ -68,5 +73,17 @@ public class HeroSound : MonoBehaviour
     public void PlaySpinSound()
     {
         AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Spin, audioSource);
+    }
+
+    public void PlayOpenDoor()
+    {
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.interact_door, audioSource);
+    }
+
+    public void PlayCloseDoor ()
+    {
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.close_door, audioSource);
+
+
     }
 }

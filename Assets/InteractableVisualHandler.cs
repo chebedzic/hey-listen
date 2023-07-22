@@ -10,6 +10,7 @@ public class InteractableVisualHandler : MonoBehaviour
     private InteractableCollectable collectable;
 
     [SerializeField] private bool shakeOnHover = true;
+    [SerializeField] private bool soundOnHover = true;
     private Renderer[] interactableRenderers;
 
     private Light[] interactableLights;
@@ -42,6 +43,7 @@ public class InteractableVisualHandler : MonoBehaviour
     public void JumpToCenter(float delay = 1)
     {
         transform.DOComplete();
+        //transform.DORotate(new Vector3(360, 0, 0), .8f, RotateMode.LocalAxisAdd).SetEase(Ease.OutBack).SetDelay(delay);
         transform.DOLocalJump(Vector3.zero, 2, 1, .5f, false).SetDelay(delay);
     }
 
@@ -62,6 +64,9 @@ public class InteractableVisualHandler : MonoBehaviour
 
     void PlayHoverSound()
     {
+        if (!soundOnHover)
+            return;
+
         AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.UI_hover, null);
     }
 

@@ -56,17 +56,21 @@ public class RoomBridge : Interactable
                 return;
 
         TryBridge();
+
+        OnMouseExit();
     }
 
     public override void OnMouseEnter()
     {
+        if(HeroManager.instance.IsAgentCrossingLink()) return;
+
         CompanionManager.instance.currentInteractable = this;
-        OnPointerEnter?.Invoke(true);
 
         if (offMeshLink != null)
             if (!offMeshLink.activated)
                 return;
 
+        OnPointerEnter?.Invoke(true);
         CursorHandler.instance.HoverInteractable(true, CursorType.navigate);
     }
 

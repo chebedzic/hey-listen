@@ -16420,84 +16420,9 @@ PrefabInstance:
       objectReference: {fileID: 6621004637229122158}
     - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
         type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
       propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 489203417}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Target
-      value: 
-      objectReference: {fileID: 2003800247}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: JumpToCenter
-      objectReference: {fileID: 0}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: SetHeroZDestination
-      objectReference: {fileID: 0}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: InteractableVisualHandler, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
-      value: InteractablePuzzle, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_FloatArgument
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_FloatArgument
-      value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 927987874350819417, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: OnFirstInteraction.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
-    - target: {fileID: 1948755649425692033, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: offMeshLink
-      value: 
-      objectReference: {fileID: 6621004637229122158}
     - target: {fileID: 4208714421873614271, guid: 485a9dcedcb5e414892da871319f699a,
         type: 3}
       propertyPath: m_RootOrder
@@ -16553,20 +16478,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5097389875360637408, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: offMeshLink
-      value: 
-      objectReference: {fileID: 6621004637229122158}
     - target: {fileID: 6604884248751676431, guid: 485a9dcedcb5e414892da871319f699a,
         type: 3}
       propertyPath: m_Name
       value: DoorPuzzle Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 6604884248751676431, guid: 485a9dcedcb5e414892da871319f699a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -18982,7 +18897,7 @@ PrefabInstance:
     - target: {fileID: 8840106714076427854, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
         type: 3}
       propertyPath: offset.z
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 9022582667376341041, guid: a595c32c7e067fe4fa3fde9ac0abdbdd,
         type: 3}

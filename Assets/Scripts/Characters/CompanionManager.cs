@@ -139,10 +139,15 @@ public class CompanionManager : MonoBehaviour
 
             SetHeldAction(null);
 
+            Vector3 dropPosition = transform.position;
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(dropPosition, out hit, 3f, NavMesh.AllAreas))
+                dropPosition = hit.position;
+            
             InteractableCollectable collectable = Instantiate(collectableActionPrefab, transform.position, Quaternion.Euler(0,180,0), GameManager.instance.activeRoom.transform).GetComponent<InteractableCollectable>();
             collectable.Setup(storedAction);
             collectable.transform.DORotate(new Vector3(360, 0, 0), .5f, RotateMode.LocalAxisAdd).SetEase(Ease.OutBack);
-            collectable.transform.DOJump(transform.position, 3, 1, .4f);
+            collectable.transform.DOJump(dropPosition, 3, 1, .4f);
         }
     }
 

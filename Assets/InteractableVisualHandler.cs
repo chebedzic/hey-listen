@@ -9,8 +9,6 @@ public class InteractableVisualHandler : MonoBehaviour
     private Interactable interactable;
     private InteractableCollectable collectable;
 
-    public bool forceHighlight;
-
     [SerializeField] private bool shakeOnHover = true;
     [SerializeField] private bool soundOnHover = true;
     private Renderer[] interactableRenderers;
@@ -18,7 +16,7 @@ public class InteractableVisualHandler : MonoBehaviour
     private Light[] interactableLights;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
 
         interactable = GetComponent<Interactable>();
@@ -76,12 +74,24 @@ public class InteractableVisualHandler : MonoBehaviour
     {
 
     }
+    public void ForceHighlight(bool state)
+    {
+        if (interactableRenderers == null)
+            return;
+
+        foreach (Renderer renderer in interactableRenderers)
+        {
+            foreach (Material mat in renderer.materials)
+            {
+                if (mat.HasFloat("_ForceFresnel"))
+                    mat.DOFloat(state ? 1 : 0, "_ForceFresnel", .2f);
+            }
+        }
+    }
     protected virtual void Highlight(bool state, Renderer[] interactableRenderers)
     {
 
-        state |= forceHighlight;
-
-        if (state && transform.childCount > 0 && shakeOnHover && !forceHighlight)
+        if (state && transform.childCount > 0 && shakeOnHover)
         {
             transform.GetChild(0).DOComplete();
             transform.GetChild(0).DOShakeScale(.2f, .5f, 20, 20, true);

@@ -680,7 +680,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e211f70e98b9ce43b0d523c49a330be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forceHighlight: 0
   shakeOnHover: 1
   soundOnHover: 1
 --- !u!1 &6604564330386504941
@@ -1292,6 +1291,11 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6069003441535307129, guid: fefa282e5bee96e438ada2d51aacee81,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8011369191010258030, guid: fefa282e5bee96e438ada2d51aacee81,
         type: 3}
       propertyPath: m_Name
@@ -1384,6 +1388,11 @@ PrefabInstance:
     - target: {fileID: 3695188811219332955, guid: 54e921bbf2ff347f698b366215bd40b3,
         type: 3}
       propertyPath: m_SortingLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4647678739269615502, guid: 54e921bbf2ff347f698b366215bd40b3,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8892542855293566617, guid: 54e921bbf2ff347f698b366215bd40b3,

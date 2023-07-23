@@ -143,16 +143,16 @@ public class InteractablePuzzle : Interactable
         {
             offMeshLink.activated = true;
             if(GetComponentInChildren<Animator>() != null)
-            GetComponentInChildren<Animator>().SetTrigger("openother");
+                GetComponentInChildren<Animator>().SetTrigger("openother");
             HeroManager.instance.isInteracting = true;
             HeroManager.instance.SetHeroDestination(finalPos);
             yield return new WaitForSeconds(.2f);
             yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
             yield return new WaitUntil(() => !HeroManager.instance.IsAgentCrossingLink());
             yield return new WaitForSeconds(.5f);
-            print("finished Coroutine");
             HeroManager.instance.isInteracting = false;
-            GetComponentInChildren<Animator>().SetTrigger("close");
+            if (GetComponentInChildren<Animator>() != null)
+                GetComponentInChildren<Animator>().SetTrigger("close");
             offMeshLink.activated = false;
 
 

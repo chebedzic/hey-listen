@@ -26,6 +26,7 @@ public class RoomBridge : Interactable
         { 
             if (!linkedDoor.offMeshLink.activated)
             {
+                print("backToRoom");
                 linkedDoor.BackToRoom(transform.position+offset);
                 return;
             }
@@ -94,6 +95,19 @@ public class RoomBridge : Interactable
     private void OnTriggerEnter(Collider other)
     {
         if(other.GetComponent<InteractablePuzzle>() != null)
+        {
+            if (other.CompareTag("Door"))
+            {
+                if (transform.CompareTag("Gap"))
+                    return;
+                linkedDoor = other.GetComponent<InteractablePuzzle>();
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.GetComponent<InteractablePuzzle>() != null && linkedDoor == null)
         {
             if (other.CompareTag("Door"))
             {

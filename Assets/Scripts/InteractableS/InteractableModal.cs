@@ -13,6 +13,7 @@ public class InteractableModal : Interactable
     [Header("Puzzle")]
     [SerializeField] private InteractablePuzzle linkedPuzzle;
     [SerializeField] private OffMeshLink offMeshLink;
+    private InteractableVisualHandler[] visualHandlers;
 
     private InteractableSlot[] slots;
 
@@ -20,6 +21,8 @@ public class InteractableModal : Interactable
 
     void Start()
     {
+        visualHandlers = GetComponentsInChildren<InteractableVisualHandler>(true);
+        interactableRenderers = GetComponentsInChildren<Renderer>();
         //Get inside slots
         slots = GetComponentsInChildren<InteractableSlot>();
 
@@ -49,6 +52,15 @@ public class InteractableModal : Interactable
                 actionList.Add(slot.insideCollectable.collectableAction);
         }
 
+        HighlightModal(actionList.Count == slots.Length);
+
+    }
+    void HighlightModal(bool highlight)
+    {
+        foreach (InteractableVisualHandler handler in visualHandlers)
+        {
+            handler.ForceHighlight(highlight);
+        }
     }
 
 

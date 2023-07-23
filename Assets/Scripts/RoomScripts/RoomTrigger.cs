@@ -34,24 +34,37 @@ public class RoomTrigger : MonoBehaviour
                 transform.parent.GetChild(i).gameObject.SetActive(false);
         }
 
-        // Deactivate everything by default
-        SetRoomActive(false);
-
     }
+
+    //TODO replace this to detect when levels where loaded
+    private void Start()
+    {
+        StartCoroutine(WaitSecondForDeactivation());
+
+        IEnumerator WaitSecondForDeactivation()
+        {
+            yield return new WaitForSeconds(1);
+            if(GameManager.instance.activeRoom != this)
+                SetRoomActive(false);
+        }
+    }
+
 
     public void SetRoomActive(bool active)
     {
-        if (GameManager.instance.activeRoom == this)
-            return;
-
-        if (active)
+        if(active)
             GameManager.instance.SetActiveRoom(this);
 
         roomCompanionSurface.SetActive(active);
         foreach (Interactable interaction in roomInteractions)
         {
-            if(interaction != null)
-                interaction.SetColliderState(active);
+            if (interaction != null)
+            {
+                if (!interaction.CompareTag("Hero") && interaction != this)
+                {
+                    interaction.SetColliderState(active);
+                }
+            }
         }
 
         Interactable[] dynamicInteractables = GetComponentsInChildren<Interactable>();
@@ -69,7 +82,7 @@ public class RoomTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Hero"))
+        if (other.CompareTag("Hero") && GameManager.instance.activeRoom != this)
         {
             CinemachineBrain brain = Camera.main.GetComponent<CinemachineBrain>();
             CinemachineVirtualCamera virtualCam = (CinemachineVirtualCamera)brain.ActiveVirtualCamera;
@@ -82,13 +95,6 @@ public class RoomTrigger : MonoBehaviour
         }
     }
 
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag("Hero"))
-    //    {
-    //        SetRoomActive(false);
-    //    }
-    //}
 
     private void OnDrawGizmos()
     {

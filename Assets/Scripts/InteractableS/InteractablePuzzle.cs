@@ -142,7 +142,8 @@ public class InteractablePuzzle : Interactable
         IEnumerator LinkedDoor()
         {
             offMeshLink.activated = true;
-            GetComponentInChildren<Animator>().SetTrigger("open");
+            if(GetComponentInChildren<Animator>() != null)
+            GetComponentInChildren<Animator>().SetTrigger("openother");
             HeroManager.instance.isInteracting = true;
             HeroManager.instance.SetHeroDestination(finalPos);
             yield return new WaitForSeconds(.2f);

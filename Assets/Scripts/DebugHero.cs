@@ -11,6 +11,7 @@ public class DebugHero : MonoBehaviour
 
     [SerializeField] float debugMovementDistance = 2;
 
+#if UNITY_EDITOR
     void OnA()
     {
         DebugMoveHero(-Vector3.right);
@@ -32,18 +33,6 @@ public class DebugHero : MonoBehaviour
         DebugMoveHero(Vector3.right);
     }
 
-    void OnM()
-    {
-        foreach (InteractableModal modal in FindObjectsByType<InteractableModal>(FindObjectsInactive.Include, FindObjectsSortMode.None)) 
-        {
-            modal.gameObject.SetActive(!modal.gameObject.activeSelf);
-        }
-    }
-
-    void OnMuteMusic()
-    {
-        AudioManager.instance.SetMusicVolume(0);
-    }
 
     void OnI()
     {
@@ -56,4 +45,21 @@ public class DebugHero : MonoBehaviour
         HeroManager.instance.transform.position += dir * debugMovementDistance;
         HeroManager.instance.GetComponent<NavMeshAgent>().enabled = true;
     }
+
+
+#endif
+
+    void OnMuteMusic()
+    {
+        AudioManager.instance.SetMusicVolume(0);
+    }
+
+    void OnM()
+    {
+        foreach (InteractableModal modal in FindObjectsByType<InteractableModal>(FindObjectsInactive.Include, FindObjectsSortMode.None))
+        {
+            modal.gameObject.SetActive(!modal.gameObject.activeSelf);
+        }
+    }
+
 }

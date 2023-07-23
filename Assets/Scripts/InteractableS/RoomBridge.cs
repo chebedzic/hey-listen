@@ -56,9 +56,10 @@ public class RoomBridge : Interactable
             if (!offMeshLink.activated)
                 return;
 
+
         TryBridge();
 
-        OnMouseExit();
+        //OnMouseExit();
     }
 
     public override void OnMouseEnter()

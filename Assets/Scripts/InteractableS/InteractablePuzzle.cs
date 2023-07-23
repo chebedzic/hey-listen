@@ -4,12 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using UnityEngine.Pool;
 
 public class InteractablePuzzle : Interactable
 {
@@ -74,7 +71,7 @@ public class InteractablePuzzle : Interactable
 
     public void SetHeroInteraction(bool isInteracting)
     {
-        if(heroManager!= null)
+        if(heroManager != null)
             heroManager.isInteracting = isInteracting;
     }
 
@@ -85,7 +82,8 @@ public class InteractablePuzzle : Interactable
 
     public void SetHeroZDestination(float z)
     {
-        GetHeroAgent().SetDestination(GetHeroAgent().transform.position + (Vector3.forward * z));
+        var hero = GetHeroAgent();
+        hero.SetDestination(hero.transform.position + (Vector3.forward * z));
     }
 
     IEnumerator BringHero(ActionCombination combination)
@@ -104,7 +102,6 @@ public class InteractablePuzzle : Interactable
         HeroManager.instance.transform.DOLookAt(transform.position, .3f, AxisConstraint.Y);
         //combination = CompanionManager.instance.combinationLibrary.GetCombination(linkedModal.actionList);
         CustomEvent.Trigger(this.gameObject, "TryInteraction", combination);
-
     }
 
     public void SetRelatedLink(bool state, bool tryBridge)

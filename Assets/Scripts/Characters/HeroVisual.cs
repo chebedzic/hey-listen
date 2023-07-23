@@ -94,9 +94,11 @@ public class HeroVisual : MonoBehaviour
 
     public void PlayConfusedParticle()
     {
-        confusionParticle.Play();
-
-        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Confusion, null);
+        Sequence confusedSequence = DOTween.Sequence()
+            .AppendCallback(() => confusionParticle.Play())
+            .AppendCallback(() => AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Confusion, null))
+            .AppendInterval(2)
+            .AppendCallback(() => heroManager.SetHeroDestination(heroManager.transform.position + (heroManager.transform.forward * -1)));
     }
 
     public void TriggerHeroAnimation(string trigger)

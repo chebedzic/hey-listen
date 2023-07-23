@@ -53,13 +53,19 @@ public class HeroManager : MonoBehaviour
 
     }
 
-
-
     public void SetHeroEquipment(Equipment equipment)
     {
         currentEquipment = equipment;
 
         OnGetEquipment?.Invoke(currentEquipment);
+    }
+    public void UpdateNavAgentPosition(bool update)
+    {
+        if (update)
+        {
+            navMeshAgent.SetDestination(transform.position);
+        }
+        navMeshAgent.updatePosition = update;
     }
 
     public bool SetHeroDestination(Vector3 destination, bool calculatePath = true)

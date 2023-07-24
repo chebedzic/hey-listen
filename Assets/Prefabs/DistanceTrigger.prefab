@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5661546340247515571}
   - component: {fileID: 7052566232011643552}
   - component: {fileID: -6620111189609453292}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: DistanceTrigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8351083168138812419}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7052566232011643552
 MonoBehaviour:
@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d5e3097b9634c74897e70b91a1dc43b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  triggerActive: 1
 --- !u!65 &-6620111189609453292
 BoxCollider:
   m_ObjectHideFlags: 0

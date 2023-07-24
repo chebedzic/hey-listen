@@ -4,12 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
-using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
-using UnityEngine.InputSystem;
-using UnityEngine.Pool;
+using NaughtyAttributes;
+using Cinemachine;
 
 public class InteractablePuzzle : Interactable
 {
@@ -24,10 +23,14 @@ public class InteractablePuzzle : Interactable
     private ParticleSystem[] particleSystems;
 
     [Header("Settings")]
+    [SerializeField] private bool heroWalksToInteraction = true;
     [SerializeField] private bool positionHeroInFront = false;
     [SerializeField] private float heroDistance = 1.0f;
     [HideInInspector] public HeroManager heroManager;
     [HideInInspector] public HeroVisual heroVisual;
+    [SerializeField] private bool hasSpecificDestinations = false;
+    [ShowIf("hasSpecificDestinations")]
+    [SerializeField] private Transform[] destinations;
 
     public bool modalRevealed;
 
@@ -67,14 +70,22 @@ public class InteractablePuzzle : Interactable
 
             heroManager.isInteracting = true;
             ActionCombination combination = CompanionManager.instance.combinationLibrary.GetCombination(actionList);
-            StartCoroutine(BringHero(combination));
 
+            //Visual for modal sequence
+            //linkedModal
+
+            if(heroWalksToInteraction)
+                StartCoroutine(BringHero(combination));
+            else
+            {
+                CustomEvent.Trigger(this.gameObject, "TryInteraction", combination);
+            }
         }
     }
 
     public void SetHeroInteraction(bool isInteracting)
     {
-        if(heroManager!= null)
+        if(heroManager != null)
             heroManager.isInteracting = isInteracting;
     }
 
@@ -85,7 +96,8 @@ public class InteractablePuzzle : Interactable
 
     public void SetHeroZDestination(float z)
     {
-        GetHeroAgent().SetDestination(GetHeroAgent().transform.position + (Vector3.forward * z));
+        var hero = GetHeroAgent();
+        hero.SetDestination(hero.transform.position + (Vector3.forward * z));
     }
 
     IEnumerator BringHero(ActionCombination combination)
@@ -104,7 +116,6 @@ public class InteractablePuzzle : Interactable
         HeroManager.instance.transform.DOLookAt(transform.position, .3f, AxisConstraint.Y);
         //combination = CompanionManager.instance.combinationLibrary.GetCombination(linkedModal.actionList);
         CustomEvent.Trigger(this.gameObject, "TryInteraction", combination);
-
     }
 
     public void SetRelatedLink(bool state, bool tryBridge)
@@ -142,16 +153,15 @@ public class InteractablePuzzle : Interactable
         IEnumerator LinkedDoor()
         {
             offMeshLink.activated = true;
-            GetComponentInChildren<Animator>().SetTrigger("open");
             HeroManager.instance.isInteracting = true;
             HeroManager.instance.SetHeroDestination(finalPos);
             yield return new WaitForSeconds(.2f);
             yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
             yield return new WaitUntil(() => !HeroManager.instance.IsAgentCrossingLink());
-            yield return new WaitForSeconds(.5f);
-            print("finished Coroutine");
+            yield return new WaitForSeconds(.2f);
             HeroManager.instance.isInteracting = false;
-            GetComponentInChildren<Animator>().SetTrigger("close");
+            if (GetComponentInChildren<Animator>() != null)
+                GetComponentInChildren<Animator>().SetTrigger("close");
             offMeshLink.activated = false;
 
 
@@ -175,6 +185,10 @@ public class InteractablePuzzle : Interactable
     //Only reference by distance trigger that I made for testing
     public void TriggerPuzzle()
     {
+
+        if (linkedModal == null && stateMachine == true)
+            print("No modal linked with object");
+
         TryPuzzle(linkedModal.actionList, linkedModal);
     }
 
@@ -226,6 +240,38 @@ public class InteractablePuzzle : Interactable
         return transform.position;
     }
 
+    public Vector3 GetSpecificDestination(bool far)
+    {
+
+        float distanceToObj1 = Vector3.Distance(destinations[0].position, heroManager.transform.position);
+        float distanceToObj2 = Vector3.Distance(destinations[1].position, heroManager.transform.position);
+
+        if (distanceToObj1 > distanceToObj2)
+        {
+            return destinations[far ? 0 : 1].position;
+        }
+        else
+        {
+            return destinations[far ? 1 : 0].position;
+        }
+    }
+
+    public bool GetSpecificOrientation()
+    {
+
+        float distanceToObj1 = Vector3.Distance(destinations[0].position, heroManager.transform.position);
+        float distanceToObj2 = Vector3.Distance(destinations[1].position, heroManager.transform.position);
+
+        if (distanceToObj1 > distanceToObj2)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public void SetHeroDestinationAtMeshLinkStartPos()
     {
         if (offMeshLink == null)
@@ -255,6 +301,14 @@ public class InteractablePuzzle : Interactable
         return offLinkPoints.OrderBy(p => Vector3.Distance(p, heroManager.transform.position)).First();
     }
 
+    public void SetDistanceTrigger(bool active)
+    {
+        if(GetComponentInChildren<DistanceTrigger>() != null)
+        {
+            GetComponentInChildren<DistanceTrigger>().triggerActive = active;
+        }
+    }
+
     //Animations
 
     public void ShakeCamera(Vector3 velocity, float duration)
@@ -263,6 +317,13 @@ public class InteractablePuzzle : Interactable
         impulseSource.m_DefaultVelocity = velocity;
         impulseSource.m_ImpulseDefinition.m_ImpulseDuration = duration;
         impulseSource.GenerateImpulse();
+    }
+
+    public void ActivateCameraNoise(bool active)
+    {
+        CinemachineVirtualCamera vcam;
+        vcam = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
+        vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = active ? 1 : 0;
     }
 
     public void MoveHeroTween(Vector3 finalPos, float duration)

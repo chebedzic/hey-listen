@@ -90,7 +90,7 @@ public class CompanionManager : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, worldPosition, mouseLerp * Time.deltaTime);
 
-        if ((worldPosition - transform.position).magnitude > 0.01f)
+        if ((worldPosition - transform.position).magnitude > 0.05f)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredDirection), rotationSpeed * Time.deltaTime);
     }
 
@@ -104,6 +104,8 @@ public class CompanionManager : MonoBehaviour
     void OnFire()
     {
 
+        if (HeroManager.instance.isInteracting) return;
+
         if (currentInteractable == null && currentSlot == null && !currentCollectable)
         {
             if (EquipmentManager.instance.visible && currentEquipmentBubble == null)
@@ -111,7 +113,7 @@ public class CompanionManager : MonoBehaviour
 
             if (!HeroManager.instance.isInteracting)
             {
-                HeroManager.instance.SetHeroDestination(worldPosition);
+                HeroManager.instance.SetHeroDestination(worldPosition, false);
             }
         }
 
@@ -123,7 +125,7 @@ public class CompanionManager : MonoBehaviour
     {
         if (currentInteractable == null && currentModal == null)
             if (!HeroManager.instance.isInteracting)
-                DropCollectable();
+                DropCollectable(heldAction);
                 
     }
 
@@ -134,11 +136,11 @@ public class CompanionManager : MonoBehaviour
     }
 
     #endregion
-    void DropCollectable()
+    public void DropCollectable(Action actionToDrop)
     {
-        if (heldAction != null)
+        if (actionToDrop != null)
         {
-            Action storedAction = heldAction;
+            Action storedAction = actionToDrop;
 
             SetHeldAction(null);
 

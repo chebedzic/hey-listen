@@ -162,7 +162,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.745283, g: 0.5196468, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.6621657, b: 0, a: 1}
   m_Intensity: 3
   m_Range: 16
   m_SpotAngle: 30
@@ -205,7 +205,7 @@ Light:
   m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
-  m_BounceIntensity: 15
+  m_BounceIntensity: 11
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
@@ -269,7 +269,7 @@ Transform:
   - {fileID: 3159704929859885076}
   - {fileID: 7122961343135269432}
   m_Father: {fileID: 0}
-  m_RootOrder: -1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!208 &2410725703955117759
 NavMeshObstacle:

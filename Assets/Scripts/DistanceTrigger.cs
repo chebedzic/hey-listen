@@ -22,7 +22,9 @@ public class DistanceTrigger : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.green;
+        Color myColor = Color.green;
+        myColor.a = .5f;
+        Gizmos.color = myColor;
         Gizmos.matrix = transform.localToWorldMatrix;
         Gizmos.DrawCube(Vector3.zero, Vector3.one);
     }

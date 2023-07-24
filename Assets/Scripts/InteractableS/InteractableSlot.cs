@@ -73,6 +73,7 @@ public class InteractableSlot : Interactable
     {
         Action held = CompanionManager.instance.heldAction;
         Action slotAction = insideCollectable.collectableAction;
+        CompanionManager.instance.currentSlot = this;
 
         if (held == null && slotAction == null)
         {
@@ -89,7 +90,6 @@ public class InteractableSlot : Interactable
 
         base.OnMouseEnter();
 
-        CompanionManager.instance.currentSlot = this;
 
         insideCollectable.OnMouseEnter();
 

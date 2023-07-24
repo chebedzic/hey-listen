@@ -7,6 +7,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using NaughtyAttributes;
 
 public class InteractablePuzzle : Interactable
 {
@@ -26,6 +27,9 @@ public class InteractablePuzzle : Interactable
     [SerializeField] private float heroDistance = 1.0f;
     [HideInInspector] public HeroManager heroManager;
     [HideInInspector] public HeroVisual heroVisual;
+    [SerializeField] private bool hasSpecificDestinations = false;
+    [ShowIf("hasSpecificDestinations")]
+    [SerializeField] private Transform[] destinations;
 
     public bool modalRevealed;
 
@@ -233,6 +237,25 @@ public class InteractablePuzzle : Interactable
             return offMeshLink.startTransform.position;
 
         return transform.position;
+    }
+
+    public Vector3 GetSpecificDestination()
+    {
+        if(destinations.Length <= 0)
+            return Vector3.zero;
+
+
+        float distanceToObj1 = Vector3.Distance(destinations[0].position, heroManager.transform.position);
+        float distanceToObj2 = Vector3.Distance(destinations[1].position, heroManager.transform.position);
+
+        if (distanceToObj1 > distanceToObj2)
+        {
+            return destinations[0].position;
+        }
+        else
+        {
+            return destinations[1].position;
+        }
     }
 
     public void SetHeroDestinationAtMeshLinkStartPos()

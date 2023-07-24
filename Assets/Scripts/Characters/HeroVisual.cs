@@ -106,7 +106,7 @@ public class HeroVisual : MonoBehaviour
         Sequence confusedSequence = DOTween.Sequence()
             .AppendCallback(() => confusionParticle.Play())
             .AppendCallback(() => AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Confusion, null))
-            .AppendInterval(2)
+            .AppendInterval(confusionBackoutInterval)
             .AppendCallback(() => 
             { 
                 if(heroManager.AgentIsStopped())

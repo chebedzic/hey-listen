@@ -90,7 +90,7 @@ public class CompanionManager : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, worldPosition, mouseLerp * Time.deltaTime);
 
-        if ((worldPosition - transform.position).magnitude > 0.01f)
+        if ((worldPosition - transform.position).magnitude > 0.05f)
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(desiredDirection), rotationSpeed * Time.deltaTime);
     }
 

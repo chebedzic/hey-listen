@@ -21,6 +21,7 @@ public class InteractablePuzzle : Interactable
     private ParticleSystem[] particleSystems;
 
     [Header("Settings")]
+    [SerializeField] private bool heroWalksToInteraction = true;
     [SerializeField] private bool positionHeroInFront = false;
     [SerializeField] private float heroDistance = 1.0f;
     [HideInInspector] public HeroManager heroManager;
@@ -64,8 +65,13 @@ public class InteractablePuzzle : Interactable
 
             heroManager.isInteracting = true;
             ActionCombination combination = CompanionManager.instance.combinationLibrary.GetCombination(actionList);
-            StartCoroutine(BringHero(combination));
 
+            if(heroWalksToInteraction)
+                StartCoroutine(BringHero(combination));
+            else
+            {
+                CustomEvent.Trigger(this.gameObject, "TryInteraction", combination);
+            }
         }
     }
 
@@ -171,6 +177,10 @@ public class InteractablePuzzle : Interactable
     //Only reference by distance trigger that I made for testing
     public void TriggerPuzzle()
     {
+
+        if (linkedModal == null && stateMachine == true)
+            print("No modal linked with object");
+
         TryPuzzle(linkedModal.actionList, linkedModal);
     }
 

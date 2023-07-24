@@ -24,8 +24,14 @@ public class InteractableEquipment : Interactable
     public override void OnMouseDown()
     {
         base.OnMouseDown();
+
         if(equipment == null) { print("Equipment Object Null"); }
         HeroManager.instance.SetHeroEquipment(equipment);
         EquipmentManager.instance.ShowEquipments(false);
+    }
+
+    public void GotShield()
+    {
+        GameManager.instance.hasUnlockedShield= true;
     }
 }

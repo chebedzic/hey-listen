@@ -2066,15 +2066,25 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+    - target: {fileID: 4940421551573391167, guid: 39e0a7837c83e413e97345f93b096bb5,
+        type: 3}
+      propertyPath: heroWalksToInteraction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6385406190452187249, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: shakeOnHover
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6385406190452187249, guid: 39e0a7837c83e413e97345f93b096bb5,
+        type: 3}
+      propertyPath: soundOnHover
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: m_RootOrder
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
@@ -2126,6 +2136,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8278864845741249145, guid: 39e0a7837c83e413e97345f93b096bb5,
+        type: 3}
+      propertyPath: _data._json
+      value: '{"nest":{"source":"Macro","macro":0,"embed":null}}'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278864845741249145, guid: 39e0a7837c83e413e97345f93b096bb5,
+        type: 3}
+      propertyPath: _data._objectReferences.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8278864845741249145, guid: 39e0a7837c83e413e97345f93b096bb5,
+        type: 3}
+      propertyPath: '_data._objectReferences.Array.data[0]'
+      value: 
+      objectReference: {fileID: 11400000, guid: 40ff367b9516292438159759d03a20eb,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 6560683028317654740, guid: 39e0a7837c83e413e97345f93b096bb5, type: 3}
     m_RemovedGameObjects:
@@ -2560,7 +2586,7 @@ PrefabInstance:
     - target: {fileID: 5661546340247515571, guid: 032593850dcfd764c9db4e2b1c647562,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 7.5
+      value: 5.667683
       objectReference: {fileID: 0}
     - target: {fileID: 5661546340247515571, guid: 032593850dcfd764c9db4e2b1c647562,
         type: 3}
@@ -2570,7 +2596,7 @@ PrefabInstance:
     - target: {fileID: 5661546340247515571, guid: 032593850dcfd764c9db4e2b1c647562,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 6.5416
+      value: 5.600979
       objectReference: {fileID: 0}
     - target: {fileID: 5661546340247515571, guid: 032593850dcfd764c9db4e2b1c647562,
         type: 3}

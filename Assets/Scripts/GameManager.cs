@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public RoomTrigger activeRoom;
 
+    public bool hasUnlockedShield = false;
+
     private void Awake()
     {
         instance = this;

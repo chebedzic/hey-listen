@@ -23,6 +23,10 @@ public class HeroVisual : MonoBehaviour
     [SerializeField] [ColorUsage(true, true)] Color equipmentBlinkColor;
     private Renderer[] equipmentRenderers;
 
+    [Header("Confusion Settings")]
+    [SerializeField] private float confusionBackoutInterval = 1;
+    [SerializeField] private Vector3 confusionParticleOffset = new Vector3(1, 0, -.5f);
+
     void Start()
     {
         animator = GetComponentInChildren<Animator>();
@@ -94,11 +98,20 @@ public class HeroVisual : MonoBehaviour
 
     public void PlayConfusedParticle()
     {
+        Vector3 heroPos = heroManager.transform.position;
+
+        confusionParticle.transform.position = 
+            new Vector3(heroPos.x + confusionParticleOffset.x, confusionParticle.transform.position.y, heroPos.z - confusionParticleOffset.z);
+
         Sequence confusedSequence = DOTween.Sequence()
             .AppendCallback(() => confusionParticle.Play())
             .AppendCallback(() => AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Confusion, null))
             .AppendInterval(2)
-            .AppendCallback(() => heroManager.SetHeroDestination(heroManager.transform.position + (heroManager.transform.forward * -1)));
+            .AppendCallback(() => 
+            { 
+                if(heroManager.AgentIsStopped())
+                    heroManager.SetHeroDestination(heroManager.transform.position + (heroManager.transform.forward * -1));
+            });
     }
 
     public void TriggerHeroAnimation(string trigger)

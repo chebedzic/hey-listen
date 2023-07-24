@@ -11,6 +11,7 @@ public class RoomBridge : Interactable
     private OffMeshLink offMeshLink;
 
     public InteractablePuzzle linkedDoor;
+    Coroutine InteractionCooldown;
 
     public override void Awake()
     {
@@ -22,6 +23,8 @@ public class RoomBridge : Interactable
 
     public void TryBridge()
     {
+        HeroManager.instance.isInteracting = true;
+
         if (linkedDoor != null) 
         { 
             if (!linkedDoor.offMeshLink.activated)
@@ -33,6 +36,15 @@ public class RoomBridge : Interactable
         }
 
         HeroManager.instance.SetHeroDestination(transform.position + offset);
+
+        if(InteractionCooldown!= null) StopCoroutine(InteractionCooldown);
+        InteractionCooldown = StartCoroutine(Cooldown());
+
+        IEnumerator Cooldown()
+        {
+            yield return new WaitForSeconds(.5f);
+            HeroManager.instance.isInteracting = false;
+        }
     }
 
     private void OnDrawGizmos()

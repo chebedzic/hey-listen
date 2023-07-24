@@ -104,6 +104,8 @@ public class CompanionManager : MonoBehaviour
     void OnFire()
     {
 
+        if (HeroManager.instance.isInteracting) return;
+
         if (currentInteractable == null && currentSlot == null && !currentCollectable)
         {
             if (EquipmentManager.instance.visible && currentEquipmentBubble == null)

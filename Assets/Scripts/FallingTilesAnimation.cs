@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using System;
+using UnityEngine.UIElements;
 
 public class FallingTilesAnimation : MonoBehaviour
 {
@@ -14,10 +16,15 @@ public class FallingTilesAnimation : MonoBehaviour
 
     public void TriggerAnimation(bool startsLeft = true)
     {
-        for (int i = startsLeft ? 0 : tileRows.Length - 1; i < tileRows.Length; i = startsLeft ? i+1 : i-1)
+
+        for (int i =  0 ; i < tileRows.Length; i++)
         {
-            tileRows[i].DOComplete();
-            tileRows[i].DOMoveY(positionFallAmount, fallDuration).SetDelay(fallDelay * i);
+            int index = startsLeft ? i : tileRows.Length - i - 1;
+            int reverseIndex = startsLeft ? tileRows.Length - i - 1 : i;
+            tileRows[index].DOComplete();
+            tileRows[index].DOMoveY(positionFallAmount, fallDuration).SetDelay(fallDelay * (startsLeft ? index + 1 : reverseIndex + 1))
+                .OnStart(()=> tileRows[index].GetComponentInChildren<ParticleSystem>().Play());
+
         }
     }
 
@@ -25,6 +32,7 @@ public class FallingTilesAnimation : MonoBehaviour
     {
         for (int i = 0; i < tileRows.Length; i++)
         {
+            tileRows[i].DOComplete();
             tileRows[i].localPosition = Vector3.zero;
         }
     }

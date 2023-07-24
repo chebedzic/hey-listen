@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using NaughtyAttributes;
+using Cinemachine;
 
 public class InteractablePuzzle : Interactable
 {
@@ -255,6 +256,22 @@ public class InteractablePuzzle : Interactable
         }
     }
 
+    public bool GetSpecificOrientation()
+    {
+
+        float distanceToObj1 = Vector3.Distance(destinations[0].position, heroManager.transform.position);
+        float distanceToObj2 = Vector3.Distance(destinations[1].position, heroManager.transform.position);
+
+        if (distanceToObj1 > distanceToObj2)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
+
     public void SetHeroDestinationAtMeshLinkStartPos()
     {
         if (offMeshLink == null)
@@ -300,6 +317,13 @@ public class InteractablePuzzle : Interactable
         impulseSource.m_DefaultVelocity = velocity;
         impulseSource.m_ImpulseDefinition.m_ImpulseDuration = duration;
         impulseSource.GenerateImpulse();
+    }
+
+    public void ActivateCameraNoise(bool active)
+    {
+        CinemachineVirtualCamera vcam;
+        vcam = (CinemachineVirtualCamera)CinemachineCore.Instance.GetActiveBrain(0).ActiveVirtualCamera;
+        vcam.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>().m_AmplitudeGain = active ? 1 : 0;
     }
 
     public void MoveHeroTween(Vector3 finalPos, float duration)

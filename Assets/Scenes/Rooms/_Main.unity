@@ -375,6 +375,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debugMovementDistance: 2
+  allActions:
+  - {fileID: 11400000, guid: d4a2e0c0f26224ff1876b6fc20711766, type: 2}
+  - {fileID: 11400000, guid: 4952b5a6ce22d4d9e81513dba1d9a237, type: 2}
+  - {fileID: 11400000, guid: 1c6a4dc09862f499db1b624d799245c7, type: 2}
+  - {fileID: 11400000, guid: a2fc6c178a3eb4958b8b22d5cc48b957, type: 2}
+  - {fileID: 11400000, guid: 5663ad1ceb0ed409687fadb91efeb9cc, type: 2}
+  actionIndex: 0
 --- !u!114 &305052636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -964,6 +971,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   activeRoom: {fileID: 0}
+  hasUnlockedShield: 0
 --- !u!4 &740348765
 Transform:
   m_ObjectHideFlags: 0

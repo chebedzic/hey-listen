@@ -113,7 +113,7 @@ public class CompanionManager : MonoBehaviour
 
             if (!HeroManager.instance.isInteracting)
             {
-                HeroManager.instance.SetHeroDestination(worldPosition);
+                HeroManager.instance.SetHeroDestination(worldPosition, false);
             }
         }
 
@@ -125,7 +125,7 @@ public class CompanionManager : MonoBehaviour
     {
         if (currentInteractable == null && currentModal == null)
             if (!HeroManager.instance.isInteracting)
-                DropCollectable();
+                DropCollectable(heldAction);
                 
     }
 
@@ -136,11 +136,11 @@ public class CompanionManager : MonoBehaviour
     }
 
     #endregion
-    void DropCollectable()
+    public void DropCollectable(Action actionToDrop)
     {
-        if (heldAction != null)
+        if (actionToDrop != null)
         {
-            Action storedAction = heldAction;
+            Action storedAction = actionToDrop;
 
             SetHeldAction(null);
 

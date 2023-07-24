@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class DebugHero : MonoBehaviour
@@ -10,6 +11,10 @@ public class DebugHero : MonoBehaviour
     InteractableModal[] modals;
 
     [SerializeField] float debugMovementDistance = 2;
+
+
+    [SerializeField] Action[] allActions;
+    [SerializeField] int actionIndex;
 
 #if UNITY_EDITOR
     void OnA()
@@ -33,10 +38,15 @@ public class DebugHero : MonoBehaviour
         DebugMoveHero(Vector3.right);
     }
 
+    void OnPlus(InputValue value)
+    {
+        float modifier = value.Get<float>();
+        actionIndex = (int)Mathf.Repeat(actionIndex + (int)modifier, allActions.Length );
+    }
 
     void OnI()
     {
-        HeroManager.instance.isInteracting = false;
+        CompanionManager.instance.DropCollectable(allActions[actionIndex]);
     }
 
     void DebugMoveHero(Vector3 dir)

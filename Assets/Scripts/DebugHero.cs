@@ -16,7 +16,6 @@ public class DebugHero : MonoBehaviour
     [SerializeField] Action[] allActions;
     [SerializeField] int actionIndex;
 
-#if UNITY_EDITOR
     void OnA()
     {
         DebugMoveHero(-Vector3.right);
@@ -57,7 +56,6 @@ public class DebugHero : MonoBehaviour
     }
 
 
-#endif
 
     void OnMuteMusic()
     {

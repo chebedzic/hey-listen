@@ -239,22 +239,19 @@ public class InteractablePuzzle : Interactable
         return transform.position;
     }
 
-    public Vector3 GetSpecificDestination()
+    public Vector3 GetSpecificDestination(bool far)
     {
-        if(destinations.Length <= 0)
-            return Vector3.zero;
-
 
         float distanceToObj1 = Vector3.Distance(destinations[0].position, heroManager.transform.position);
         float distanceToObj2 = Vector3.Distance(destinations[1].position, heroManager.transform.position);
 
         if (distanceToObj1 > distanceToObj2)
         {
-            return destinations[0].position;
+            return destinations[far ? 0 : 1].position;
         }
         else
         {
-            return destinations[1].position;
+            return destinations[far ? 1 : 0].position;
         }
     }
 
@@ -285,6 +282,14 @@ public class InteractablePuzzle : Interactable
     {
         Vector3[] offLinkPoints = new Vector3[] { offMeshLink.startTransform.position, offMeshLink.endTransform.position };
         return offLinkPoints.OrderBy(p => Vector3.Distance(p, heroManager.transform.position)).First();
+    }
+
+    public void SetDistanceTrigger(bool active)
+    {
+        if(GetComponentInChildren<DistanceTrigger>() != null)
+        {
+            GetComponentInChildren<DistanceTrigger>().triggerActive = active;
+        }
     }
 
     //Animations

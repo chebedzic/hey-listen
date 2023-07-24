@@ -6,6 +6,7 @@ using UnityEngine;
 public class DistanceTrigger : MonoBehaviour
 {
     InteractablePuzzle puzzle;
+    public bool triggerActive = true;
 
     void Start()
     {
@@ -14,6 +15,9 @@ public class DistanceTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (!triggerActive)
+            return;
+
         if (other.CompareTag("Hero"))
         {
             puzzle.TriggerPuzzle();

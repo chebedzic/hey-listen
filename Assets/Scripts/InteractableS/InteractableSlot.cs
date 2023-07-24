@@ -10,6 +10,11 @@ public class InteractableSlot : Interactable
     public InteractableCollectable insideCollectable;
     private InteractableModal modalParent;
 
+    private void Awake()
+    {
+        
+    }
+
     private void Start()
     {
         modalParent = GetComponentInParent<InteractableModal>();
@@ -66,16 +71,26 @@ public class InteractableSlot : Interactable
 
     public override void OnMouseEnter()
     {
-        if(CompanionManager.instance.heldAction == null && insideCollectable.collectableAction == null)
+        Action held = CompanionManager.instance.heldAction;
+        Action slotAction = insideCollectable.collectableAction;
+
+        if (held == null && slotAction == null)
         {
             modalParent.transform.DOComplete();
             modalParent.transform.DOScale(1.1f, .3f).SetEase(Ease.OutBack);
             return;
         }
 
+        if(held != null)
+        {
+            if (held.actionType != slotType)
+                return;
+        }
+
         base.OnMouseEnter();
+
         CompanionManager.instance.currentSlot = this;
-        
+
         insideCollectable.OnMouseEnter();
 
     }

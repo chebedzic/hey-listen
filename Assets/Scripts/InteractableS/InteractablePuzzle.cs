@@ -66,6 +66,9 @@ public class InteractablePuzzle : Interactable
             heroManager.isInteracting = true;
             ActionCombination combination = CompanionManager.instance.combinationLibrary.GetCombination(actionList);
 
+            //Visual for modal sequence
+            //linkedModal
+
             if(heroWalksToInteraction)
                 StartCoroutine(BringHero(combination));
             else

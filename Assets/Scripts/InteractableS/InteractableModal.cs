@@ -61,6 +61,11 @@ public class InteractableModal : Interactable
         {
             handler.ForceHighlight(highlight);
         }
+
+        if(linkedPuzzle != null)
+        {
+            linkedPuzzle.GetComponent<InteractableVisualHandler>().ForceHighlight(highlight, .2f);
+        }
     }
 
 

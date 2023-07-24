@@ -74,7 +74,7 @@ public class InteractableVisualHandler : MonoBehaviour
     {
 
     }
-    public void ForceHighlight(bool state)
+    public void ForceHighlight(bool state, float amount = .5f)
     {
         if (interactableRenderers == null)
             return;
@@ -84,7 +84,7 @@ public class InteractableVisualHandler : MonoBehaviour
             foreach (Material mat in renderer.materials)
             {
                 if (mat.HasFloat("_ForceFresnel"))
-                    mat.DOFloat(state ? 1 : 0, "_ForceFresnel", .2f);
+                    mat.DOFloat(state ? amount : 0, "_ForceFresnel", .2f);
             }
         }
     }

@@ -8,6 +8,7 @@ using UnityEngine.AI;
 
 public class RoomTrigger : MonoBehaviour
 {
+    public UnityEvent OnRoomExit;
 
     [HideInInspector] public UnityEvent<RoomTrigger> OnRoomEnter;
 
@@ -92,6 +93,14 @@ public class RoomTrigger : MonoBehaviour
 
             //RoomManager.instance.RoomSetup(this);
             SetRoomActive(true);
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.CompareTag("Hero") && GameManager.instance.activeRoom != this)
+        {
+            OnRoomExit?.Invoke();
         }
     }
 

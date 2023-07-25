@@ -85,6 +85,18 @@ class SceneWindow : EditorWindow
 
         EditorGUILayout.Space();
 
+        if (GUILayout.Button("Bake All Lights", GUILayout.Height(20)))
+        {
+            string[] paths = new string[scenes.Count];
+            for (int i = 0; i < scenes.Count; i++)
+            {
+                paths[i] = EditorBuildSettings.scenes[i].path;
+            }
+            Lightmapping.BakeMultipleScenes(paths);
+        }
+
+        EditorGUILayout.Space();
+
         EditorGUILayout.LabelField("Scenes", EditorStyles.boldLabel);
 
         scrollPosition = GUILayout.BeginScrollView(scrollPosition);

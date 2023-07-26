@@ -93,6 +93,8 @@ class SceneWindow : EditorWindow
                 paths[i] = EditorBuildSettings.scenes[i].path;
             }
             Lightmapping.BakeMultipleScenes(paths);
+            Lightmapping.BakeAsync();
+            
         }
 
         EditorGUILayout.Space();

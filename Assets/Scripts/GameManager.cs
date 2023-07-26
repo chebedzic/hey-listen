@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,18 +15,56 @@ public class GameManager : MonoBehaviour
 
     public bool hasUnlockedShield = false;
 
+    private CinemachineBrain cinemachineBrain;
+    public CinemachineVirtualCamera focusVirtualCamera;
+
     private void Awake()
     {
         instance = this;
+
+        cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
     }
 
     public void GameIsLoading(bool loading)
     {
-        PlayerInput[] playerInputs = FindObjectsByType<PlayerInput>(sortMode: FindObjectsSortMode.None);
-        
-        foreach (PlayerInput playerInput in playerInputs) { playerInput.enabled = !loading; }
+        EnableControls(!loading);
+    }
 
-        CompanionManager.instance.enabled = !loading;
+    public void EnableControls(bool enable)
+    {
+        PlayerInput[] playerInputs = FindObjectsByType<PlayerInput>(sortMode: FindObjectsSortMode.None);
+
+        foreach (PlayerInput playerInput in playerInputs) { playerInput.enabled = enable; }
+
+        CompanionManager.instance.enabled = enable;
+    }
+
+    public void FocusCameraOnObject(Transform target ,bool focus, float transition = .2f, float interval = 0)
+    {
+        cinemachineBrain.m_DefaultBlend.m_Time = transition;
+
+        focusVirtualCamera.Follow = target;
+        focusVirtualCamera.Priority = focus ? 11 : 0;
+
+        if (interval > 0) StartCoroutine(Interval());
+
+        IEnumerator Interval()
+        {
+            yield return new WaitForSeconds(interval);
+            focusVirtualCamera.Priority = 0;
+        }
+    }
+
+    public void PauseControlInterval(float interval = 1)
+    {
+        StartCoroutine(IntervalCoroutine());
+
+        IEnumerator IntervalCoroutine()
+        {
+            EnableControls(false);
+            yield return new WaitForSeconds(interval);
+            EnableControls(true);
+        }
     }
 
     public void SetActiveRoom(RoomTrigger room)

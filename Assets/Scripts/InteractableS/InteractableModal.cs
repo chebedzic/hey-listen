@@ -19,7 +19,7 @@ public class InteractableModal : Interactable
 
     public List<Action> actionList;
 
-    void Start()
+    void Awake()
     {
         visualHandlers = GetComponentsInChildren<InteractableVisualHandler>(true);
         interactableRenderers = GetComponentsInChildren<Renderer>();

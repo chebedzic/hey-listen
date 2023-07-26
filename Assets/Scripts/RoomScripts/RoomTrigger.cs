@@ -8,9 +8,10 @@ using UnityEngine.AI;
 
 public class RoomTrigger : MonoBehaviour
 {
+
     public UnityEvent OnRoomExit;
 
-    [HideInInspector] public UnityEvent<RoomTrigger> OnRoomEnter;
+    public UnityEvent OnRoomEnter;
 
     [SerializeField] private GeneralSettings generalSettings;
     [SerializeField] private BoxCollider collider;
@@ -55,8 +56,11 @@ public class RoomTrigger : MonoBehaviour
 
     public void SetRoomActive(bool active)
     {
-        if(active)
+        if (active)
+        {
             GameManager.instance.SetActiveRoom(this);
+            OnRoomEnter.Invoke();
+        }
 
         roomCompanionSurface.SetActive(active);
         foreach (Interactable interaction in roomInteractions)

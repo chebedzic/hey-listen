@@ -126,6 +126,11 @@ public class InteractablePuzzle : Interactable
         CustomEvent.Trigger(this.gameObject, "TryInteraction", combination);
     }
 
+    public void EnableRelatedLink()
+    {
+        SetRelatedLink(true, false);
+    }
+
     public void SetRelatedLink(bool state, bool tryBridge)
     {
         if (offMeshLink == null)

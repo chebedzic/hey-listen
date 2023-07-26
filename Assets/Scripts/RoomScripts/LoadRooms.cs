@@ -26,6 +26,7 @@ public class LoadRooms : MonoBehaviour
 
     [HideInInspector] public string[] targetScenes;
 
+    public UnityEvent onLoadStart;
     public UnityEvent onLoadComplete;
     private void Start()
     {
@@ -35,8 +36,11 @@ public class LoadRooms : MonoBehaviour
 
     public void Load()
     {
-        StartCoroutine(LoadingRooms());
+        onLoadStart.Invoke();
 
+        GameManager.instance.GameIsLoading(true);
+
+        StartCoroutine(LoadingRooms());
 
         IEnumerator LoadingRooms()
         {
@@ -49,7 +53,11 @@ public class LoadRooms : MonoBehaviour
                 }
             }
             LightProbes.Tetrahedralize();
+
+            yield return new WaitForSeconds(1);
+
             onLoadComplete.Invoke();
+            GameManager.instance.GameIsLoading(false);
         }
     }
     public void Unload(string scene)

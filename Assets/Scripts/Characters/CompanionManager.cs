@@ -57,7 +57,7 @@ public class CompanionManager : MonoBehaviour
     private void Update()
     {
         screenPosition = Mouse.current.position.value;
-        OnMouseMovement.Invoke(screenPosition);
+        //OnMouseMovement.Invoke(screenPosition);
 
         if (isInEditorMode)
             return;

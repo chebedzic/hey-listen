@@ -18,6 +18,8 @@ public class RoomTrigger : MonoBehaviour
     [HideInInspector] public Interactable[] roomInteractions;
     [HideInInspector] public GameObject roomCompanionSurface;
 
+    public bool isMenuRoom = false;
+
     private void Awake()
     {
         // Look for all interactables that are part of the parent room

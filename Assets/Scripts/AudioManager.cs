@@ -37,5 +37,9 @@ public class AudioManager : MonoBehaviour
         tempSource.PlayOneShot(soundGroup.clips[RandomIndex], soundGroup.volume);
     }
 
+    public void PlayMusic()
+    {
+        musicSource.Play();
+    }
 
 }

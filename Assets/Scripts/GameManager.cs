@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using UnityEngine.InputSystem;
 
 public class GameManager : MonoBehaviour
 {
+    public UnityEvent OnMenuRoomExit;
 
     public static GameManager instance;
 
@@ -16,8 +19,23 @@ public class GameManager : MonoBehaviour
         instance = this;
     }
 
+    public void GameIsLoading(bool loading)
+    {
+        PlayerInput[] playerInputs = FindObjectsByType<PlayerInput>(sortMode: FindObjectsSortMode.None);
+        
+        foreach (PlayerInput playerInput in playerInputs) { playerInput.enabled = !loading; }
+
+        CompanionManager.instance.enabled = !loading;
+    }
+
     public void SetActiveRoom(RoomTrigger room)
     {
+        if (!room.isMenuRoom)
+        {
+            //OnMenuRoomExit.Invoke();
+            GameTitleScreen.instance.BringTitleElements(false);
+        }
+
         RoomTrigger oldRoom = activeRoom;
         activeRoom = room;
 

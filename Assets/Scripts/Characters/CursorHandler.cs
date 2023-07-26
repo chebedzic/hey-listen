@@ -8,6 +8,8 @@ using DG.Tweening;
 public enum CursorType { arrow, hover, navigate}
 public class CursorHandler : MonoBehaviour
 {
+    private Vector2 screenPosition;
+
     public static CursorHandler instance;
 
     [SerializeField] CursorSettings settings;
@@ -25,12 +27,17 @@ public class CursorHandler : MonoBehaviour
 
         companion = FindAnyObjectByType<CompanionManager>();
         cursorImage = GetComponent<Image>();
-        companion.OnMouseMovement.AddListener(FollowCursor);
         companion.OnMouseClick.AddListener(HandleClick);
 
 
         Cursor.visible = false;
         cursorImage.color = settings.arrowColor;
+    }
+
+    private void Update()
+    {
+        screenPosition = Mouse.current.position.value;
+        FollowCursor(screenPosition);
     }
 
     public void HoverInteractable(bool hover, CursorType type)

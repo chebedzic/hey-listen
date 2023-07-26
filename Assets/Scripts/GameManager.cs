@@ -30,14 +30,15 @@ public class GameManager : MonoBehaviour
 
     public void SetActiveRoom(RoomTrigger room)
     {
-        if (!room.isMenuRoom)
-        {
-            //OnMenuRoomExit.Invoke();
-            GameTitleScreen.instance.BringTitleElements(false);
-        }
 
         RoomTrigger oldRoom = activeRoom;
         activeRoom = room;
+
+        if (!room.isMenuRoom && oldRoom.isMenuRoom)
+        {
+            OnMenuRoomExit.Invoke();
+            GameTitleScreen.instance.BringTitleElements(false);
+        }
 
         if (oldRoom != null)
             StartCoroutine(RoomDeactivationCooldown());

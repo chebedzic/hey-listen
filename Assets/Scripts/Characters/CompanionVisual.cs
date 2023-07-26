@@ -67,6 +67,8 @@ public class CompanionVisual : MonoBehaviour
         holdedActionRenderer.materials = new Material[] { holdedActionRenderer.materials[0], action.actionMaterial };
 
         holdedActionMeshFilter.mesh = action.actionMesh;
+
+        companionAnimator.SetTrigger("collect");
     }
 
     void PlayClickParticle(Vector3 position)

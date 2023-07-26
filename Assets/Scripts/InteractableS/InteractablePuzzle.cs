@@ -14,6 +14,7 @@ public class InteractablePuzzle : Interactable
 {
 
     public UnityEvent OnFirstInteraction;
+    public UnityEvent OnPuzzleSolved;
 
     [Header("Puzzle")]
     public OffMeshLink offMeshLink;
@@ -38,7 +39,8 @@ public class InteractablePuzzle : Interactable
     {
         base.Start();
 
-        StartCoroutine(StartSequence());
+        if(!modalRevealed)
+            StartCoroutine(StartSequence());
 
         IEnumerator StartSequence()
         {
@@ -57,6 +59,7 @@ public class InteractablePuzzle : Interactable
         stateMachine = GetComponent<StateMachine>();
         heroManager = HeroManager.instance;
         heroVisual = heroManager.heroVisual;
+
     }
 
     public void TryPuzzle(List<Action> actionList, InteractableModal modal)
@@ -81,6 +84,11 @@ public class InteractablePuzzle : Interactable
                 CustomEvent.Trigger(this.gameObject, "TryInteraction", combination);
             }
         }
+    }
+
+    public void PuzzleSolved()
+    {
+        OnPuzzleSolved.Invoke();
     }
 
     public void SetHeroInteraction(bool isInteracting)
@@ -137,6 +145,8 @@ public class InteractablePuzzle : Interactable
 
     public void RevealModal()
     {
+        if(modalRevealed) return;
+
         modalRevealed = true;
         linkedModal.transform.GetChild(0).gameObject.SetActive(true);
         linkedModal.transform.GetChild(0).DOComplete();

@@ -11,6 +11,7 @@ public class HeroManager : MonoBehaviour
     public static HeroManager instance;
 
     [HideInInspector] public UnityEvent<Equipment> OnGetEquipment;
+    [HideInInspector] public UnityEvent<bool> OnEquipmentFire;
 
     [HideInInspector] public HeroVisual heroVisual;
     private NavMeshAgent navMeshAgent;
@@ -22,6 +23,9 @@ public class HeroManager : MonoBehaviour
 
     [Header("Equipment")]
     public Equipment currentEquipment;
+    public bool equipmentIsOnFire;
+    public float fireInterval = 4;
+    Coroutine equipmentFireCoroutine;
 
     private void Awake()
     {
@@ -59,6 +63,25 @@ public class HeroManager : MonoBehaviour
         currentEquipment = equipment;
 
         OnGetEquipment?.Invoke(currentEquipment);
+    }
+
+    public void SetEquipmentState(bool fire)
+    {
+        equipmentIsOnFire = fire;
+        OnEquipmentFire?.Invoke(equipmentIsOnFire);
+
+        if (fire)
+        {
+            if (equipmentFireCoroutine != null) StopCoroutine(equipmentFireCoroutine);
+            equipmentFireCoroutine = StartCoroutine(FireCoroutine());
+
+            IEnumerator FireCoroutine()
+            {
+                yield return new WaitForSeconds(fireInterval);
+                SetEquipmentState(false);
+            }
+        }
+
     }
     public void UpdateNavAgentPosition(bool update)
     {

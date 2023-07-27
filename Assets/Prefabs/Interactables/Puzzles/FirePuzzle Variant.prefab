@@ -5316,7 +5316,7 @@ PrefabInstance:
     - target: {fileID: 4940421551573391167, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: heroDistance
-      value: 0.4
+      value: 0.25
       objectReference: {fileID: 0}
     - target: {fileID: 6560683028317654740, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
@@ -5402,8 +5402,58 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 8041869079040794789}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1424901155637502825, guid: 39e0a7837c83e413e97345f93b096bb5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5982890652242090689}
   m_SourcePrefab: {fileID: 100100000, guid: 39e0a7837c83e413e97345f93b096bb5, type: 3}
+--- !u!1 &532669840505465462 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1424901155637502825, guid: 39e0a7837c83e413e97345f93b096bb5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1486795257956092191}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5982890652242090689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 532669840505465462}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4f9a68adaf0b24d8b1ee24498bc287, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onFire: 0
+  OnSetFire:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7654124224944562319}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2440930526821509007}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!4 &7909967987820484966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8748226406379753593, guid: 39e0a7837c83e413e97345f93b096bb5,

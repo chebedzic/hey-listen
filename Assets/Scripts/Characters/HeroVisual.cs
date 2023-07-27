@@ -22,6 +22,7 @@ public class HeroVisual : MonoBehaviour
     [SerializeField] private Transform equipmentRigPosition;
     [SerializeField] [ColorUsage(true, true)] Color equipmentBlinkColor;
     private Renderer[] equipmentRenderers;
+    [SerializeField] private ParticleSystem[] fireParticles;
 
     [Header("Confusion Settings")]
     [SerializeField] private float confusionBackoutInterval = 1;
@@ -34,6 +35,7 @@ public class HeroVisual : MonoBehaviour
         equipmentRenderers = swordGameobject.transform.parent.GetComponentsInChildren<Renderer>();
         renderers = GetComponentsInChildren<Renderer>();
         heroManager.OnGetEquipment.AddListener(EquipmentVisual);
+        heroManager.OnEquipmentFire.AddListener(EquipmentFire);
 
         EquipmentVisual(heroManager.currentEquipment);
     }
@@ -67,6 +69,15 @@ public class HeroVisual : MonoBehaviour
                 break;
             default:
                 break;
+        }
+    }
+
+    public void EquipmentFire(bool fire)
+    {
+        foreach(ParticleSystem part in fireParticles)
+        {
+            if (fire) part.Play();
+            else part.Stop();
         }
     }
 

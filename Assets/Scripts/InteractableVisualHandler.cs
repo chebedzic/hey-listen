@@ -13,7 +13,6 @@ public class InteractableVisualHandler : MonoBehaviour
     [SerializeField] private bool soundOnHover = true;
     private Renderer[] interactableRenderers;
 
-    private Light[] interactableLights;
 
     // Start is called before the first frame update
     void Awake()
@@ -21,7 +20,6 @@ public class InteractableVisualHandler : MonoBehaviour
 
         interactable = GetComponent<Interactable>();
         collectable = GetComponent<InteractableCollectable>();
-        interactableLights = GetComponentsInChildren<Light>();
 
         interactableRenderers = GetComponentsInChildren<Renderer>();
         interactable.OnClick.AddListener(PlayClickSound);
@@ -109,12 +107,6 @@ public class InteractableVisualHandler : MonoBehaviour
             }
         }
 
-        if (interactableLights.Length > 0)
-        {
-            foreach(Light light in interactableLights)
-            {
-                light.DOIntensity(state ? 7 : 0, .5f);
-            }
-        }
+
     }
 }

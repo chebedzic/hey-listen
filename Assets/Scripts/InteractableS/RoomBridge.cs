@@ -23,7 +23,7 @@ public class RoomBridge : Interactable
 
     public void TryBridge()
     {
-        HeroManager.instance.isInteracting = true;
+        HeroManager.instance.isLookingForBridge = true;
 
         if (linkedDoor != null) 
         { 
@@ -43,7 +43,9 @@ public class RoomBridge : Interactable
         IEnumerator Cooldown()
         {
             yield return new WaitForSeconds(.5f);
-            HeroManager.instance.isInteracting = false;
+            yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
+            yield return new WaitUntil(() => !HeroManager.instance.IsAgentCrossingLink());
+            HeroManager.instance.isLookingForBridge = false;
         }
     }
 

@@ -52,19 +52,20 @@ public class InteractableEquipment : Interactable
         {
             if (equipment == null) { print("Equipment Object Null"); }
             HeroManager.instance.SetHeroDestination(HeroManager.instance.transform.position);
-            HeroManager.instance.SetHeroEquipment(equipment);
 
             GameManager.instance.PauseControlInterval(2);
 
             transform.GetChild(0).gameObject.SetActive(false);
 
-            GameManager.instance.PauseControlInterval(1);
-            GameManager.instance.FocusCameraOnObject(HeroManager.instance.transform,true, .35f, 1);
+            GameManager.instance.FocusCameraOnObject(HeroManager.instance.transform,true, .5f, 2);
 
             StartCoroutine(CollectEvent());
 
             IEnumerator CollectEvent()
             {
+                yield return new WaitForSeconds(.5f);
+                HeroManager.instance.SetHeroEquipment(equipment);
+
                 yield return new WaitForSeconds(collectEventDelay);
                 AfterEquipmentCollect.Invoke();
                 gameObject.SetActive(false);

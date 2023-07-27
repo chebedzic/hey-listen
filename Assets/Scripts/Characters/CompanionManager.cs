@@ -104,14 +104,14 @@ public class CompanionManager : MonoBehaviour
     void OnFire()
     {
 
-        if (HeroManager.instance.isInteracting) return;
+        if (HeroManager.instance.isInteracting && !HeroManager.instance.isLookingForBridge) return;
 
         if (currentInteractable == null && currentSlot == null && !currentCollectable)
         {
             if (EquipmentManager.instance.visible && currentEquipmentBubble == null)
                 EquipmentManager.instance.ShowEquipments(false);
 
-            if (!HeroManager.instance.isInteracting)
+            if (!HeroManager.instance.isInteracting && !HeroManager.instance.isLookingForBridge)
             {
                 HeroManager.instance.SetHeroDestination(worldPosition, false);
             }
@@ -124,7 +124,7 @@ public class CompanionManager : MonoBehaviour
     void OnDrop()
     {
         if (currentInteractable == null && currentModal == null)
-            if (!HeroManager.instance.isInteracting)
+            if (!HeroManager.instance.isInteracting && !HeroManager.instance.isLookingForBridge)
                 DropCollectable(heldAction);
                 
     }

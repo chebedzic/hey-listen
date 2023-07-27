@@ -8,6 +8,11 @@ public class EnemyStealSequence : MonoBehaviour
     public Action requiredCompanionAction;
     public InteractableCollectable collectableToDisable;
     public GameObject enemyGameobject;
+    public Transform cameraFocusPoint;
+
+    [Header("Parameters")]
+    [SerializeField] private float initialDelay = .2f;
+    [SerializeField] private float cameraTransition = .7f;
 
     public void TrySequence()
     {
@@ -27,13 +32,16 @@ public class EnemyStealSequence : MonoBehaviour
 
         Sequence sequence = DOTween.Sequence();
 
-        sequence.AppendInterval(.5f);
+        sequence.AppendInterval(initialDelay);
         sequence.AppendCallback(()=> GameManager.instance.EnableControls(false));
-        sequence.AppendInterval(1);
+        sequence.AppendCallback(() => GameManager.instance.FocusCameraOnObject(cameraFocusPoint, true, cameraTransition));
+        sequence.AppendInterval(cameraTransition);
         sequence.Append(enemyT.DOLookAt(HeroManager.instance.transform.position, .5f, AxisConstraint.Y));
         sequence.Append(enemyT.DOJump(enemyT.position, 1, 1, .5f, false));
         sequence.Append(enemyT.DOLookAt(enemyT.position + Vector3.forward, .5f, AxisConstraint.Y));
-        sequence.Append(enemyT.DOJump(enemyT.position + (Vector3.forward * 20), 7, 1, 1));
+        sequence.Append(enemyT.DOJump(enemyT.position + (Vector3.forward * 10), 15, 1, 1));
         sequence.AppendCallback(()=> GameManager.instance.EnableControls(true));
+        sequence.AppendCallback(() => GameManager.instance.FocusCameraOnObject(cameraFocusPoint, false, cameraTransition));
+        sequence.AppendCallback(() => enemyGameobject.SetActive(false));
     }
 }

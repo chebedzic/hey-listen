@@ -572,7 +572,7 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 4
+    m_Style: 1
     m_Time: 0.2
     m_CustomCurve:
       serializedVersion: 2
@@ -1249,7 +1249,7 @@ MonoBehaviour:
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 5838931235518321058}
   m_Lens:
-    FieldOfView: 60
+    FieldOfView: 50
     OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
@@ -2099,7 +2099,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 149d05c6af9e94a22a935f8e197dbf6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  debugMovementDistance: 2
+  debugMovementDistance: 4
   allActions:
   - {fileID: 11400000, guid: d4a2e0c0f26224ff1876b6fc20711766, type: 2}
   - {fileID: 11400000, guid: 4952b5a6ce22d4d9e81513dba1d9a237, type: 2}

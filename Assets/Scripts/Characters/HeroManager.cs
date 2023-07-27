@@ -17,6 +17,7 @@ public class HeroManager : MonoBehaviour
 
     [Header("States")]
     public bool isInteracting = false;
+    public bool isLookingForBridge = false;
     private bool hasEnteredOffMeshLink = false;
 
     [Header("Equipment")]

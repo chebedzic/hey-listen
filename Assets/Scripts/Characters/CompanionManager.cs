@@ -29,6 +29,10 @@ public class CompanionManager : MonoBehaviour
     public Action heldAction;
     public GameObject collectableActionPrefab;
 
+    [Header("Hold Item")]
+    public Item heldItem;
+    public GameObject heldItemPrefab;
+
     [Header("Interactable")]
     public Interactable currentInteractable;
     public InteractableSlot currentSlot;
@@ -46,6 +50,12 @@ public class CompanionManager : MonoBehaviour
         heldAction = action;
 
         OnActionCollect?.Invoke(action);
+    }
+
+    public void SetHeldItem(Item item)
+    {
+        heldItem = item;
+        heldItemPrefab.SetActive(heldItem != null ? true : false);
     }
 
     private void Awake()

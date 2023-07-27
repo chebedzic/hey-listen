@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
+using UnityEngine.InputSystem.Interactions;
 
 public class InteractableCollectable : Interactable
 {
     [HideInInspector] public UnityEvent OnCollect;
 
     public Action collectableAction;
+    public Item collectableItem;
     public InteractableSlot parentSlot;
 
     [SerializeField] private Renderer actionRenderer;
@@ -34,6 +36,16 @@ public class InteractableCollectable : Interactable
     public override void OnMouseDown()
     {
         base.OnMouseDown();
+
+        if(collectableItem != null)
+        {
+            Hold();
+            return;
+        }
+
+        //For now we just don't allow you to grab buttons if holding item
+        if (CompanionManager.instance.heldItem != null)
+            return;
 
         if(CompanionManager.instance.currentInteractable == this)
             Collect();
@@ -66,6 +78,12 @@ public class InteractableCollectable : Interactable
         CompanionManager.instance.SetHeldAction(storedAction);
 
         OnCollect.Invoke();
+    }
+
+    void Hold()
+    {
+        CompanionManager.instance.SetHeldItem(collectableItem);
+        gameObject.SetActive(false);
     }
 
     public void ReplaceCollectable(Action action)

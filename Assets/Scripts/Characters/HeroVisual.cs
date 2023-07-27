@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HeroVisual : MonoBehaviour
 {
+    public static HeroVisual instance;
 
     private Animator animator;
     private HeroManager heroManager;
@@ -23,10 +24,16 @@ public class HeroVisual : MonoBehaviour
     [SerializeField] [ColorUsage(true, true)] Color equipmentBlinkColor;
     private Renderer[] equipmentRenderers;
     [SerializeField] private ParticleSystem[] fireParticles;
+    [SerializeField] private ParticleSystem smearFireParticle;
 
     [Header("Confusion Settings")]
     [SerializeField] private float confusionBackoutInterval = 1;
     [SerializeField] private Vector3 confusionParticleOffset = new Vector3(1, 0, -.5f);
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start()
     {
@@ -155,6 +162,11 @@ public class HeroVisual : MonoBehaviour
             renderer.material.SetColor("_FresnelColor", enemyHitColor);
             renderer.material.DOFloat(1, "_FresnelAmount", .1f).OnComplete(()=>CompleteBlink(renderer, storeColor));
         }
+    }
+
+    public void TurnSmearFireOn(bool active)
+    {
+        smearFireParticle.gameObject.SetActive(active);
     }
 
     void CompleteBlink(Renderer renderer, Color color)

@@ -20,11 +20,7 @@ public class BrazierPuzzleHandler : MonoBehaviour
 
     public void HandleInteraction()
     {
-        if (onFire)
-        {
-            HeroManager.instance.SetEquipmentState(true);
-        }
-        else if (HeroManager.instance.equipmentIsOnFire)
+        if (HeroManager.instance.equipmentIsOnFire)
         {
             SetFire(true);
 
@@ -39,17 +35,23 @@ public class BrazierPuzzleHandler : MonoBehaviour
             }
         }
 
-    }
-
-    public void HandleMultipleInteractions()
-    {
         if (onFire)
         {
             HeroManager.instance.SetEquipmentState(true);
         }
-        else if (HeroManager.instance.equipmentIsOnFire)
+
+    }
+
+    public void HandleMultipleInteractions()
+    {
+        if(HeroManager.instance.equipmentIsOnFire)
         {
             MultipleSetFire(true);
+        }
+
+        if (onFire)
+        {
+            HeroManager.instance.SetEquipmentState(true);
         }
 
     }
@@ -67,6 +69,8 @@ public class BrazierPuzzleHandler : MonoBehaviour
         {
             OnMultipleFire.Invoke();
 
+            HeroVisual.instance.TurnSmearFireOn(true);
+
             Sequence s = DOTween.Sequence();
             for (int i = 0; i < fireParticles.Length; i++)
             {
@@ -74,6 +78,9 @@ public class BrazierPuzzleHandler : MonoBehaviour
                 s.AppendInterval(.2f);
                 s.AppendCallback(() => fireParticles[index].gameObject.SetActive(true));
             }
+            s.AppendInterval(.5f);
+            s.AppendCallback(() => GetComponent<InteractablePuzzle>().PuzzleSolved());
+            s.AppendCallback(() => HeroVisual.instance.TurnSmearFireOn(false));
         }
 
     }

@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
 
     public void EnableControls(bool enable)
     {
+        HeroManager.instance.isInteracting = !enable;
+
         PlayerInput[] playerInputs = FindObjectsByType<PlayerInput>(sortMode: FindObjectsSortMode.None);
 
         foreach (PlayerInput playerInput in playerInputs) { playerInput.enabled = enable; }

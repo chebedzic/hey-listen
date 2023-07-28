@@ -14,8 +14,11 @@ public class EnemyStealSequence : MonoBehaviour
     [SerializeField] private float initialDelay = .2f;
     [SerializeField] private float cameraTransition = .7f;
 
+    bool sequenceExcecuted = false;
+
     public void TrySequence()
     {
+        if (sequenceExcecuted) return;
         if(CompanionManager.instance.heldAction == requiredCompanionAction)
         {
             StartSequence();
@@ -24,6 +27,8 @@ public class EnemyStealSequence : MonoBehaviour
 
     void StartSequence()
     {
+        sequenceExcecuted = true;
+
         collectableToDisable.collectableAction = null;
         collectableToDisable.gameObject.SetActive(false);
         enemyGameobject.SetActive(true);

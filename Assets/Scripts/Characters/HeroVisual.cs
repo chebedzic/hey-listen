@@ -150,8 +150,9 @@ public class HeroVisual : MonoBehaviour
         part.Play();
     }
 
-    public void PlayDoorDestroyParticle()
+    public void PlayDoorDestroyParticle(Vector3 pos)
     {
+        doorDestroyParticle.transform.position = pos;
         doorDestroyParticle.Play();
     }
 

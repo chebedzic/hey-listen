@@ -21,7 +21,7 @@ public class AudioManager : MonoBehaviour
         musicSource.volume = volume;
     }
 
-    public void PlaySFX(AudioGroup soundGroup, AudioSource source)
+    public void PlaySFX(AudioClipContainer soundGroup, AudioSource source)
     {
         AudioSource tempSource = source == null ? sfxSource : source;
 

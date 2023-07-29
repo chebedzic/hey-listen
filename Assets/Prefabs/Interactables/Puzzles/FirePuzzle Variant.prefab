@@ -5426,6 +5426,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c4f9a68adaf0b24d8b1ee24498bc287, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  groupFire: 0
   onFire: 0
   OnSetFire:
     m_PersistentCalls:
@@ -5454,6 +5455,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  cooldownInterval: 1
+  OnMultipleFire:
+    m_PersistentCalls:
+      m_Calls: []
+  fireParticles: []
+  litSound: {fileID: 11400000, guid: 9eb7c8fbebbd5624ba32a3e06fc09c84, type: 2}
 --- !u!4 &7909967987820484966 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8748226406379753593, guid: 39e0a7837c83e413e97345f93b096bb5,

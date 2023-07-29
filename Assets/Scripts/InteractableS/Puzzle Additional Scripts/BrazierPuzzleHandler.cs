@@ -17,6 +17,7 @@ public class BrazierPuzzleHandler : MonoBehaviour
     public UnityEvent OnMultipleFire;
     [ShowIf("groupFire")]
     public ParticleSystem[] fireParticles;
+    public AudioClipContainer litSound;
 
     public void HandleInteraction()
     {
@@ -58,6 +59,8 @@ public class BrazierPuzzleHandler : MonoBehaviour
 
     public void SetFire(bool fire)
     {
+        if(fire)
+            AudioManager.instance.PlaySFX(litSound, null);
         onFire = fire;
         OnSetFire.Invoke(fire);
     }
@@ -77,6 +80,7 @@ public class BrazierPuzzleHandler : MonoBehaviour
                 int index = i;
                 s.AppendInterval(.2f);
                 s.AppendCallback(() => fireParticles[index].gameObject.SetActive(true));
+                s.AppendCallback(() => AudioManager.instance.PlaySFX(litSound, null));
             }
             s.AppendInterval(.5f);
             s.AppendCallback(() => GetComponent<InteractablePuzzle>().PuzzleSolved());

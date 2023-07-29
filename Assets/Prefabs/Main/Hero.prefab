@@ -20138,6 +20138,7 @@ GameObject:
   - component: {fileID: 1285707855395490095}
   - component: {fileID: 7048711129764579}
   - component: {fileID: 6699175778171200545}
+  - component: {fileID: 1422265919110086016}
   m_Layer: 9
   m_Name: Particle System
   m_TagString: Untagged
@@ -25013,6 +25014,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &1422265919110086016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8979940833770336706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2a90d078afa43159ce6ae2a93923bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 11400000, guid: 5e37341a24f36834bb9ea7f935fbcad8, type: 2}
 --- !u!1001 &207384365847850689
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26470,7 +26484,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0.8
+      value: 0.2
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -26642,3 +26656,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc2a90d078afa43159ce6ae2a93923bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClip: {fileID: 11400000, guid: 1f6f612135f2ba347852a9c05f620721, type: 2}

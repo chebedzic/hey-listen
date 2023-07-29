@@ -9836,4 +9836,12 @@ AnimationClip:
     flags: 0
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.05
+    functionName: PlayClip
+    data: 
+    objectReferenceParameter: {fileID: 11400000, guid: ce22060fb460c7549a4a062d6bec0e24,
+      type: 2}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

@@ -6,6 +6,7 @@ public class ParticleSound : MonoBehaviour
 {
     ParticleSystem ps;
     bool protect;
+    [SerializeField] AudioClipContainer audioClip;
 
     // Start is called before the first frame update
     void Start()
@@ -25,7 +26,7 @@ public class ParticleSound : MonoBehaviour
     IEnumerator PlaySound()
     {
         protect = true;
-        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.hero_Parry, null);
+        AudioManager.instance.PlaySFX(audioClip, null);
         yield return new WaitUntil(() => !ps.isPlaying);
         protect = false;
     }

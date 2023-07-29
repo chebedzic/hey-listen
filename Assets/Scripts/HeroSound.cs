@@ -12,18 +12,18 @@ public class HeroSound : MonoBehaviour
         audioSource= GetComponent<AudioSource>();
     }
 
-    public void PlayClip(AudioGroup soundGroup)
+    public void PlayClip(AudioClipContainer soundContainer)
     {
-        int RandomIndex = Random.Range(0, soundGroup.clips.Length);
+        int RandomIndex = Random.Range(0, soundContainer.clips.Length);
 
-        float pitch = soundGroup.pitch;
+        float pitch = soundContainer.pitch;
 
-        if (soundGroup.randomPitch)
+        if (soundContainer.randomPitch)
             pitch = Random.Range(pitch - .2f, pitch + 2f);
 
         audioSource.pitch = pitch;
 
-        audioSource.PlayOneShot(soundGroup.clips[RandomIndex], soundGroup.volume);
+        audioSource.PlayOneShot(soundContainer.clips[RandomIndex], soundContainer.volume);
     }
 
 

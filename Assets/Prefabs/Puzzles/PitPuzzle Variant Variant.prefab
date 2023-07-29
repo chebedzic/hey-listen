@@ -26,13 +26,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3574312095238229948}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -0.69, z: 0.1}
   m_LocalScale: {x: 15, y: 1, z: 5.6292}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2302224776482688389}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3717796705968475848
 MeshFilter:
@@ -130,13 +130,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5566045219471522945}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.13, y: -4.68, z: -1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2302224776482688389}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &1902756924574805230
 Light:
@@ -351,6 +351,11 @@ PrefabInstance:
       propertyPath: heroDistance
       value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 4940421551573391167, guid: 39e0a7837c83e413e97345f93b096bb5,
+        type: 3}
+      propertyPath: modalRevealed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4999267307608579061, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
@@ -457,7 +462,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1424901155637502825, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7666252281029042528}
+      addedObject: {fileID: 481520277748896380}
   m_SourcePrefab: {fileID: 100100000, guid: 39e0a7837c83e413e97345f93b096bb5, type: 3}
 --- !u!4 &1482679256269143845 stripped
 Transform:
@@ -477,7 +482,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7391766730293353980}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &7666252281029042528
+--- !u!65 &481520277748896380
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -494,7 +499,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 3.95, y: 1, z: 2}
+  m_Size: {x: 0, y: 0, z: 0}
   m_Center: {x: 0, y: 0, z: 0}

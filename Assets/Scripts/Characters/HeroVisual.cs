@@ -14,6 +14,7 @@ public class HeroVisual : MonoBehaviour
     [Header("Particles")]
     [SerializeField] private ParticleSystem heroHitParticle;
     [SerializeField] private ParticleSystem enemyHitParticle;
+    [SerializeField] private ParticleSystem doorDestroyParticle;
     [SerializeField] [ColorUsage(true,true)] private Color enemyHitColor;
     [SerializeField] private ParticleSystem confusionParticle;
 
@@ -147,6 +148,11 @@ public class HeroVisual : MonoBehaviour
     {
         ParticleSystem part = enemy ? enemyHitParticle : heroHitParticle;
         part.Play();
+    }
+
+    public void PlayDoorDestroyParticle()
+    {
+        doorDestroyParticle.Play();
     }
 
     public void BlinkEmission()

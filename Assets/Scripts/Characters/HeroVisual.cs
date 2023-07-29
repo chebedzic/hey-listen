@@ -17,6 +17,7 @@ public class HeroVisual : MonoBehaviour
     [SerializeField] private ParticleSystem doorDestroyParticle;
     [SerializeField] [ColorUsage(true,true)] private Color enemyHitColor;
     [SerializeField] private ParticleSystem confusionParticle;
+    [SerializeField] private ParticleSystem equipmentTutorialParticle;
 
     [Header("Equipment References")]
     [SerializeField] private GameObject swordGameobject;
@@ -26,6 +27,7 @@ public class HeroVisual : MonoBehaviour
     private Renderer[] equipmentRenderers;
     [SerializeField] private ParticleSystem[] fireParticles;
     [SerializeField] private ParticleSystem smearFireParticle;
+    public ParticleSystem newEquipmentParticle;
 
     [Header("Confusion Settings")]
     [SerializeField] private float confusionBackoutInterval = 1;
@@ -169,6 +171,13 @@ public class HeroVisual : MonoBehaviour
             renderer.material.SetColor("_FresnelColor", enemyHitColor);
             renderer.material.DOFloat(1, "_FresnelAmount", .1f).OnComplete(()=>CompleteBlink(renderer, storeColor));
         }
+    }
+
+    public void SetEquipmentTutorial(bool state)
+    {
+        heroManager.canMove = !state;
+        animator.SetBool("isConfused", state);
+        if (state) equipmentTutorialParticle.Play(); else equipmentTutorialParticle.Stop();
     }
 
     public void TurnSmearFireOn(bool active)

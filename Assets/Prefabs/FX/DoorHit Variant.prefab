@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7423718887869382613}
   - component: {fileID: 9025918058610947243}
   - component: {fileID: 8276940005556154829}
-  m_Layer: 4
+  m_Layer: 2
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5200,6 +5200,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ShapeModule.arc.speed.scalar
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4706366685706141106, guid: 46dd0f8be9e4bfb41863b664937636a1,
+        type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4706366685706141106, guid: 46dd0f8be9e4bfb41863b664937636a1,
         type: 3}

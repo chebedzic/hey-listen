@@ -17,6 +17,7 @@ public class HeroManager : MonoBehaviour
     private NavMeshAgent navMeshAgent;
 
     [Header("States")]
+    public bool canMove = true;
     public bool isInteracting = false;
     public bool isLookingForBridge = false;
     private bool hasEnteredOffMeshLink = false;
@@ -94,6 +95,8 @@ public class HeroManager : MonoBehaviour
 
     public bool SetHeroDestination(Vector3 destination, bool calculatePath = true)
     {
+        if (!canMove)
+            return false;
 
         if (calculatePath)
         {

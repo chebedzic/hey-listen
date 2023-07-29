@@ -34,10 +34,12 @@ public class InteractablePuzzle : Interactable
     [SerializeField] private Transform[] destinations;
 
     public bool modalRevealed;
-
+    private float originalHeroDistance;
     public override void Start()
     {
         base.Start();
+
+        originalHeroDistance = heroDistance;
 
         if(!modalRevealed)
             StartCoroutine(StartSequence());
@@ -106,6 +108,11 @@ public class InteractablePuzzle : Interactable
     {
         var hero = GetHeroAgent();
         hero.SetDestination(hero.transform.position + (Vector3.forward * z));
+    }
+
+    public void SetHeroDistance(float distance, bool state = true)
+    {
+        heroDistance = state ? distance : originalHeroDistance;
     }
 
     IEnumerator BringHero(ActionCombination combination)

@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,10 @@ public class GameManager : MonoBehaviour
 
     private CinemachineBrain cinemachineBrain;
     public CinemachineVirtualCamera focusVirtualCamera;
+
+    [Header("Parameters")]
+    [SerializeField] private float equipmentFocusTransition = .2f;
+    [SerializeField] private float equipmentFocusInterval = 1;
 
     private void Awake()
     {
@@ -55,6 +60,36 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(interval);
             focusVirtualCamera.Priority = 0;
         }
+    }
+
+
+    public void GetEquipment(Equipment equipment)
+    {
+        PauseControlInterval(equipmentFocusInterval);
+
+        FocusCameraOnObject(HeroManager.instance.transform, true, equipmentFocusTransition, equipmentFocusInterval);
+
+        StartCoroutine(CollectEvent());
+
+        IEnumerator CollectEvent()
+        {
+            yield return new WaitForSeconds(equipmentFocusTransition);
+            HeroManager.instance.SetHeroEquipment(equipment);
+            HeroVisual.instance.newEquipmentParticle.Play();
+            yield return new WaitForSeconds(equipmentFocusInterval);
+            if (equipment.type == EquipmentType.shield)
+            {
+                hasUnlockedShield = true;
+                HeroVisual.instance.SetEquipmentTutorial(true);
+            }
+
+        }
+
+    }
+
+    public void EquipmentTutorial(bool state)
+    {
+
     }
 
     public void PauseControlInterval(float interval = 1)

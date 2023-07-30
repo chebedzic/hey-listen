@@ -56,6 +56,11 @@ public class CompanionManager : MonoBehaviour
     {
         heldItem = item;
         heldItemPrefab.SetActive(heldItem != null ? true : false);
+
+        if(heldAction != null)
+        {
+            DropCollectable(heldAction);
+        }
     }
 
     private void Awake()

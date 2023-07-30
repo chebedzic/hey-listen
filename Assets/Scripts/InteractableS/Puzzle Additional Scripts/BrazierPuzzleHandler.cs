@@ -19,6 +19,30 @@ public class BrazierPuzzleHandler : MonoBehaviour
     public ParticleSystem[] fireParticles;
     public AudioClipContainer litSound;
 
+    public void JumpInteraction()
+    {
+        if (HeroManager.instance.heroIsOnFire)
+        {
+            SetFire(true);
+
+            if (groupFire)
+            {
+                StartCoroutine(Cooldown());
+                IEnumerator Cooldown()
+                {
+                    yield return new WaitForSeconds(cooldownInterval);
+                    SetFire(false);
+                }
+            }
+        }
+
+        if (onFire)
+        {
+            if(!HeroManager.instance.heroIsOnFire)
+                AudioManager.instance.PlaySFX(litSound, null);
+            HeroManager.instance.SetEquipmentState(true, true);
+        }
+    }
     public void HandleInteraction()
     {
         if (HeroManager.instance.equipmentIsOnFire)
@@ -38,6 +62,8 @@ public class BrazierPuzzleHandler : MonoBehaviour
 
         if (onFire)
         {
+            if (!HeroManager.instance.equipmentIsOnFire)
+                AudioManager.instance.PlaySFX(litSound, null);
             HeroManager.instance.SetEquipmentState(true);
         }
 

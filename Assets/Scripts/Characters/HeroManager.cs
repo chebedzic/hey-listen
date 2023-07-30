@@ -12,6 +12,7 @@ public class HeroManager : MonoBehaviour
 
     [HideInInspector] public UnityEvent<Equipment> OnGetEquipment;
     [HideInInspector] public UnityEvent<bool> OnEquipmentFire;
+    [HideInInspector] public UnityEvent<bool> OnHeroFire;
 
     [HideInInspector] public HeroVisual heroVisual;
     private NavMeshAgent navMeshAgent;
@@ -21,6 +22,7 @@ public class HeroManager : MonoBehaviour
     public bool isInteracting = false;
     public bool isLookingForBridge = false;
     private bool hasEnteredOffMeshLink = false;
+    public bool heroIsOnFire;
 
     [Header("Equipment")]
     public Equipment currentEquipment;
@@ -66,10 +68,15 @@ public class HeroManager : MonoBehaviour
         OnGetEquipment?.Invoke(currentEquipment);
     }
 
-    public void SetEquipmentState(bool fire)
+    public void SetEquipmentState(bool fire, bool player = false)
     {
-        equipmentIsOnFire = fire;
-        OnEquipmentFire?.Invoke(equipmentIsOnFire);
+        if (player)
+            heroIsOnFire = fire;
+        else
+            equipmentIsOnFire = fire;
+
+        if (player) OnHeroFire?.Invoke(heroIsOnFire);
+        else OnEquipmentFire?.Invoke(equipmentIsOnFire);
 
         if (fire)
         {
@@ -79,7 +86,7 @@ public class HeroManager : MonoBehaviour
             IEnumerator FireCoroutine()
             {
                 yield return new WaitForSeconds(fireInterval);
-                SetEquipmentState(false);
+                SetEquipmentState(false, player);
             }
         }
 

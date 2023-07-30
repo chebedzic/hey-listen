@@ -26,6 +26,7 @@ public class HeroVisual : MonoBehaviour
     [SerializeField] [ColorUsage(true, true)] Color equipmentBlinkColor;
     private Renderer[] equipmentRenderers;
     [SerializeField] private ParticleSystem[] fireParticles;
+    [SerializeField] private ParticleSystem heroFireParticle;
     [SerializeField] private ParticleSystem smearFireParticle;
     public ParticleSystem newEquipmentParticle;
 
@@ -46,6 +47,7 @@ public class HeroVisual : MonoBehaviour
         renderers = GetComponentsInChildren<Renderer>();
         heroManager.OnGetEquipment.AddListener(EquipmentVisual);
         heroManager.OnEquipmentFire.AddListener(EquipmentFire);
+        heroManager.OnHeroFire.AddListener(HeroFire);
 
         EquipmentVisual(heroManager.currentEquipment);
     }
@@ -89,6 +91,12 @@ public class HeroVisual : MonoBehaviour
             if (fire) part.Play();
             else part.Stop();
         }
+    }
+
+    public void HeroFire(bool fire)
+    {
+        if (fire) heroFireParticle.Play();
+        else heroFireParticle.Stop();
     }
 
     void SetEquipmentVisibility(GameObject equipment)

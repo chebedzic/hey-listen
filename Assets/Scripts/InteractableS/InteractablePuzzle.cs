@@ -198,6 +198,9 @@ public class InteractablePuzzle : Interactable
 
     public override void OnMouseDown()
     {
+        if (!HeroManager.instance.canMove)
+            return;
+
         base.OnMouseDown();
 
         if (linkedModal == null && stateMachine == true)

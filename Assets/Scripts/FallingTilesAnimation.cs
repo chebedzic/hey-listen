@@ -8,6 +8,8 @@ using UnityEngine.UIElements;
 public class FallingTilesAnimation : MonoBehaviour
 {
     [SerializeField] private Transform[] tileRows;
+    [SerializeField] private MeshFilter[] tiles;
+    [SerializeField] private Mesh crackedTileMesh;
 
     [Header("Settings")]
     [SerializeField] private float positionFallAmount = -3;
@@ -25,6 +27,14 @@ public class FallingTilesAnimation : MonoBehaviour
             tileRows[index].DOMoveY(positionFallAmount, fallDuration).SetDelay(fallDelay * (startsLeft ? index + 1 : reverseIndex + 1))
                 .OnStart(()=> tileRows[index].GetComponentInChildren<ParticleSystem>().Play());
 
+        }
+    }
+
+    public void CrackTiles()
+    {
+        foreach (MeshFilter tile in tiles)
+        {
+            tile.mesh = crackedTileMesh;
         }
     }
 

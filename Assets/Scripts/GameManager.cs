@@ -87,10 +87,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void EquipmentTutorial(bool state)
-    {
-
-    }
 
     public void PauseControlInterval(float interval = 1)
     {

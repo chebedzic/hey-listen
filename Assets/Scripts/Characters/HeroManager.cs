@@ -10,6 +10,9 @@ public class HeroManager : MonoBehaviour
 {
     public static HeroManager instance;
 
+    [Header("Debug")]
+    [SerializeField] private Vector3 startPos;
+
     [HideInInspector] public UnityEvent<Equipment> OnGetEquipment;
     [HideInInspector] public UnityEvent<bool> OnEquipmentFire;
     [HideInInspector] public UnityEvent<bool> OnHeroFire;
@@ -33,6 +36,10 @@ public class HeroManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+
+#if UNITY_EDITOR
+        transform.position = startPos;
+#endif
     }
 
     void Start()

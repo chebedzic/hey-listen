@@ -36,12 +36,14 @@ public class BlockFadeAnimation : MonoBehaviour
             if (state)
             {
                 renderer.transform.DOScale(0, fadeDuration/2).From().SetEase(Ease.InBack);
-                renderer.material.DOFloat(0, "_FresnelAmount", fadeDuration);
+                if (renderer.material.HasFloat("_FresnelAmount"))
+                    renderer.material.DOFloat(0, "_FresnelAmount", fadeDuration);
             }
             else
             {
                 renderer.transform.DOScale(0, fadeDuration/2).SetEase(Ease.OutSine).SetDelay(fadeDuration/2);
-                renderer.material.DOFloat(1, "_FresnelAmount", fadeDuration);
+                if(renderer.material.HasFloat("_FresnelAmount"))
+                    renderer.material.DOFloat(1, "_FresnelAmount", fadeDuration);
             }
         }
         fade = state;

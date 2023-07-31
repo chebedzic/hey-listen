@@ -38,11 +38,10 @@ public class InteractableVisualHandler : MonoBehaviour
             PlayHoverSound();
     }
 
-    public void JumpToCenter(float delay = 1)
+    public void JumpToTransform(Transform reference)
     {
         transform.DOComplete();
-        //transform.DORotate(new Vector3(360, 0, 0), .8f, RotateMode.LocalAxisAdd).SetEase(Ease.OutBack).SetDelay(delay);
-        transform.DOLocalJump(Vector3.zero, 2, 1, .5f, false).SetDelay(delay);
+        transform.DOLocalJump(reference.transform.localPosition, 2, 1, .5f, false);
     }
 
     void CollectVisual()

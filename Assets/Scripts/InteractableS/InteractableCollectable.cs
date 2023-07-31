@@ -43,10 +43,6 @@ public class InteractableCollectable : Interactable
             return;
         }
 
-        //For now we just don't allow you to grab buttons if holding item
-        if (CompanionManager.instance.heldItem != null)
-            return;
-
         if(CompanionManager.instance.currentInteractable == this)
             Collect();
 
@@ -54,6 +50,9 @@ public class InteractableCollectable : Interactable
 
     public void Collect()
     {
+        if (CompanionManager.instance.heldItem != null)
+            return;
+
         Action storedAction = collectableAction;
 
         //Check if companion already has an action

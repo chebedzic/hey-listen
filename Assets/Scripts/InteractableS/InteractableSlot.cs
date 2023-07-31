@@ -65,6 +65,9 @@ public class InteractableSlot : Interactable
 
         base.OnMouseDown();
 
+        if (CompanionManager.instance.heldItem != null)
+            return;
+
         FillSlot(CompanionManager.instance.heldAction);
 
     }

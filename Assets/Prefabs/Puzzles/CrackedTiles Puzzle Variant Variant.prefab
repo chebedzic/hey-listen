@@ -2773,7 +2773,7 @@ PrefabInstance:
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
@@ -2793,17 +2793,17 @@ PrefabInstance:
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8216637475585303257, guid: 39e0a7837c83e413e97345f93b096bb5,
         type: 3}
@@ -2953,8 +2953,8 @@ MonoBehaviour:
   - {fileID: 7626392287739124702}
   crackedTileMesh: {fileID: -24457760244193600, guid: 220f76992707f4c48925cd0bd4d73099,
     type: 3}
-  positionFallAmount: -5
-  fallDuration: 0.2
+  positionFallAmount: -15
+  fallDuration: 0.3
   fallDelay: 0.13
 --- !u!4 &5148311608967419523 stripped
 Transform:
@@ -3467,7 +3467,7 @@ PrefabInstance:
     - target: {fileID: 5661546340247515571, guid: 032593850dcfd764c9db4e2b1c647562,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5661546340247515571, guid: 032593850dcfd764c9db4e2b1c647562,
         type: 3}

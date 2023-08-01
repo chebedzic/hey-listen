@@ -66,6 +66,9 @@ public class RoomBridge : Interactable
         if (HeroManager.instance.isInteracting)
             return;
 
+        if (HeroManager.instance.isLookingForBridge)
+            return;
+
         if (offMeshLink != null)
             if (!offMeshLink.activated)
                 return;

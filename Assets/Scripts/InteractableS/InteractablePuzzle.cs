@@ -15,6 +15,7 @@ public class InteractablePuzzle : Interactable
 
     public UnityEvent OnFirstInteraction;
     public UnityEvent OnPuzzleSolved;
+    public UnityEvent OnPuzzleDestroy;
 
     [Header("Puzzle")]
     public OffMeshLink offMeshLink;
@@ -379,6 +380,27 @@ public class InteractablePuzzle : Interactable
             renderer.material.SetColor("_FresnelColor", Color.red);
             renderer.material.DOFloat(1, "_FresnelAmount", .1f).OnComplete(() => renderer.material.DOFloat(0, "_FresnelAmount", .2f));
         }
+    }
+
+    public void SetEmission(float amount, float duration, Color color, float intensity)
+    {
+        float factor = Mathf.Pow(2, intensity);
+        Color c = new Color(color.r * factor, color.g * factor, color.b * factor);
+
+        foreach (Renderer renderer in interactableRenderers)
+        {
+            if (!renderer.material.HasFloat("_FresnelAmount"))
+                break;
+
+            renderer.material.DOComplete();
+            renderer.material.SetColor("_FresnelColor", c);
+            renderer.material.DOFloat(amount, "_FresnelAmount", duration);
+        }
+    }
+
+    private void OnDestroy()
+    {
+        OnPuzzleDestroy.Invoke();
     }
 
 }

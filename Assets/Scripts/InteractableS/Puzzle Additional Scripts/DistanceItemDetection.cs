@@ -11,8 +11,8 @@ public class DistanceItemDetection : MonoBehaviour
     {
         if (other.CompareTag("Companion") && CompanionManager.instance.heldItem == requiredItem)
         {
-            GameManager.instance.FocusCameraOnObject(CompanionManager.instance.transform, true, .5f, 2);
-            GameManager.instance.PauseControlInterval(2);
+            GameManager.instance.FocusCameraOnObject(CompanionManager.instance.transform, true, .5f, 2.4f);
+            GameManager.instance.PauseControlInterval(2.4f);
 
             StartCoroutine(Interval());
 

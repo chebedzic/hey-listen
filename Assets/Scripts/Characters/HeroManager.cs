@@ -38,7 +38,8 @@ public class HeroManager : MonoBehaviour
         instance = this;
 
 #if UNITY_EDITOR
-        transform.position = startPos;
+        if(startPos != Vector3.zero)
+            transform.position = startPos;
 #endif
     }
 

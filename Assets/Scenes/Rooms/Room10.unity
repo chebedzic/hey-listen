@@ -11587,6 +11587,42 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1487457233609904058}
+        m_TargetAssemblyTypeName: PropFireAnimation, Assembly-CSharp
+        m_MethodName: SetFire
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1487457233609904060}
+        m_TargetAssemblyTypeName: PropFireAnimation, Assembly-CSharp
+        m_MethodName: SetFire
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1487457233609904059}
+        m_TargetAssemblyTypeName: PropFireAnimation, Assembly-CSharp
+        m_MethodName: SetFire
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   delay: 0.5
   activateOnce: 1
 --- !u!1001 &1477365286
@@ -11796,6 +11832,18 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 824648970635828020, guid: e95e2eec2a90e5f4f8caf63ef7e3ca3e,
     type: 3}
   m_PrefabInstance: {fileID: 1480836872}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &1497673386 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 5711864499627055918, guid: 1910939d12352264d800aaa699ea45b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487457233609904047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1497673387 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3744976170416357283, guid: 1910939d12352264d800aaa699ea45b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487457233609904047}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1518405949
 PrefabInstance:
@@ -18473,6 +18521,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2153498112125426533, guid: 1910939d12352264d800aaa699ea45b5,
         type: 3}
+      propertyPath: props.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2153498112125426533, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: 'props.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1487457233609904058}
+    - target: {fileID: 2153498112125426533, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: 'props.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1487457233609904060}
+    - target: {fileID: 2153498112125426533, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: 'props.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1487457233609904059}
+    - target: {fileID: 2153498112125426533, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
       propertyPath: OnSetFire.m_PersistentCalls.m_Calls.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -18636,15 +18704,96 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3454231797767375151, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744976170416357283, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3744976170416357283, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: LightsModule.light
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4420237190661910842, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: LightsModule.light
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4941308478417505003, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086859380858441622, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5296743486122666962, guid: 1910939d12352264d800aaa699ea45b5,
         type: 3}
       propertyPath: m_Name
       value: 'FireTriplePuzzle '
       objectReference: {fileID: 0}
+    - target: {fileID: 7603090038456859462, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: litFromStart
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603090038456859462, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: fireLights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603090038456859462, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: 'fireLights.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1497673386}
+    - target: {fileID: 7603090038456859462, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: fireParticles.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7603090038456859462, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: 'fireParticles.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1497673387}
+    - target: {fileID: 8014807716311246379, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8916347944259858383, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8955558949092176090, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: LightsModule.light
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 8881490124087413765, guid: 1910939d12352264d800aaa699ea45b5, type: 3}
+    - {fileID: 3840607254088238817, guid: 1910939d12352264d800aaa699ea45b5, type: 3}
+    - {fileID: 8269481363301673438, guid: 1910939d12352264d800aaa699ea45b5, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7690436586052202238, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1487457233609904060}
+    - targetCorrespondingSourceObject: {fileID: 6996934039523434965, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1487457233609904059}
   m_SourcePrefab: {fileID: 100100000, guid: 1910939d12352264d800aaa699ea45b5, type: 3}
 --- !u!4 &1487457233609904048 stripped
 Transform:
@@ -18676,6 +18825,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bd5139e04887fe4b8f9acc110530a58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!198 &1487457233609904052 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8955558949092176090, guid: 1910939d12352264d800aaa699ea45b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487457233609904047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1487457233609904053 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4420237190661910842, guid: 1910939d12352264d800aaa699ea45b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487457233609904047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &1487457233609904054 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 7739740178664429678, guid: 1910939d12352264d800aaa699ea45b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487457233609904047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1487457233609904055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7690436586052202238, guid: 1910939d12352264d800aaa699ea45b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487457233609904047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!108 &1487457233609904056 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 1634196332599593684, guid: 1910939d12352264d800aaa699ea45b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487457233609904047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1487457233609904057 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6996934039523434965, guid: 1910939d12352264d800aaa699ea45b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487457233609904047}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1487457233609904058 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7603090038456859462, guid: 1910939d12352264d800aaa699ea45b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 1487457233609904047}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649d199d0d368463cabe311b50d9e459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1487457233609904059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487457233609904057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649d199d0d368463cabe311b50d9e459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireLights:
+  - {fileID: 1487457233609904056}
+  fireParticles:
+  - {fileID: 1487457233609904052}
+  litFromStart: 0
+--- !u!114 &1487457233609904060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487457233609904055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 649d199d0d368463cabe311b50d9e459, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fireLights:
+  - {fileID: 1487457233609904054}
+  fireParticles:
+  - {fileID: 1487457233609904053}
+  litFromStart: 0
 --- !u!1 &3647886169353456513
 GameObject:
   m_ObjectHideFlags: 0

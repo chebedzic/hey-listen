@@ -11,8 +11,18 @@ public class DistanceItemDetection : MonoBehaviour
     {
         if (other.CompareTag("Companion") && CompanionManager.instance.heldItem == requiredItem)
         {
-            OnItemDetected.Invoke();
-            CompanionManager.instance.SetHeldItem(null);
+            GameManager.instance.FocusCameraOnObject(CompanionManager.instance.transform, true, .5f, 2);
+            GameManager.instance.PauseControlInterval(2);
+
+            StartCoroutine(Interval());
+
+            IEnumerator Interval()
+            {
+                yield return new WaitForSeconds(.5f);
+                OnItemDetected.Invoke();
+                CompanionManager.instance.SetHeldItem(null);
+
+            }
         }
     }
 }

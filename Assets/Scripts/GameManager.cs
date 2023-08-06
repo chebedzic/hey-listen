@@ -46,7 +46,7 @@ public class GameManager : MonoBehaviour
         CompanionManager.instance.enabled = enable;
     }
 
-    public void FocusCameraOnObject(Transform target ,bool focus, float transition = .2f, float interval = 0)
+    public void FocusCameraOnObject(Transform target, bool focus, float transition = .2f, float interval = 0)
     {
         cinemachineBrain.m_DefaultBlend.m_Time = transition;
 
@@ -106,6 +106,12 @@ public class GameManager : MonoBehaviour
         RoomTrigger oldRoom = activeRoom;
         activeRoom = room;
 
+        if (room == null || oldRoom == null)
+        {
+            Debug.LogWarning("Room not found");
+            return;
+        }
+
         if (!room.isMenuRoom && oldRoom.isMenuRoom)
         {
             OnMenuRoomExit.Invoke();
@@ -127,12 +133,12 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 }

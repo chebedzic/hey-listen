@@ -18,14 +18,24 @@ public class InteractableEquipment : Interactable
 
     public override void OnMouseEnter()
     {
-        if (!bubble) return;
+        if (!bubble) 
+        {
+            CursorHandler.instance.HoverInteractable(true, CursorType.hover);
+            OnPointerEnter?.Invoke(true);
+            return;
+        }
         base.OnMouseEnter();
         CompanionManager.instance.currentEquipmentBubble = this;
     }
 
     public override void OnMouseExit()
     {
-        if (!bubble) return;
+        if (!bubble)
+        {
+            CursorHandler.instance.HoverInteractable(false, CursorType.hover);
+            OnPointerEnter?.Invoke(false);
+            return;
+        }
         base.OnMouseExit();
         CompanionManager.instance.currentEquipmentBubble = null;
 

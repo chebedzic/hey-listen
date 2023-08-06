@@ -59,7 +59,10 @@ public class CompanionVisual : MonoBehaviour
         holdedActionMeshFilter.gameObject.SetActive(action != null);
 
         if (action == null)
+        {
+            companionAnimator.SetTrigger("drop");
             return;
+        }
 
         holdedActionMeshFilter.transform.DOComplete();
         holdedActionMeshFilter.transform.DOShakeScale(.2f, 1.5f, 20, 20, true);

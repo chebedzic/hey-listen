@@ -32,6 +32,7 @@ public class AudioManager : MonoBehaviour
         if (soundGroup.randomPitch)
             pitch = Random.Range(pitch - soundGroup.randomPitchVariation, pitch + soundGroup.randomPitchVariation);
 
+        sfxSource.pitch = pitch;
         tempSource.pitch = pitch;
 
         tempSource.PlayOneShot(soundGroup.clips[RandomIndex], soundGroup.volume);

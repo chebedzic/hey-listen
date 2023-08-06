@@ -16,6 +16,7 @@ MonoBehaviour:
   hero_HurtSound: {fileID: 11400000, guid: dcc42fce0d3d16b478612c6a65334a9f, type: 2}
   hero_InteractSound: {fileID: 11400000, guid: db23b661503a67047b01be641469ba63, type: 2}
   hero_Attack: {fileID: 11400000, guid: ce113a5cf3550db4ab422234d1aa0260, type: 2}
+  hero_Equip: {fileID: 0}
   hero_Parry: {fileID: 11400000, guid: 82c58c638d6b17142a092a983ffa3cc6, type: 2}
   hero_Spin: {fileID: 11400000, guid: e82d6bcba35633e4a806427e0d1f996c, type: 2}
   hero_Jump: {fileID: 11400000, guid: 8730be2c49fea5045b679c5e156a9a48, type: 2}
@@ -25,6 +26,7 @@ MonoBehaviour:
   boss_Hit: {fileID: 11400000, guid: 563d7ad03c822b44fa5ad041f386ba20, type: 2}
   interact_door: {fileID: 11400000, guid: 9f80aaafe5f8db64bb6968f9c5a113b0, type: 2}
   close_door: {fileID: 11400000, guid: b605487ac0016f944a45ba65cc64f047, type: 2}
+  open_walls: {fileID: 11400000, guid: 154d3f19ca03fda47997f3fe3617dc1e, type: 2}
   companion_Whistle: {fileID: 11400000, guid: 88b224894e18d784985d73c2e8c0276a, type: 2}
   UI_hover: {fileID: 11400000, guid: c1774ec20516edc4fa429fd9dd747931, type: 2}
   UI_releaseAction: {fileID: 11400000, guid: cf5a7ea6b4d3925409b9efd40c2b0c0f, type: 2}

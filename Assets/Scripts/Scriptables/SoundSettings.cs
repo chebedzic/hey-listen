@@ -17,6 +17,7 @@ public class SoundSettings : ScriptableObject
     public AudioClipContainer boss_Hit;
     public AudioClipContainer interact_door;
     public AudioClipContainer close_door;
+    public AudioClipContainer open_walls;
     public AudioClipContainer companion_Whistle;
     public AudioClipContainer UI_hover;
     public AudioClipContainer UI_releaseAction;

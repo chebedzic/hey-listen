@@ -30,6 +30,7 @@ public class BlockFadeAnimation : MonoBehaviour
 
     public void Fade(bool state)
     {
+        AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.open_walls, null);
 
         foreach (Renderer renderer in childRenderers)
         {

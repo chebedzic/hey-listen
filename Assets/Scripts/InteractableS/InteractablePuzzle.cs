@@ -67,7 +67,7 @@ public class InteractablePuzzle : Interactable
 
     public void TryPuzzle(List<Action> actionList, InteractableModal modal)
     {
-        if(!gameObject.activeSelf || heroManager.isLookingForBridge) return;
+        if(!gameObject.activeSelf) return;
 
         if (stateMachine != null && !heroManager.isInteracting && GetComponent<Collider>().enabled)
         {

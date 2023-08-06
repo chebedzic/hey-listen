@@ -57,6 +57,9 @@ public class Interactable : MonoBehaviour
    
     public virtual void OnMouseEnter()
     {
+        if(HeroManager.instance.isLookingForBridge)
+            return;
+            
         CompanionManager.instance.currentInteractable = this;
 
         CursorHandler.instance.HoverInteractable(true, CursorType.hover);

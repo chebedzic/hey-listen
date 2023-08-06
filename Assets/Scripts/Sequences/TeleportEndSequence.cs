@@ -39,6 +39,7 @@ public class TeleportEndSequence : MonoBehaviour
         // animate up
         sequence.AppendCallback(() => HeroVisual.instance.TriggerHeroAnimation("teleport"));
         sequence.Append(heroTransform.DOMoveY(10,5));
+        sequence.AppendCallback(()=> GameEndingScreen.instance.ShowEndingScreen());
 
     }
 }

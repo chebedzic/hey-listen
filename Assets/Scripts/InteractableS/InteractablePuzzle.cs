@@ -374,7 +374,7 @@ public class InteractablePuzzle : Interactable
         foreach (Renderer renderer in interactableRenderers)
         {
             if (!renderer.material.HasFloat("_FresnelAmount"))
-                break;
+                continue;
 
             renderer.material.DOComplete();
             renderer.material.SetColor("_FresnelColor", Color.red);
@@ -390,7 +390,7 @@ public class InteractablePuzzle : Interactable
         foreach (Renderer renderer in interactableRenderers)
         {
             if (!renderer.material.HasFloat("_FresnelAmount"))
-                break;
+                continue;
 
             renderer.material.DOComplete();
             renderer.material.SetColor("_FresnelColor", c);

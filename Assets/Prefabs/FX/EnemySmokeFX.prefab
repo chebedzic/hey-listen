@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8124881017226190804}
   - component: {fileID: 1768213830124334334}
   - component: {fileID: 6072305498417505934}
+  - component: {fileID: 6534516939794142833}
   m_Layer: 0
   m_Name: EnemySmokeFX
   m_TagString: Untagged
@@ -44,7 +45,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 11345742901088937}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 1
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -4894,6 +4895,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &6534516939794142833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 11345742901088937}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2a90d078afa43159ce6ae2a93923bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 11400000, guid: 680b61bc2e556e6409c32eed07436975, type: 2}
 --- !u!1 &792004877112317582
 GameObject:
   m_ObjectHideFlags: 0

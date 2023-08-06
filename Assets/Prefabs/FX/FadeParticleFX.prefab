@@ -9890,6 +9890,7 @@ GameObject:
   - component: {fileID: 8895774091158296665}
   - component: {fileID: 1284865520938849763}
   - component: {fileID: 7277929601081734464}
+  - component: {fileID: 7374413852398370537}
   m_Layer: 0
   m_Name: FadeParticleFX
   m_TagString: Untagged
@@ -14774,6 +14775,19 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &7374413852398370537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946534872416686625}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2a90d078afa43159ce6ae2a93923bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 11400000, guid: 154d3f19ca03fda47997f3fe3617dc1e, type: 2}
 --- !u!1 &8569605592891973181
 GameObject:
   m_ObjectHideFlags: 0

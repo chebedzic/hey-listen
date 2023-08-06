@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828006106887593822}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0.134}
   m_LocalScale: {x: 1.3, y: 1.3, z: 1.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1281587457024970121}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4006409347194997313
 MeshFilter:
@@ -109,13 +109,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2585849472523416525}
+  serializedVersion: 2
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.001, z: 0.174}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1281587457024970121}
-  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &2518854317850800645
 MeshFilter:
@@ -339,7 +339,6 @@ MonoBehaviour:
   selected: 0
   slotType: 0
   slotActionReference: {fileID: 2431600190490246718}
-  slotPhantomReference: {fileID: 0}
   insideCollectable: {fileID: 6767136944668382698}
 --- !u!135 &866605858316676405
 SphereCollider:
@@ -538,6 +537,11 @@ PrefabInstance:
     - target: {fileID: 6593040101247417316, guid: 52b60634b0fbfed44a0aa2e8bcfe71f6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207236732913383756, guid: 52b60634b0fbfed44a0aa2e8bcfe71f6,
+        type: 3}
+      propertyPath: soundOnHover
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8247297349305735145, guid: 52b60634b0fbfed44a0aa2e8bcfe71f6,

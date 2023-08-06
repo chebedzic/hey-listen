@@ -7,9 +7,11 @@ public class AudioManager : MonoBehaviour
 {
 
     public static AudioManager instance;
-    [SerializeField] AudioSource sfxSource;
+    [SerializeField] AudioSource[] sfxSources;
     [SerializeField] AudioSource musicSource;
     public SoundSettings audioSettings;
+
+    [SerializeField] private int sfxIndex = 0;
 
     private void Awake()
     {
@@ -23,7 +25,7 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(AudioClipContainer soundGroup, AudioSource source)
     {
-        AudioSource tempSource = source == null ? sfxSource : source;
+        AudioSource tempSource = source == null ? sfxSources[sfxIndex] : source;
 
         int RandomIndex = Random.Range(0, soundGroup.clips.Length);
 
@@ -32,9 +34,12 @@ public class AudioManager : MonoBehaviour
         if (soundGroup.randomPitch)
             pitch = Random.Range(pitch - soundGroup.randomPitchVariation, pitch + soundGroup.randomPitchVariation);
 
+        sfxSources[sfxIndex].pitch = pitch;
         tempSource.pitch = pitch;
 
         tempSource.PlayOneShot(soundGroup.clips[RandomIndex], soundGroup.volume);
+
+        sfxIndex = (int)Mathf.Repeat(sfxIndex + 1, sfxSources.Length);
     }
 
     public void PlayMusic()

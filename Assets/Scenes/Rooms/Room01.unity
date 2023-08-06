@@ -3799,6 +3799,67 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 507626126}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &521978612
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 521978613}
+  - component: {fileID: 521978614}
+  m_Layer: 0
+  m_Name: DelaytedEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &521978613
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521978612}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 667121676}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &521978614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 521978612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9342b9686ab94a4fa0a99796beaa5f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AfterDelay:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1515276580}
+        m_TargetAssemblyTypeName: BlockFadeAnimation, Assembly-CSharp
+        m_MethodName: Fade
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delay: 0.7
+  activateOnce: 1
 --- !u!1001 &547399747
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5503,6 +5564,7 @@ Transform:
   - {fileID: 1515276578}
   - {fileID: 1739621913}
   - {fileID: 1483564148}
+  - {fileID: 521978613}
   - {fileID: 435283487141432136}
   - {fileID: 836263982}
   m_Father: {fileID: 1858745184}
@@ -17750,7 +17812,7 @@ PrefabInstance:
     - target: {fileID: 2918955130295851236, guid: cc09375c554bafa4c85731ce344f7614,
         type: 3}
       propertyPath: OnPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2918955130295851236, guid: cc09375c554bafa4c85731ce344f7614,
         type: 3}
@@ -17761,7 +17823,7 @@ PrefabInstance:
         type: 3}
       propertyPath: OnPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1515276580}
+      objectReference: {fileID: 521978614}
     - target: {fileID: 2918955130295851236, guid: cc09375c554bafa4c85731ce344f7614,
         type: 3}
       propertyPath: OnPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[1].m_Target
@@ -17790,7 +17852,7 @@ PrefabInstance:
     - target: {fileID: 2918955130295851236, guid: cc09375c554bafa4c85731ce344f7614,
         type: 3}
       propertyPath: OnPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Fade
+      value: Activate
       objectReference: {fileID: 0}
     - target: {fileID: 2918955130295851236, guid: cc09375c554bafa4c85731ce344f7614,
         type: 3}
@@ -17830,7 +17892,7 @@ PrefabInstance:
     - target: {fileID: 2918955130295851236, guid: cc09375c554bafa4c85731ce344f7614,
         type: 3}
       propertyPath: OnPuzzleSolved.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BlockFadeAnimation, Assembly-CSharp
+      value: DelayedEvent, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 2918955130295851236, guid: cc09375c554bafa4c85731ce344f7614,
         type: 3}

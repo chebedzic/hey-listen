@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.Tracing;
 using UnityEngine;
+using DG.Tweening;
 
 public class AudioManager : MonoBehaviour
 {
@@ -18,9 +19,9 @@ public class AudioManager : MonoBehaviour
         instance = this;
     }
 
-   public void SetMusicVolume(float volume)
+   public void SetMusicVolume(float volume, float duration = .2f)
     {
-        musicSource.volume = volume;
+        musicSource.DOFade(volume, duration);
     }
 
     public void PlaySFX(AudioClipContainer soundGroup, AudioSource source)

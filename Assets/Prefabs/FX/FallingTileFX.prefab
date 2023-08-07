@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2135534780534651698}
   - component: {fileID: 4279496385019333583}
   - component: {fileID: 2250411561982498142}
+  - component: {fileID: 2489038308871213333}
   m_Layer: 0
   m_Name: FallingTileFX
   m_TagString: Untagged
@@ -41,7 +42,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5222465453160430722}
   serializedVersion: 8
-  lengthInSec: 5
+  lengthInSec: 0.4
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -4886,3 +4887,16 @@ ParticleSystemRenderer:
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
   m_MaskInteraction: 0
+--- !u!114 &2489038308871213333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5222465453160430722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc2a90d078afa43159ce6ae2a93923bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClip: {fileID: 11400000, guid: bf2ca9f244d4f6a4995b020519f35df0, type: 2}

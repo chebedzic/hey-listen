@@ -18,6 +18,7 @@ public class HeroVisual : MonoBehaviour
     [SerializeField] [ColorUsage(true,true)] private Color enemyHitColor;
     [SerializeField] private ParticleSystem confusionParticle;
     [SerializeField] private ParticleSystem equipmentTutorialParticle;
+    [SerializeField] private ParticleSystem runParticle;
 
     [Header("Equipment References")]
     [SerializeField] private GameObject swordGameobject;
@@ -186,6 +187,12 @@ public class HeroVisual : MonoBehaviour
         heroManager.canMove = !state;
         animator.SetBool("isConfused", state);
         if (state) equipmentTutorialParticle.Play(); else equipmentTutorialParticle.Stop();
+    }
+
+    public void ActivateRunParticle(bool activate)
+    {
+        if (activate) runParticle.Play();
+        else runParticle.Stop();
     }
 
     public void TurnSmearFireOn(bool active)

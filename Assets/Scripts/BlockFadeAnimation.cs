@@ -10,6 +10,7 @@ public class BlockFadeAnimation : MonoBehaviour
     [SerializeField] private float fadeDuration;
     [SerializeField] private ParticleSystem fadeParticle;
     [SerializeField] private CinemachineImpulseSource impulseSource;
+    [SerializeField] private AudioClipContainer fadeAudio;
     bool fade = false;
 
     // Start is called before the first frame update
@@ -30,7 +31,10 @@ public class BlockFadeAnimation : MonoBehaviour
 
     public void Fade(bool state)
     {
+        if(fadeAudio == null)
         AudioManager.instance.PlaySFX(AudioManager.instance.audioSettings.open_walls, null);
+        else
+        AudioManager.instance.PlaySFX(fadeAudio, null);
 
         foreach (Renderer renderer in childRenderers)
         {

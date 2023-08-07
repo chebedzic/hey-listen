@@ -43,6 +43,7 @@ public class FallingTilesAnimation : MonoBehaviour
         for (int i = 0; i < tileRows.Length; i++)
         {
             tileRows[i].DOComplete();
+            tileRows[i].DOScale(0, .2f).From();
             tileRows[i].localPosition = Vector3.zero;
         }
     }

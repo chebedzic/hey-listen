@@ -773,7 +773,7 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 0.35
+  m_Intensity: 0.5
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -816,7 +816,7 @@ Light:
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
-  m_ColorTemperature: 8917
+  m_ColorTemperature: 15884
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
@@ -2463,10 +2463,50 @@ PrefabInstance:
       propertyPath: m_RotationOffsets.Array.data[0].y
       value: 66.358925
       objectReference: {fileID: 0}
+    - target: {fileID: 4498492479574103517, guid: 855c3b5ae1ad942228dabc8db4678724,
+        type: 3}
+      propertyPath: m_RotationOffsets.Array.data[0].z
+      value: 77.68499
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498492479574103517, guid: 855c3b5ae1ad942228dabc8db4678724,
+        type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].x
+      value: -0.00035171956
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498492479574103517, guid: 855c3b5ae1ad942228dabc8db4678724,
+        type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].y
+      value: 0.43642354
+      objectReference: {fileID: 0}
+    - target: {fileID: 4498492479574103517, guid: 855c3b5ae1ad942228dabc8db4678724,
+        type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].z
+      value: 0.064255476
+      objectReference: {fileID: 0}
     - target: {fileID: 6158396086383491924, guid: 855c3b5ae1ad942228dabc8db4678724,
         type: 3}
       propertyPath: m_RotationOffsets.Array.data[0].x
       value: -13.350972
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158396086383491924, guid: 855c3b5ae1ad942228dabc8db4678724,
+        type: 3}
+      propertyPath: m_RotationOffsets.Array.data[0].y
+      value: 66.35891
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158396086383491924, guid: 855c3b5ae1ad942228dabc8db4678724,
+        type: 3}
+      propertyPath: m_RotationOffsets.Array.data[0].z
+      value: 77.68507
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158396086383491924, guid: 855c3b5ae1ad942228dabc8db4678724,
+        type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].x
+      value: -0.012128495
+      objectReference: {fileID: 0}
+    - target: {fileID: 6158396086383491924, guid: 855c3b5ae1ad942228dabc8db4678724,
+        type: 3}
+      propertyPath: m_TranslationOffsets.Array.data[0].z
+      value: -0.0044658184
       objectReference: {fileID: 0}
     - target: {fileID: 7796198458216666592, guid: 855c3b5ae1ad942228dabc8db4678724,
         type: 3}

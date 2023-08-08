@@ -45,7 +45,7 @@ public class CompanionManager : MonoBehaviour
 
     public CombinationLibrary combinationLibrary;
 
-    public void SetHeldAction(Action action) 
+    public void SetHeldAction(Action action)
     {
         heldAction = action;
 
@@ -57,7 +57,7 @@ public class CompanionManager : MonoBehaviour
         heldItem = item;
         heldItemPrefab.SetActive(heldItem != null ? true : false);
 
-        if(heldAction != null)
+        if (heldAction != null)
         {
             DropCollectable(heldAction);
         }
@@ -141,13 +141,17 @@ public class CompanionManager : MonoBehaviour
         if (currentInteractable == null && currentModal == null)
             if (!HeroManager.instance.isInteracting && !HeroManager.instance.isLookingForBridge)
                 DropCollectable(heldAction);
-                
-    }
 
+    }
 
     void OnReset()
     {
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void OnPause()
+    {
+        GameManager.instance.PauseGame(true);
     }
 
     #endregion
@@ -163,8 +167,8 @@ public class CompanionManager : MonoBehaviour
             NavMeshHit hit;
             if (NavMesh.SamplePosition(dropPosition, out hit, 3f, NavMesh.AllAreas))
                 dropPosition = hit.position;
-            
-            InteractableCollectable collectable = Instantiate(collectableActionPrefab, transform.position, Quaternion.Euler(0,180,0), GameManager.instance.activeRoom.transform).GetComponent<InteractableCollectable>();
+
+            InteractableCollectable collectable = Instantiate(collectableActionPrefab, transform.position, Quaternion.Euler(0, 180, 0), GameManager.instance.activeRoom.transform).GetComponent<InteractableCollectable>();
             collectable.Setup(storedAction);
             collectable.transform.DORotate(new Vector3(360, 0, 0), .5f, RotateMode.LocalAxisAdd).SetEase(Ease.OutBack);
             collectable.transform.DOJump(dropPosition, 3, 1, .4f);

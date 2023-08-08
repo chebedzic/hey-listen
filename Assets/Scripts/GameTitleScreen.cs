@@ -33,4 +33,8 @@ public class GameTitleScreen : MonoBehaviour
         logoBg.DOFade(active ? logoBgAlpha : 0, transitionDuration).SetDelay(delay);
         instructionsCanvas.DOFade(active ? 1 : 0, transitionDuration).SetDelay(delay * 4);
     }
+    public void Unpause()
+    {
+        GameManager.instance.PauseGame(false);
+    }
 }

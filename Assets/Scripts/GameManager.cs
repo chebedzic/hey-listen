@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public RoomTrigger activeRoom;
 
     public bool hasUnlockedShield = false;
+    public bool isPaused = false;
 
     private CinemachineBrain cinemachineBrain;
     public CinemachineVirtualCamera focusVirtualCamera;
@@ -26,7 +27,6 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
-
         cinemachineBrain = Camera.main.GetComponent<CinemachineBrain>();
     }
 
@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
 
         PlayerInput[] playerInputs = FindObjectsByType<PlayerInput>(sortMode: FindObjectsSortMode.None);
 
-        foreach (PlayerInput playerInput in playerInputs) { playerInput.enabled = enable; }
+        foreach (PlayerInput playerInput in playerInputs) { playerInput.SwitchCurrentActionMap(enable ? "Player" : "UI"); }
 
         CompanionManager.instance.enabled = enable;
     }
@@ -129,16 +129,12 @@ public class GameManager : MonoBehaviour
         }
 
     }
-
-    // Start is called before the first frame update
-    void Start()
+    public void PauseGame(bool pause)
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        if (activeRoom.isMenuRoom)
+            return;
+        isPaused = pause;
+        GameTitleScreen.instance.BringTitleElements(isPaused);
+        EnableControls(!isPaused);
     }
 }

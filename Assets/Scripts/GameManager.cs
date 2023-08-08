@@ -134,6 +134,7 @@ public class GameManager : MonoBehaviour
         if (activeRoom.isMenuRoom)
             return;
         isPaused = pause;
+        GameTitleScreen.instance.SetInitialDelay(0);
         GameTitleScreen.instance.BringTitleElements(isPaused);
         EnableControls(!isPaused);
     }

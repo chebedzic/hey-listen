@@ -37,4 +37,9 @@ public class GameTitleScreen : MonoBehaviour
     {
         GameManager.instance.PauseGame(false);
     }
+
+    public void SetInitialDelay(float delay)
+    {
+        initialDelay = delay;
+    }
 }

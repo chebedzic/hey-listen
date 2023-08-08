@@ -16,6 +16,8 @@ public class DebugHero : MonoBehaviour
     [SerializeField] Action[] allActions;
     [SerializeField] int actionIndex;
 
+#if UNITY_EDITOR
+
     void OnA()
     {
         DebugMoveHero(-Vector3.right);
@@ -55,12 +57,7 @@ public class DebugHero : MonoBehaviour
         HeroManager.instance.GetComponent<NavMeshAgent>().enabled = true;
     }
 
-
-
-    void OnMuteMusic()
-    {
-        AudioManager.instance.SetMusicVolume(0);
-    }
+#endif
 
     void OnM()
     {
@@ -69,5 +66,12 @@ public class DebugHero : MonoBehaviour
             modal.gameObject.SetActive(!modal.gameObject.activeSelf);
         }
     }
+
+
+    void OnMuteMusic()
+    {
+        AudioManager.instance.SetMusicVolume(0);
+    }
+
 
 }

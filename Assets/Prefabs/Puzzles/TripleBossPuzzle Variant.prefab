@@ -449,6 +449,11 @@ PrefabInstance:
       propertyPath: m_Center.x
       value: -2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2744014388238734428, guid: 1e2d2fbd23272d2498f1aa8fd24233f0,
+        type: 3}
+      propertyPath: shakeOnHover
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3672593118791322640, guid: 1e2d2fbd23272d2498f1aa8fd24233f0,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -498,6 +503,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 1361155067870549296}
+    - targetCorrespondingSourceObject: {fileID: 7876641371311658820, guid: 1e2d2fbd23272d2498f1aa8fd24233f0,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 493169751815234719}
   m_SourcePrefab: {fileID: 100100000, guid: 1e2d2fbd23272d2498f1aa8fd24233f0, type: 3}
 --- !u!1 &1312833119581573734 stripped
 GameObject:
@@ -547,6 +556,22 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: -2.5}
+--- !u!208 &493169751815234719
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312833119581573734}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.685, y: 0.5, z: 0.705}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: -2.48}
+  m_TimeToStationary: 0.5
 --- !u!4 &8690165350653960566 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 571611924866360404, guid: 1e2d2fbd23272d2498f1aa8fd24233f0,

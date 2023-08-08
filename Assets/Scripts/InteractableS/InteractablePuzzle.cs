@@ -257,6 +257,23 @@ public class InteractablePuzzle : Interactable
         }
     }
 
+    public void StopParticles(int particlesIndex = -1)
+    {
+        if (particleSystems.Length <= 0)
+            return;
+
+        if (particlesIndex != -1)
+        {
+            particleSystems[particlesIndex].Stop();
+            return;
+        }
+
+        foreach (ParticleSystem particle in particleSystems)
+        {
+            particle.Stop();
+        }
+    }
+
 
     public void SetModal(InteractableModal modal)
     {

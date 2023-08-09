@@ -304,6 +304,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6733177361254619370, guid: 87cf608fd3d279d4eb22377184ebea79,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: -4887845434286715258, guid: 87cf608fd3d279d4eb22377184ebea79,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: -1374161610312379201, guid: 87cf608fd3d279d4eb22377184ebea79,
         type: 3}
       propertyPath: m_IsActive
@@ -314,10 +324,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: torch_small
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 87cf608fd3d279d4eb22377184ebea79,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
+      objectReference: {fileID: 0}
     - target: {fileID: 7917349904687423284, guid: 87cf608fd3d279d4eb22377184ebea79,
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7917349904687423284, guid: 87cf608fd3d279d4eb22377184ebea79,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 2147483647
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -17,7 +17,7 @@ public class DebugHero : MonoBehaviour
     [SerializeField] int actionIndex;
 
 
-
+#if UNITY_EDITOR
     void OnA()
     {
         DebugMoveHero(-Vector3.right);
@@ -57,6 +57,7 @@ public class DebugHero : MonoBehaviour
         HeroManager.instance.GetComponent<NavMeshAgent>().enabled = true;
     }
 
+#endif
 
     void OnM()
     {

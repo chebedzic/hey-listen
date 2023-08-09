@@ -10,6 +10,7 @@ public class AudioManager : MonoBehaviour
     public static AudioManager instance;
     [SerializeField] AudioSource[] sfxSources;
     [SerializeField] AudioSource musicSource;
+    [SerializeField] AudioSource ambientSource;
     public SoundSettings audioSettings;
 
     [SerializeField] private int sfxIndex = 0;
@@ -17,6 +18,14 @@ public class AudioManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        float ambientVolume = ambientSource.volume;
+        ambientSource.volume = 0;
+        ambientSource.DOFade(ambientVolume, .5f);
+    }
+
+    public void SetAmbientVolume(float volume, float duration = .5f)
+    {
+        ambientSource.DOFade(volume, duration);
     }
 
    public void SetMusicVolume(float volume, float duration = .2f)

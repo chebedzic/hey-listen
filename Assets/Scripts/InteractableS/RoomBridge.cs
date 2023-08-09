@@ -23,6 +23,9 @@ public class RoomBridge : Interactable
 
     public void TryBridge()
     {
+        if (HeroManager.instance.isLookingForBridge)
+            return;
+
         HeroManager.instance.isLookingForBridge = true;
 
         if (linkedDoor != null) 
@@ -46,6 +49,7 @@ public class RoomBridge : Interactable
             yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
             yield return new WaitUntil(() => !HeroManager.instance.IsAgentCrossingLink());
             HeroManager.instance.isLookingForBridge = false;
+            if(!HeroManager.instance.isInteracting)
             HeroManager.instance.SetHeroDestination(HeroManager.instance.transform.position + (HeroManager.instance.transform.forward/2));
         }
     }

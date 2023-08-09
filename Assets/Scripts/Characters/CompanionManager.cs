@@ -118,6 +118,10 @@ public class CompanionManager : MonoBehaviour
 
     void OnFire()
     {
+        if (GameManager.instance.isPaused)
+        {
+            GameManager.instance.PauseGame(false);
+        }
 
         if (HeroManager.instance.isInteracting && !HeroManager.instance.isLookingForBridge) return;
 
@@ -148,6 +152,11 @@ public class CompanionManager : MonoBehaviour
     void OnReset()
     {
         UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
+    }
+
+    void OnPause()
+    {
+        GameManager.instance.PauseGame(!GameManager.instance.isPaused);
     }
 
     #endregion

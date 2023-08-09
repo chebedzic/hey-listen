@@ -1,10 +1,12 @@
 using Cinemachine;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,6 +25,8 @@ public class GameManager : MonoBehaviour
     [Header("Parameters")]
     [SerializeField] private float equipmentFocusTransition = .2f;
     [SerializeField] private float equipmentFocusInterval = 1;
+
+    [SerializeField] private Image fadeImage;
 
     private void Awake()
     {
@@ -136,6 +140,24 @@ public class GameManager : MonoBehaviour
         isPaused = pause;
         GameTitleScreen.instance.SetInitialDelay(0);
         GameTitleScreen.instance.BringTitleElements(isPaused);
-        EnableControls(!isPaused);
+        //EnableControls(!isPaused);
+    }
+
+    public void RestartGame()
+    {
+        AudioManager.instance.SetAmbientVolume(0);
+        AudioManager.instance.SetMusicVolume(0,.5f);
+        fadeImage.DOFade(1, 1).OnComplete(() =>
+        UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(0)
+        );
+    }
+
+    public void QuitGame()
+    {
+        AudioManager.instance.SetAmbientVolume(0);
+        AudioManager.instance.SetMusicVolume(0, .5f);
+        fadeImage.DOFade(1, 1).OnComplete(() =>
+        Application.Quit()
+        );
     }
 }

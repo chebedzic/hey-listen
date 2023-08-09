@@ -57,8 +57,8 @@ public class Interactable : MonoBehaviour
    
     public virtual void OnMouseEnter()
     {
-        if(HeroManager.instance.isLookingForBridge)
-            return;
+        //if(HeroManager.instance.isLookingForBridge)
+        //    return;
             
         CompanionManager.instance.currentInteractable = this;
 

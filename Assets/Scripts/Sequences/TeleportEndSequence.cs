@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 public class TeleportEndSequence : MonoBehaviour
 {
@@ -10,6 +11,10 @@ public class TeleportEndSequence : MonoBehaviour
     [SerializeField] private float initialDelay = .2f;
     [SerializeField] private Transform companionPosReference;
     public UnityEvent OnSequenceStart;
+
+    public Volume endEffect;
+    public float endEffectDuration = 5;
+    public float endEffectDelay = 2;
 
     bool sequenceExcecuted = false;
     public void TrySequence()
@@ -27,6 +32,7 @@ public class TeleportEndSequence : MonoBehaviour
             yield return new WaitForSeconds(.2f);
             yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
             StartSequence();
+            DOVirtual.Float(0, 1, endEffectDuration, SetEndEffect).SetDelay(endEffectDelay);
         }
 
     }
@@ -50,5 +56,11 @@ public class TeleportEndSequence : MonoBehaviour
         sequence.Append(heroTransform.DOMoveY(10,5));
         sequence.AppendCallback(()=> GameEndingScreen.instance.ShowEndingScreen());
 
+    }
+
+    void SetEndEffect(float amount)
+    {
+        if(endEffect!= null)
+        endEffect.weight = amount;
     }
 }

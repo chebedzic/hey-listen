@@ -85,6 +85,7 @@ public class Interactable : MonoBehaviour
 
         foreach (Collider coll in interactableColliders)
         {
+            if(coll != null)
             coll.enabled = enabled;
         }
     }

@@ -2298,6 +2298,8 @@ PrefabInstance:
     - {fileID: 6681326958211002189, guid: 1c62a5a46f3347448bdb844f26a1855c, type: 3}
     - {fileID: 1872519835810434896, guid: 1c62a5a46f3347448bdb844f26a1855c, type: 3}
     - {fileID: 7105070034899049889, guid: 1c62a5a46f3347448bdb844f26a1855c, type: 3}
+    - {fileID: 3490120563014859528, guid: 1c62a5a46f3347448bdb844f26a1855c, type: 3}
+    - {fileID: 5525018620764481088, guid: 1c62a5a46f3347448bdb844f26a1855c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c62a5a46f3347448bdb844f26a1855c, type: 3}
@@ -4682,6 +4684,84 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1001 &1654505739
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1923998057}
+    m_Modifications:
+    - target: {fileID: 3608037511671727367, guid: 1930968b0cc0e464fbdc8928c035aff6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608037511671727367, guid: 1930968b0cc0e464fbdc8928c035aff6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608037511671727367, guid: 1930968b0cc0e464fbdc8928c035aff6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608037511671727367, guid: 1930968b0cc0e464fbdc8928c035aff6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608037511671727367, guid: 1930968b0cc0e464fbdc8928c035aff6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608037511671727367, guid: 1930968b0cc0e464fbdc8928c035aff6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608037511671727367, guid: 1930968b0cc0e464fbdc8928c035aff6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608037511671727367, guid: 1930968b0cc0e464fbdc8928c035aff6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608037511671727367, guid: 1930968b0cc0e464fbdc8928c035aff6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3608037511671727367, guid: 1930968b0cc0e464fbdc8928c035aff6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6266266564779599281, guid: 1930968b0cc0e464fbdc8928c035aff6,
+        type: 3}
+      propertyPath: m_Name
+      value: FloortileDoorway (2)
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects:
+    - {fileID: 2924604413730241834, guid: 1930968b0cc0e464fbdc8928c035aff6, type: 3}
+    - {fileID: 8586714374525258155, guid: 1930968b0cc0e464fbdc8928c035aff6, type: 3}
+    - {fileID: 3507384495512458482, guid: 1930968b0cc0e464fbdc8928c035aff6, type: 3}
+    - {fileID: 5444251829950720906, guid: 1930968b0cc0e464fbdc8928c035aff6, type: 3}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1930968b0cc0e464fbdc8928c035aff6, type: 3}
+--- !u!4 &1654505740 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3608037511671727367, guid: 1930968b0cc0e464fbdc8928c035aff6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1654505739}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1657568142
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5385,6 +5465,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1654505740}
   - {fileID: 100953879}
   - {fileID: 801394723}
   - {fileID: 500978234}

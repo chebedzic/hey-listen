@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.03100591, g: 0.03909284, b: 0.10015852, a: 1}
+  m_IndirectSpecularColor: {r: 0.031021086, g: 0.03909284, b: 0.10015852, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -582,7 +582,7 @@ ParentConstraint:
   m_TranslationOffsets:
   - {x: 0, y: 0, z: 0}
   m_RotationOffsets:
-  - {x: -89.980225, y: 0, z: 180}
+  - {x: -89.96574, y: 0, z: 180}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -2062,6 +2062,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3215786137021887366, guid: 5106ddab3a0d44ebeaef0d38975da6f9,
+        type: 3}
+      propertyPath: collectableAction
+      value: 
+      objectReference: {fileID: 11400000, guid: 4952b5a6ce22d4d9e81513dba1d9a237,
+        type: 2}
+    - target: {fileID: 3546206985588169186, guid: 5106ddab3a0d44ebeaef0d38975da6f9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4759889070225148215, guid: 5106ddab3a0d44ebeaef0d38975da6f9,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f4991c2ce7409ae4da04e9bc7780bdf0, type: 2}
     - target: {fileID: 5614075020645834918, guid: 5106ddab3a0d44ebeaef0d38975da6f9,
         type: 3}
       propertyPath: m_Name

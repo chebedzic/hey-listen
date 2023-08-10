@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Shader Graphs_SkyGradient 1
-  m_Shader: {fileID: -6465566751694194690, guid: 2f2d258f1c6e84082b37043523d5d466,
+  m_Name: Fire_ShaderGraph
+  m_Shader: {fileID: -6465566751694194690, guid: 40a499065bb103d4ca435878e18de281,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -37,12 +37,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _QueueControl: 0
+    - _QueueOffset: 0
     m_Colors:
-    - _BottomColor: {r: 0, g: 0.010067932, b: 0.03773582, a: 1}
-    - _TopColor: {r: 0.2699893, g: 0.42673385, b: 0.6037736, a: 1}
+    - _Color: {r: 13.766361, g: 0.904298, b: 0, a: 1}
   m_BuildTextureStacks: []
---- !u!114 &8922069474481391293
+--- !u!114 &2288547691911283790
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

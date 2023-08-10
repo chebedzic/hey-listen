@@ -85,6 +85,10 @@ public class InteractableCollectable : Interactable
         gameObject.SetActive(false);
     }
 
+    public void SetActionNull()
+    {
+        collectableAction = null;
+    }
     public void ReplaceCollectable(Action action)
     {
         if(action == null)

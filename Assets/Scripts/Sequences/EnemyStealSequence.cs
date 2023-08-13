@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyStealSequence : MonoBehaviour
 {
     public Action requiredCompanionAction;
+    public Action requiredSlotAction;
     public InteractableCollectable collectableToDisable;
     public GameObject enemyGameobject;
     public Transform cameraFocusPoint;
@@ -21,7 +22,7 @@ public class EnemyStealSequence : MonoBehaviour
     public void TrySequence()
     {
         if (sequenceExcecuted) return;
-        if(CompanionManager.instance.heldAction == requiredCompanionAction)
+        if(CompanionManager.instance.heldAction == requiredCompanionAction && collectableToDisable.collectableAction == requiredSlotAction)
         {
             StartSequence();
         }

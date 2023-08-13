@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using TMPro;
 
 public class GameTitleScreen : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class GameTitleScreen : MonoBehaviour
     [SerializeField] private Image logoBg;
     [SerializeField] private RectTransform optionsRect;
     [SerializeField] private CanvasGroup instructionsCanvas;
+    [SerializeField] private TextMeshProUGUI versionText;
 
     [Header("Settings")]
     [SerializeField] private float transitionDuration = .4f;
@@ -22,6 +24,8 @@ public class GameTitleScreen : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        versionText.DOFade(0, 0);
+        versionText.text = Application.version;
     }
 
     public void BringTitleElements(bool active)
@@ -32,6 +36,7 @@ public class GameTitleScreen : MonoBehaviour
         optionsRect.DOAnchorPosX(active ? -optionsRect.sizeDelta.x : 0, transitionDuration, false).SetEase(transitionEase).SetDelay(delay);
         logoBg.DOFade(active ? logoBgAlpha : 0, transitionDuration).SetDelay(delay);
         instructionsCanvas.DOFade(active ? 1 : 0, transitionDuration).SetDelay(delay * 4);
+        versionText.DOFade(active ? 1 : 0, transitionDuration).SetDelay(delay);
     }
     public void Unpause()
     {

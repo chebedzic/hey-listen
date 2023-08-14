@@ -25,26 +25,36 @@ public class EquipmentManager : MonoBehaviour
 
     public void ShowEquipments(bool state)
     {
-        visible = state;
 
-        equipmentHolder.gameObject.SetActive(state);
+        StartCoroutine(Cooldown());
 
-        for (int i = 0; i < equipmentHolder.childCount; i++)
+        IEnumerator Cooldown()
         {
-            equipmentHolder.GetChild(i).DOComplete();
-            equipmentHolder.GetChild(i).DOScale(0, .15f).From().SetEase(Ease.OutBack).SetDelay(.1f * i);
+#if UNITY_WEBGL
+            yield return new WaitForSeconds(state ? 0 : .1f);
+#endif
+            yield return new WaitForEndOfFrame();
+            visible = state;
+
+            equipmentHolder.gameObject.SetActive(state);
+
+            for (int i = 0; i < equipmentHolder.childCount; i++)
+            {
+                equipmentHolder.GetChild(i).DOComplete();
+                equipmentHolder.GetChild(i).DOScale(0, .15f).From().SetEase(Ease.OutBack).SetDelay(.1f * i);
+            }
+
+            Vector3 heroPos = HeroManager.instance.transform.position;
+
+            Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(heroPos);
+            float yOffset = (ViewportPosition.y <= bottomThreshold) ? bottomOffset : centerOffset;
+            Vector2 WorldObject_ScreenPosition = new Vector2(
+            ((ViewportPosition.x * canvas.sizeDelta.x) - (canvas.sizeDelta.x * 0.5f)),
+            ((ViewportPosition.y * canvas.sizeDelta.y) - (canvas.sizeDelta.y * 0.5f)) + yOffset);
+
+            //now you can set the position of the ui element
+            equipmentHolder.anchoredPosition = WorldObject_ScreenPosition;
         }
-
-        Vector3 heroPos = HeroManager.instance.transform.position;
-
-        Vector2 ViewportPosition = Camera.main.WorldToViewportPoint(heroPos);
-        float yOffset = (ViewportPosition.y <= bottomThreshold) ? bottomOffset : centerOffset;
-        Vector2 WorldObject_ScreenPosition = new Vector2(
-        ((ViewportPosition.x * canvas.sizeDelta.x) - (canvas.sizeDelta.x * 0.5f)),
-        ((ViewportPosition.y * canvas.sizeDelta.y) - (canvas.sizeDelta.y * 0.5f)) + yOffset);
-
-        //now you can set the position of the ui element
-        equipmentHolder.anchoredPosition = WorldObject_ScreenPosition;
 
     }
 }

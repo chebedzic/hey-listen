@@ -39,6 +39,7 @@ public class CompanionManager : MonoBehaviour
     public InteractableModal currentModal;
     public bool currentCollectable;
     public InteractableEquipment currentEquipmentBubble;
+    private bool isHovering => currentInteractable || currentSlot || currentModal;
 
     [Header("Edit Mode")]
     public bool isInEditorMode;
@@ -162,7 +163,7 @@ public class CompanionManager : MonoBehaviour
     #endregion
     public void DropCollectable(Action actionToDrop)
     {
-        if (actionToDrop != null)
+        if (actionToDrop != null && isHovering == false)
         {
             Action storedAction = actionToDrop;
 

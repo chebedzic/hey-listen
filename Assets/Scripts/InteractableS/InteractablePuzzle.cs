@@ -202,6 +202,9 @@ public class InteractablePuzzle : Interactable
         if (!HeroManager.instance.canMove)
             return;
 
+        if (heroManager.isLookingForBridge)
+            return;
+
         base.OnMouseDown();
 
         if (linkedModal == null && stateMachine == true)

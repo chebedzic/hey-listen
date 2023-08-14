@@ -16,6 +16,11 @@ public class InteractableEquipment : Interactable
         base.Awake();
     }
 
+    public override void Update()
+    {
+        //base.Update();
+    }
+
     public override void OnMouseEnter()
     {
         if (!bubble) 

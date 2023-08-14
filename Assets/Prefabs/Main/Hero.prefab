@@ -24501,7 +24501,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b598bb7af0c3e4e90b7dd07a4e45ebf1, type: 2}
+  - {fileID: 2100000, guid: 8014aabbb06275149b96cfa25de2799f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -24963,6 +24963,8 @@ MonoBehaviour:
   interactableColliders: []
   interactableRenderers: []
   selected: 0
+  disableWhenHeroIsInteracting: 1
+  originalLayer: 0
 --- !u!1 &8979940833770336706
 GameObject:
   m_ObjectHideFlags: 0
@@ -30028,6 +30030,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -70.734985
       objectReference: {fileID: 0}
+    - target: {fileID: 952375859498989001, guid: bc10561a87aebb8449bd87c0946adcff,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8014aabbb06275149b96cfa25de2799f, type: 2}
     - target: {fileID: 8033196363394143319, guid: bc10561a87aebb8449bd87c0946adcff,
         type: 3}
       propertyPath: prewarm
@@ -30208,6 +30215,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -70.734985
       objectReference: {fileID: 0}
+    - target: {fileID: 952375859498989001, guid: bc10561a87aebb8449bd87c0946adcff,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8014aabbb06275149b96cfa25de2799f, type: 2}
     - target: {fileID: 8033196363394143319, guid: bc10561a87aebb8449bd87c0946adcff,
         type: 3}
       propertyPath: prewarm
@@ -30309,9 +30321,9 @@ ParentConstraint:
   m_TranslationAtRest: {x: 0.544, y: 0.505, z: 0.201}
   m_RotationAtRest: {x: -90, y: 0, z: -70.734726}
   m_TranslationOffsets:
-  - {x: -0.0003517717, y: 0.4364236, z: 0.064255536}
+  - {x: -0.00035171956, y: 0.43642354, z: 0.064255476}
   m_RotationOffsets:
-  - {x: -13.350976, y: 66.358925, z: 77.68498}
+  - {x: -13.350976, y: 66.358925, z: 77.68499}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1
@@ -30488,6 +30500,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -70.734985
       objectReference: {fileID: 0}
+    - target: {fileID: 952375859498989001, guid: bc10561a87aebb8449bd87c0946adcff,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8014aabbb06275149b96cfa25de2799f, type: 2}
     - target: {fileID: 8033196363394143319, guid: bc10561a87aebb8449bd87c0946adcff,
         type: 3}
       propertyPath: prewarm
@@ -30583,9 +30600,9 @@ ParentConstraint:
   m_TranslationAtRest: {x: 0.649, y: 0.53565454, z: 0.483}
   m_RotationAtRest: {x: -90, y: 0, z: -70.73466}
   m_TranslationOffsets:
-  - {x: -0.012128562, y: 0.7307489, z: -0.0044656396}
+  - {x: -0.012128495, y: 0.7307489, z: -0.0044658184}
   m_RotationOffsets:
-  - {x: -13.350972, y: 66.358925, z: 77.68504}
+  - {x: -13.350972, y: 66.35891, z: 77.68507}
   m_AffectTranslationX: 1
   m_AffectTranslationY: 1
   m_AffectTranslationZ: 1

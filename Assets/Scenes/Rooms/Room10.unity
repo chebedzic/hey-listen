@@ -2218,10 +2218,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 667121676}
     m_Modifications:
+    - target: {fileID: 578961787062099831, guid: b3dfa2c3cf4e92a45bae2d4d39bc16a9,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8014aabbb06275149b96cfa25de2799f, type: 2}
     - target: {fileID: 1170302829904620184, guid: b3dfa2c3cf4e92a45bae2d4d39bc16a9,
         type: 3}
       propertyPath: m_Name
       value: FirePuzzle (1) Variant Solved
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655229431356234340, guid: b3dfa2c3cf4e92a45bae2d4d39bc16a9,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655229431356234340, guid: b3dfa2c3cf4e92a45bae2d4d39bc16a9,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 1655229431356234340, guid: b3dfa2c3cf4e92a45bae2d4d39bc16a9,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5148849185167974094, guid: b3dfa2c3cf4e92a45bae2d4d39bc16a9,
         type: 3}
@@ -6187,6 +6207,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 667121676}
     m_Modifications:
+    - target: {fileID: 1634196332599593684, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634196332599593684, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 1634196332599593684, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2153498112125426533, guid: 1910939d12352264d800aaa699ea45b5,
         type: 3}
       propertyPath: groupFire
@@ -6382,6 +6417,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3694467787711264970, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8014aabbb06275149b96cfa25de2799f, type: 2}
     - target: {fileID: 3744976170416357283, guid: 1910939d12352264d800aaa699ea45b5,
         type: 3}
       propertyPath: playOnAwake
@@ -6412,6 +6452,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: 'FireTriplePuzzle '
       objectReference: {fileID: 0}
+    - target: {fileID: 5711864499627055918, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711864499627055918, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 5711864499627055918, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887597482903428669, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8014aabbb06275149b96cfa25de2799f, type: 2}
     - target: {fileID: 7603090038456859462, guid: 1910939d12352264d800aaa699ea45b5,
         type: 3}
       propertyPath: litFromStart
@@ -6437,6 +6497,26 @@ PrefabInstance:
       propertyPath: 'fireParticles.Array.data[0]'
       value: 
       objectReference: {fileID: 1497673387}
+    - target: {fileID: 7739740178664429678, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7739740178664429678, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_Color.g
+      value: 0.627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 7739740178664429678, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: m_Color.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7951357321353316591, guid: 1910939d12352264d800aaa699ea45b5,
+        type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 8014aabbb06275149b96cfa25de2799f, type: 2}
     - target: {fileID: 8014807716311246379, guid: 1910939d12352264d800aaa699ea45b5,
         type: 3}
       propertyPath: m_IsActive

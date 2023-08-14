@@ -13,6 +13,8 @@ public class RoomBridge : Interactable
     public InteractablePuzzle linkedDoor;
     Coroutine InteractionCooldown;
 
+    private bool cooldown;
+
     public override void Awake()
     {
         base.Awake();
@@ -23,7 +25,7 @@ public class RoomBridge : Interactable
 
     public void TryBridge()
     {
-        if (HeroManager.instance.isLookingForBridge)
+        if (HeroManager.instance.isLookingForBridge || HeroManager.instance.IsAgentCrossingLink())
             return;
 
         HeroManager.instance.isLookingForBridge = true;
@@ -48,9 +50,11 @@ public class RoomBridge : Interactable
             yield return new WaitForSeconds(.5f);
             yield return new WaitUntil(() => HeroManager.instance.AgentIsStopped());
             yield return new WaitUntil(() => !HeroManager.instance.IsAgentCrossingLink());
-            HeroManager.instance.isLookingForBridge = false;
             if(!HeroManager.instance.isInteracting)
             HeroManager.instance.SetHeroDestination(HeroManager.instance.transform.position + (HeroManager.instance.transform.forward/2));
+            yield return new WaitForSeconds(.2f);
+            HeroManager.instance.isLookingForBridge = false;
+            yield return new WaitForSeconds(.5f);
         }
     }
 
@@ -64,6 +68,14 @@ public class RoomBridge : Interactable
 
         Gizmos.color = Color.white;
         Gizmos.DrawSphere(transform.position + (Vector3.up * 5),.4f);
+    }
+
+    public override void Update()
+    {
+        if (!disableWhenHeroIsInteracting)
+            return;
+
+        gameObject.layer = HeroManager.instance.isInteracting || HeroManager.instance.isLookingForBridge ? 2 : originalLayer;
     }
 
     public override void OnMouseDown()

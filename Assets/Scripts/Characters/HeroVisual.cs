@@ -139,7 +139,7 @@ public class HeroVisual : MonoBehaviour
             .AppendInterval(confusionBackoutInterval)
             .AppendCallback(() => 
             { 
-                if(heroManager.AgentIsStopped() && !heroManager.IsAgentCrossingLink() && !heroManager.isLookingForBridge)
+                if(heroManager.AgentIsStopped() && !heroManager.IsAgentCrossingLink() && !heroManager.isLookingForBridge && !heroManager.isInteracting)
                     heroManager.SetHeroDestination(heroManager.transform.position + (heroManager.transform.forward * -1));
             });
     }

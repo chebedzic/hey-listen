@@ -18,9 +18,9 @@ public class Interactable : MonoBehaviour
     [HideInInspector] public Collider[] interactableColliders;
     [HideInInspector] public Renderer[] interactableRenderers;
     [HideInInspector] public bool selected;
-    [SerializeField] private bool disableWhenHeroIsInteracting = true;
+    public bool disableWhenHeroIsInteracting = true;
 
-    private int originalLayer;
+    [HideInInspector]  public int originalLayer;
 
     public virtual void Update()
     {

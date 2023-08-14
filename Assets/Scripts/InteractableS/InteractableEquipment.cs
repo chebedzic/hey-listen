@@ -18,7 +18,7 @@ public class InteractableEquipment : Interactable
 
     public override void Update()
     {
-        //base.Update();
+        base.Update();
     }
 
     public override void OnMouseEnter()

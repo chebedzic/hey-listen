@@ -18,11 +18,15 @@ public class Interactable : MonoBehaviour
     [HideInInspector] public Collider[] interactableColliders;
     [HideInInspector] public Renderer[] interactableRenderers;
     [HideInInspector] public bool selected;
+    [SerializeField] private bool disableWhenHeroIsInteracting = true;
 
     private int originalLayer;
 
     public virtual void Update()
     {
+        if (!disableWhenHeroIsInteracting)
+            return;
+
         gameObject.layer = HeroManager.instance.isInteracting ? 2 : originalLayer;
     }
 

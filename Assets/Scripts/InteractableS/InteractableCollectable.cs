@@ -81,6 +81,7 @@ public class InteractableCollectable : Interactable
 
     void Hold()
     {
+        CompanionManager.instance.CollectableSafetyCooldown();
         CompanionManager.instance.SetHeldItem(collectableItem);
         gameObject.SetActive(false);
     }

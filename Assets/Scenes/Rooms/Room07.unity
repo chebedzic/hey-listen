@@ -5034,6 +5034,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5887333075527009529, guid: f754518f9480f134095d9ea51b146aa3,
         type: 3}
+      propertyPath: layerVolume
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887333075527009529, guid: f754518f9480f134095d9ea51b146aa3,
+        type: 3}
+      propertyPath: triggerMusicLayer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5887333075527009529, guid: f754518f9480f134095d9ea51b146aa3,
+        type: 3}
       propertyPath: OnRoomEnter.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}

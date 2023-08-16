@@ -35,6 +35,9 @@ public class HeroVisual : MonoBehaviour
     [SerializeField] private float confusionBackoutInterval = 1;
     [SerializeField] private Vector3 confusionParticleOffset = new Vector3(1, 0, -.5f);
 
+    [Header("Tutorial")]
+    [SerializeField] private GameObject tutorialCursorIndicator;
+
     private void Awake()
     {
         instance = this;
@@ -186,6 +189,7 @@ public class HeroVisual : MonoBehaviour
     {
         heroManager.canMove = !state;
         animator.SetBool("isConfused", state);
+        tutorialCursorIndicator.SetActive(state);
         if (state) equipmentTutorialParticle.Play(); else equipmentTutorialParticle.Stop();
     }
 

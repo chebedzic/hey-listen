@@ -60,7 +60,7 @@ public class CompanionManager : MonoBehaviour
 
         if(heldAction != null)
         {
-            DropCollectable(heldAction);
+            DropCollectable(heldAction, true);
         }
     }
 
@@ -161,9 +161,9 @@ public class CompanionManager : MonoBehaviour
     }
 
     #endregion
-    public void DropCollectable(Action actionToDrop)
+    public void DropCollectable(Action actionToDrop, bool forceDrop = false)
     {
-        if (actionToDrop != null && isHovering == false)
+        if ((actionToDrop != null && isHovering == false) || actionToDrop != null && forceDrop)
         {
             Action storedAction = actionToDrop;
 

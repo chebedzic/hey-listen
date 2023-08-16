@@ -10,4 +10,5 @@ public class AudioClipContainer : ScriptableObject
     public float pitch = 1;
     public bool randomPitch = false;
     public float randomPitchVariation = .1f;
+    public bool bypassEffect = false;
 }

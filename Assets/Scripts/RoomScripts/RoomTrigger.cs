@@ -5,6 +5,7 @@ using Cinemachine;
 using DG.Tweening;
 using UnityEngine.Events;
 using UnityEngine.AI;
+using NaughtyAttributes;
 
 public class RoomTrigger : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class RoomTrigger : MonoBehaviour
     [HideInInspector] public GameObject roomCompanionSurface;
 
     public bool isMenuRoom = false;
+
+    [Header("Trigger Music Layer")]
+    [SerializeField] private bool triggerMusicLayer = false;
+    [ShowIf("triggerMusicLayer")][SerializeField] private bool layerActivated;
+    [ShowIf("triggerMusicLayer")][SerializeField] private int layerIndex;
+    [ShowIf("triggerMusicLayer")][SerializeField] private float layerVolume = .2f;
 
     private void Awake()
     {
@@ -60,6 +67,12 @@ public class RoomTrigger : MonoBehaviour
         {
             GameManager.instance.SetActiveRoom(this);
             OnRoomEnter.Invoke();
+
+            if (triggerMusicLayer)
+            {
+                layerActivated = true;
+                AudioManager.instance.SetLayerVolume(layerIndex, layerVolume);
+            }
         }
 
         roomCompanionSurface.SetActive(active);

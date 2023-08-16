@@ -48,7 +48,7 @@ public class TeleportEndSequence : MonoBehaviour
         Sequence sequence = DOTween.Sequence();
 
         sequence.AppendInterval(initialDelay);
-        sequence.AppendCallback(() => AudioManager.instance.SetMusicVolume(0));
+        sequence.AppendCallback(() => AudioManager.instance.SetMusicVolume(-80, .5f));
         // face forward
         sequence.Append(heroTransform.DORotate(Vector3.up * 180, 1));
         // animate up

@@ -77,6 +77,8 @@ public class GameManager : MonoBehaviour
 
         IEnumerator CollectEvent()
         {
+            if (equipment.type == EquipmentType.shield)
+                HeroManager.instance.canMove = false;
             yield return new WaitForSeconds(equipmentFocusTransition);
             HeroManager.instance.SetHeroEquipment(equipment);
             HeroVisual.instance.newEquipmentParticle.Play();

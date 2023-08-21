@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum EquipmentType { sword, shield, torch}
+public enum EquipmentType { sword, shield, torch, inventory}
 
 [CreateAssetMenu(menuName = "Scriptable Objects/Equipment")]
 public class Equipment : ScriptableObject

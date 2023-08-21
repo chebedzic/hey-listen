@@ -10,6 +10,10 @@ public class InteractableSlot : Interactable
     public InteractableCollectable insideCollectable;
     private InteractableModal modalParent;
 
+    public bool ignoreType;
+
+    public MeshFilter phantomMeshFilter;
+
     private void Awake()
     {
         
@@ -24,15 +28,21 @@ public class InteractableSlot : Interactable
     {
         if (action != null)
         {
-            if (action.actionType != slotType)
+            if (action.actionType != slotType && !ignoreType)
             {
-                modalParent.transform.DOComplete();
-                modalParent.transform.DOPunchPosition(modalParent.transform.right / 3, .5f, 10, 1);
+                if (modalParent != null)
+                {
+                    modalParent.transform.DOComplete();
+                    modalParent.transform.DOPunchPosition(modalParent.transform.right / 3, .5f, 10, 1);
+                }
                 return;
             }
 
-            modalParent.transform.DOComplete();
-            modalParent.transform.DOPunchScale(Vector3.one / 6, .2f, 15, 1);
+            if (modalParent != null)
+            {
+                modalParent.transform.DOComplete();
+                modalParent.transform.DOPunchScale(Vector3.one / 6, .2f, 15, 1);
+            }
 
             insideCollectable.OnMouseEnter();
         }
@@ -51,7 +61,8 @@ public class InteractableSlot : Interactable
 
     public void UpdateSlot()
     {
-        modalParent.SlotUpdated();
+        if(modalParent!= null)
+            modalParent.SlotUpdated();
     }
 
     public override void OnMouseDown()
@@ -80,16 +91,22 @@ public class InteractableSlot : Interactable
 
         if (held == null && slotAction == null)
         {
-            modalParent.transform.DOComplete();
-            modalParent.transform.DOScale(1.1f, .3f).SetEase(Ease.OutBack);
+            if (modalParent != null)
+            {
+                modalParent.transform.DOComplete();
+                modalParent.transform.DOScale(1.1f, .3f).SetEase(Ease.OutBack);
+            }
             return;
         }
 
         if(held != null)
         {
-            if (held.actionType != slotType)
+            if (held.actionType != slotType && !ignoreType)
                 return;
         }
+
+        if (phantomMeshFilter != null && held != null)
+            phantomMeshFilter.mesh = held.actionMesh;
 
         base.OnMouseEnter();
 
@@ -100,8 +117,11 @@ public class InteractableSlot : Interactable
 
     public override void OnMouseExit()
     {
-        modalParent.transform.DOComplete();
-        modalParent.transform.DOScale(1, .3f).SetEase(Ease.OutBack);
+        if (modalParent != null)
+        {
+            modalParent.transform.DOComplete();
+            modalParent.transform.DOScale(1, .3f).SetEase(Ease.OutBack);
+        }
 
         base.OnMouseExit();
         CompanionManager.instance.currentSlot = null;

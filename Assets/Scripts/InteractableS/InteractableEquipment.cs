@@ -68,6 +68,14 @@ public class InteractableEquipment : Interactable
 
         if (other.CompareTag("Hero"))
         {
+            if(equipment.type == EquipmentType.inventory)
+            {
+                print("addInventory");
+                AfterEquipmentCollect.Invoke();
+                GameManager.instance.AddInventorySlot();
+                return;
+            }
+
             if (equipment == null) { print("Equipment Object Null"); }
             HeroManager.instance.SetHeroDestination(HeroManager.instance.transform.position);
 

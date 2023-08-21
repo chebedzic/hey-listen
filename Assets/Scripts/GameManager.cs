@@ -28,6 +28,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private Image fadeImage;
 
+    public Transform inventoryOrganizer;
+    public GameObject inventorySlotPrefab;
+
     private void Awake()
     {
         instance = this;
@@ -161,5 +164,11 @@ public class GameManager : MonoBehaviour
         fadeImage.DOFade(1, 1).OnComplete(() =>
         Application.Quit()
         );
+    }
+
+    public void AddInventorySlot()
+    {
+        GameObject inventory = Instantiate(inventorySlotPrefab, inventoryOrganizer);
+        inventory.transform.localPosition = new Vector3(inventory.transform.position.x, inventory.transform.position.y, 0);
     }
 }
